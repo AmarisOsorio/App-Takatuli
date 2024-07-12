@@ -5,7 +5,13 @@ import android.se.omapi.Session
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.net.PasswordAuthentication
+import java.security.Security
 import java.util.Properties
+import javax.mail.Message
+import javax.mail.MessagingException
+import javax.mail.Transport
+import javax.mail.internet.InternetAddress
+import javax.mail.internet.MimeMessage
 
 suspend fun enviarCorreo(correo: String, asunto: String, mensaje: String) = withContext(
     Dispatchers.IO) {
@@ -17,18 +23,18 @@ suspend fun enviarCorreo(correo: String, asunto: String, mensaje: String) = with
         put("mail.smtp.port", "465")
 }
 
-    val session = Session.getInstance(props, object : javax.mail.Authenticator() {
-        override fun getPasswordAuthentication(): PasswordAuthentication {
-            return PasswordAuthentication("exequiel.miranda314@gmail.com", "novoyapasarlesmicontraseña")
+    val session = javax.mail.Session.getInstance(props, object : javax.mail.Authenticator() {
+        override fun getPasswordAuthentication(): javax.mail.PasswordAuthentication {
+            return javax.mail.PasswordAuthentication("noseenose64@gmail.com", "csqh ilpe ivyj mrbi")
         }
     })
 
     try {
         val message = MimeMessage(session).apply {
             //Con que correo enviaré el mensaje
-            setFrom(InternetAddress("exequiel.miranda314@gmail.com"))
-            addRecipient(Message.RecipientType.TO, InternetAddress(receptor))
-            subject = sujeto
+            setFrom(InternetAddress("noseenose64@gmail.com"))
+            addRecipient(Message.RecipientType.TO, InternetAddress(correo))
+            subject = asunto
             setText(mensaje)
         }
         Transport.send(message)
