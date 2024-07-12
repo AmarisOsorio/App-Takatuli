@@ -3,23 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@id/fragment_chat">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="expo.turismo.takatuli.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
-
+        android:id="@+id/fragment_perfil"
+        android:name="expo.turismo.takatuli.fragment_perfil"
+        android:label="fragment_perfil"
+        tools:layout="@layout/fragment_perfil" />
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="expo.turismo.takatuli.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
-
+        android:id="@+id/fragment_ajustes"
+        android:name="expo.turismo.takatuli.fragment_ajustes"
+        android:label="fragment_ajustes"
+        tools:layout="@layout/fragment_ajustes" />
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="expo.turismo.takatuli.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/fragment_chat"
+        android:name="expo.turismo.takatuli.fragment_chat"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/fragment_mapa"
+        android:name="expo.turismo.takatuli.fragment_mapa"
+        android:label="fragment_mapa"
+        tools:layout="@layout/fragment_mapa" />
+    <fragment
+        android:id="@+id/fragment_inicio"
+        android:name="expo.turismo.takatuli.fragment_inicio"
+        android:label="fragment_inicio"
+        tools:layout="@layout/fragment_inicio" />
+    <fragment
+        android:id="@+id/fragment_hospedaje"
+        android:name="expo.turismo.takatuli.fragment_hospedaje"
+        android:label="fragment_hospedaje"
+        tools:layout="@layout/fragment_hospedaje" />
 </navigation>
