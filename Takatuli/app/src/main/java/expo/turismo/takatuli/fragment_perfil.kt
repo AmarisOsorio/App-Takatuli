@@ -1,10 +1,21 @@
 package expo.turismo.takatuli
 
+import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import expo.turismo.takatuli.databinding.FragmentPerfilBinding
+import java.nio.file.Path
+import java.util.UUID
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,13 +32,27 @@ class fragment_perfil : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    lateinit var imageView: ImageView
+    lateinit var miPath: Path
+
+    val codigoGaleria = 102
+    val codigoTomarFoto = 103
+    val Camera_request_code = 0
+    val Storage_request_code = 1
+    val uuid = UUID.randomUUID().toString()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
+
     }
+    private var _binding:FragmentPerfilBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,7 +60,49 @@ class fragment_perfil : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_perfil, container, false)
+        val root : View = binding.root
+
+        imageView = root.findViewById(R.id.imgPerfil)
+        val btnGaleria = root.findViewById<Button>(R.id.btnGaleria)
+        val btnFoto = root.findViewById<Button>(R.id.btnTomarFoto)
+
+
+        btnGaleria.setOnClickListener {
+            checkStoragePermission()
+            val intent = Intent(MediaStore.ACTION_PICK_IMAGES)
+            intent.type = "image/*"
+            startActivityForResult(intent,codigoGaleria)
+        }
+
+
+
+        return root
     }
+
+
+    private fun checkStoragePermission(){
+        if (ContextCompat.checkSelfPermission(requireContext(),android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+            pedirPermisoStorage()
+        } else{
+
+        }
+    }
+
+    private fun pedirPermisoStorage(){
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this@fragment_perfil , android.Manifest.permission.READ_EXTERNAL_STORAGE)){
+
+        }else {
+            ActivityCompat.requestPermissions(requireContext(), arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),Storage_request_code)
+        }
+    }
+
+
+
+
+
+
+
+
 
     companion object {
         /**

@@ -5,49 +5,98 @@
     android:id="@+id/frameLayout3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment_seleccion">
-
-    <!-- TODO: Update blank fragment layout -->
-
+    android:background="@color/verdeClaro"
+    tools:context=".fragment_seleccion" >
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="313dp"
-        android:layout_height="144dp"
+        android:layout_width="437dp"
+        android:layout_height="630dp"
+        android:layout_marginBottom="-25dp"
         android:src="@drawable/cuadrado_seleccion"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.26" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="313dp"
-        android:layout_height="144dp"
-        android:src="@drawable/cuadrado_seleccion"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.56" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="313dp"
-        android:layout_height="144dp"
-        android:src="@drawable/cuadrado_seleccion"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.853" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="327dp"
+        android:layout_height="87dp"
+        android:fontFamily="@font/baloo"
+        android:text="¿Deseas agregar algo hoy?"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.046" />
+
+    <Button
+        android:id="@+id/btnLugarTuristicoSL"
+        android:layout_width="320dp"
+        android:layout_height="100dp"
+        android:backgroundTint="@color/naranja"
+        android:fontFamily="@font/baloo"
         android:text="Lugares Turisticos"
-        tools:layout_editor_absoluteX="170dp"
-        tools:layout_editor_absoluteY="217dp" />
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.383" />
+
+    <Button
+        android:id="@+id/btnHospedajeSL"
+        android:layout_width="320dp"
+        android:layout_height="100dp"
+        android:backgroundTint="@color/naranja"
+        android:fontFamily="@font/baloo"
+        android:text="Hospedajes"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.624" />
+
+    <Button
+        android:id="@+id/btnRestaurantesSL"
+        android:layout_width="320dp"
+        android:layout_height="100dp"
+        android:backgroundTint="@color/naranja"
+        android:fontFamily="@font/baloo"
+        android:text="Restaurantes"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.87" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="33dp"
+        android:layout_height="34dp"
+        android:src="@drawable/ic_atras_sl"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.022" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
