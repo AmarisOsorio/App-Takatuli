@@ -35,4 +35,10 @@
         android:name="expo.turismo.takatuli.fragment_hospedaje"
         android:label="fragment_hospedaje"
         tools:layout="@layout/fragment_hospedaje" />
+
+    <fragment
+        android:id="@+id/fragment_agregarRestaurante"
+        android:name="expo.turismo.takatuli.AgregarRestaurante"
+        android:label="fragment_hospedaje"
+        tools:layout="@layout/fragment_agregar_restaurante" />
 </navigation>
