@@ -202,37 +202,27 @@
         app:layout_constraintVertical_bias="0.856" />
 
     <ImageView
-        android:id="@+id/imgPerfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="143dp"
-        tools:layout_editor_absoluteY="117dp"
-        tools:src="@tools:sample/avatars" />
-
-    <Button
-        android:id="@+id/btnGaleria"
-        android:layout_width="111dp"
-        android:layout_height="35dp"
-        android:text="Galeria"
-        android:textColor="@color/white"
+        android:id="@+id/imgContainerCamara"
+        android:layout_width="40dp"
+        android:layout_height="41dp"
+        android:src="@drawable/circulito_camara"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.948"
+        app:layout_constraintHorizontal_bias="0.679"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.353" />
+        app:layout_constraintVertical_bias="0.321" />
 
-    <Button
-        android:id="@+id/btnTomarFoto"
-        android:layout_width="114dp"
-        android:layout_height="53dp"
-        android:text="Tomar Foto"
-        android:textColor="@color/white"
+    <ImageView
+        android:id="@+id/imgCamera"
+        android:layout_width="29dp"
+        android:layout_height="26dp"
+        android:src="@drawable/ic_camara"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.946"
+        app:layout_constraintHorizontal_bias="0.672"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.417" />
+        app:layout_constraintVertical_bias="0.325" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

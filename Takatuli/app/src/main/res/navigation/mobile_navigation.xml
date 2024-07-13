@@ -40,4 +40,9 @@
         android:name="expo.turismo.takatuli.fragment_seleccion"
         android:label="fragment_seleccion"
         tools:layout="@layout/fragment_seleccion" />
+    <fragment
+        android:id="@+id/fragment_fotoperfil"
+        android:name="expo.turismo.takatuli.fragment_fotoperfil"
+        android:label="fragment_fotoperfil"
+        tools:layout="@layout/fragment_fotoperfil" />
 </navigation>
