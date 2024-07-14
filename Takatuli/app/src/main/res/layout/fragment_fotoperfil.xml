@@ -52,12 +52,12 @@
         app:layout_constraintVertical_bias="0.745" />
 
     <Button
-        android:id="@+id/btnTomarFoto"
+        android:id="@+id/btnSubirImg"
         android:layout_width="252dp"
         android:layout_height="52dp"
         android:backgroundTint="@color/naranja"
         android:fontFamily="@font/baloo"
-        android:text="Tomar Foto"
+        android:text="subir imagen"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
