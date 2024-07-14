@@ -9,7 +9,10 @@
         android:id="@+id/fragment_perfil"
         android:name="expo.turismo.takatuli.fragment_perfil"
         android:label="fragment_perfil"
-        tools:layout="@layout/fragment_perfil" />
+        tools:layout="@layout/fragment_perfil">
+        <action android:id="@+id/idAction"
+        app:destination="@id/fragment_hospedaje"/>
+    </fragment>
     <fragment
         android:id="@+id/fragment_ajustes"
         android:name="expo.turismo.takatuli.fragment_ajustes"
@@ -35,4 +38,15 @@
         android:name="expo.turismo.takatuli.fragment_hospedaje"
         android:label="fragment_hospedaje"
         tools:layout="@layout/fragment_hospedaje" />
+
+    <fragment
+        android:id="@+id/fragment_agregarRestaurante"
+        android:name="expo.turismo.takatuli.AgregarRestaurante"
+        android:label="fragment_hospedaje"
+        tools:layout="@layout/fragment_agregar_restaurante" />
+    <fragment
+        android:id="@+id/subidosdestinosdueno"
+        android:name="expo.turismo.takatuli.subidosdestinosdueno"
+        android:label="fragment_subidosdestinosdueno"
+        tools:layout="@layout/fragment_subidosdestinosdueno" />
 </navigation>
