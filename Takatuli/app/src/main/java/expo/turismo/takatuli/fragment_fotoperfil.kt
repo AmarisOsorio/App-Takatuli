@@ -26,14 +26,7 @@ class fragment_fotoperfil : Fragment() {
     lateinit var galeria: Button
     lateinit var subirImagen:Button
     var fileUri: Uri? = null
-    /*lateinit var miPath: String
 
-    val codigoGaleria = 102
-    val codigoTomarFoto = 103
-    val Camera_request_code = 0
-    val Storage_request_code = 1*/
-
-    //val uuid = UUID.randomUUID().toString()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,6 +68,7 @@ class fragment_fotoperfil : Fragment() {
         return root
     }
 
+    //Esta función ayuda a seleccionar una imagen y la muestra en la image view
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 0 && resultCode == RESULT_OK && data != null && data.data != null){
@@ -88,6 +82,7 @@ class fragment_fotoperfil : Fragment() {
         }
     }
 
+    //Funcion para que se pueda subir una imagen desde la galeria
     fun subirImagen(){
         if (fileUri!= null){
             val progressDialog = ProgressDialog(requireContext())
@@ -105,5 +100,7 @@ class fragment_fotoperfil : Fragment() {
             }
         }
     }
+
+    //Función para guardar la url de foto en oracle
 
 }
