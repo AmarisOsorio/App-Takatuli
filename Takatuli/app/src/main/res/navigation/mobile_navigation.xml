@@ -41,4 +41,9 @@
         android:name="expo.turismo.takatuli.AgregarRestaurante"
         android:label="fragment_hospedaje"
         tools:layout="@layout/fragment_agregar_restaurante" />
+    <fragment
+        android:id="@+id/subidosdestinosdueno"
+        android:name="expo.turismo.takatuli.subidosdestinosdueno"
+        android:label="fragment_subidosdestinosdueno"
+        tools:layout="@layout/fragment_subidosdestinosdueno" />
 </navigation>

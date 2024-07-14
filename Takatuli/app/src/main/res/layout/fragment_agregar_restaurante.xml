@@ -23,7 +23,7 @@
     </ImageView>
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/txtAgr1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/baloo"
@@ -69,7 +69,7 @@
                 android:padding="10dp" />
 
             <EditText
-                android:id="@+id/editTextTextMultiLine"
+                android:id="@+id/txtMenuEscrito"
                 android:layout_width="382dp"
                 android:layout_height="136dp"
                 android:ems="10"
@@ -79,7 +79,7 @@
                 android:inputType="textMultiLine" />
 
             <TextView
-                android:id="@+id/textView18"
+                android:id="@+id/txtAgr2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/baloo"
@@ -94,7 +94,7 @@
             android:orientation="horizontal"
             android:layout_marginTop="20dp">
             <ImageView
-                android:id="@+id/imageView5"
+                android:id="@+id/imgAgr1"
                 android:layout_width="149dp"
                 android:layout_height="106dp"
                 app:srcCompat="@drawable/ic_subirimagen"
@@ -102,7 +102,7 @@
                 />
 
             <ImageView
-                android:id="@+id/imageView6"
+                android:id="@+id/imgAgr2"
                 android:layout_width="149dp"
                 android:layout_height="106dp"
                 app:srcCompat="@drawable/ic_subirimagen"
@@ -112,7 +112,7 @@
         </LinearLayout>
 
             <TextView
-                android:id="@+id/textView15"
+                android:id="@+id/txtAgr3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/baloo"
@@ -125,14 +125,14 @@
             android:orientation="horizontal"
             android:layout_marginTop="18dp">
             <ImageView
-                android:id="@+id/imageView8"
+                android:id="@+id/imgAgr3"
                 android:layout_width="149dp"
                 android:layout_height="106dp"
                 app:srcCompat="@drawable/ic_subirimagen"
                 android:layout_marginLeft="35dp"/>
 
             <ImageView
-                android:id="@+id/imageView7"
+                android:id="@+id/imgAgr4"
                 android:layout_width="149dp"
                 android:layout_height="106dp"
                 app:srcCompat="@drawable/ic_subirimagen"
@@ -175,7 +175,7 @@
         />
 </LinearLayout>
             <TextView
-                android:id="@+id/textView25"
+                android:id="@+id/txtAgr5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/baloo"
