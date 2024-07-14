@@ -17,7 +17,7 @@ import kotlinx.coroutines.withContext
 class AdaptadorRestaurantes (private var Datos: List<SubirRestaurante>) : RecyclerView.Adapter<ViewHolderRestaurantes>() {
 
 
-    
+
 
     fun ActualizarListaDespuesDeActualizarDatos(UUID_Restaurante: String, Menu_Restaurante :  String, NuevoNombreRestaurante: String){
         val index = Datos.indexOfFirst { it.UUID_Restaurante == UUID_Restaurante }
