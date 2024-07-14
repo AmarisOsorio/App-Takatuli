@@ -60,5 +60,4 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation("com.oracle.database.jdbc:ojdbc6:11.2.0.4")
-
 }
