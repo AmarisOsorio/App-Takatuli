@@ -55,7 +55,7 @@ class subidosdestinosdueno : Fragment() {
             val objConexion = ClaseConexion ().cadenaConexion()
 
             val statement = objConexion?.createStatement()
-            val resulset = statement?.executeQuery("select * from tbRestaurante")!!
+            val resulset = statement?.executeQuery("select * from tbRestaurantes")!!
             val Restaurante = mutableListOf<SubirRestaurante>()
             while (resulset.next()){
                 val UUID_Restaurante= resulset.getString("UUID_Restaurante")

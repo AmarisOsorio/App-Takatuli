@@ -12,7 +12,7 @@
         android:title="mapa" />
 
     <item
-        android:id="@+id/fragment_inicio"
+        android:id="@+id/subidosdestinosdueno"
         android:icon="@drawable/ic_inicio"
         android:title="Inicio" />
 
