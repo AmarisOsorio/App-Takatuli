@@ -86,9 +86,9 @@ class RegistrarUsuarios : AppCompatActivity() {
                 crearUsuario.setString(5, txtTelefono.text.toString())
                 crearUsuario.setString(6,txtCorreo.text.toString())
                 crearUsuario.setString(7, txtDui.text.toString())
-                crearUsuario.setString(8, roles[spRol.selectedItemPosition].Nombre_Rol)
+                crearUsuario.setString(8, roles[spRol.selectedItemPosition].UUID_Rol)
 
-                crearUsuario.executeUpdate()
+                crearUsuario.executeQuery()
 
                 withContext(Dispatchers.Main) {
 
