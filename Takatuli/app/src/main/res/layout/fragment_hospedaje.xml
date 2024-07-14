@@ -27,7 +27,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtPrecioH" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imgagr7"
         android:layout_width="421dp"
         android:layout_height="221dp"
         android:layout_marginTop="-100dp"
