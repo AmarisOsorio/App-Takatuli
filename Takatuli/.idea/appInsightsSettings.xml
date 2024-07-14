@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="expo.turismo.takatuli" />
+                  <option name="mobileSdkAppId" value="1:339297282206:android:578cfceaafa52334a7338f" />
+                  <option name="projectId" value="takatuli-50c81" />
+                  <option name="projectNumber" value="339297282206" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

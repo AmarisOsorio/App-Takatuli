@@ -14,6 +14,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import expo.turismo.takatuli.databinding.FragmentPerfilBinding
 import java.nio.file.Path
 import java.util.UUID
@@ -51,17 +52,12 @@ class fragment_perfil : Fragment() {
         //variable root
         val root = inflater.inflate(R.layout.fragment_perfil, container, false)
 
+        //Boton para navegar entre fragments
         val imgCamara = root.findViewById<ImageView>(R.id.imgCamera)
 
-
-        //preguntar al profe
-        imgCamara.setOnClickListener() {
-            val fotoperfil = Intent(requireContext(), fragment_fotoperfil::class.java)
-            startActivity(fotoperfil)
-
-
-
-
+        imgCamara.setOnClickListener(){
+            findNavController().navigate(R.id.idAccion)
+        }
 
             // Inflate the layout for this fragment
             /* return inflater.inflate(R.layout.fragment_perfil, container, false)
@@ -78,9 +74,6 @@ class fragment_perfil : Fragment() {
             //intent.type = "image/*"
             //startActivityForResult(intent,codigoGaleria)
             //}
-
-
-        }
 
 
         /*private fun checkStoragePermission(){
@@ -100,6 +93,7 @@ class fragment_perfil : Fragment() {
     }*/
 
 
-        return TODO("Provide the return value")
+        return root
+
     }
 }

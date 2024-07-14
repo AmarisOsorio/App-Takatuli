@@ -1,8 +1,10 @@
 package expo.turismo.takatuli
 
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Path
 import android.os.Bundle
+import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -45,53 +47,13 @@ class fragment_fotoperfil : Fragment() {
         val btnTomarFoto = root.findViewById<Button>(R.id.btnTomarFoto)
 
         btnGaleria.setOnClickListener {
-            val intent = Intent(Intent.ACTION_PICK)
-            intent.type = "image/*"
+            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             startActivityForResult(intent, codigoGaleria)
         }
 
-        btnTomarFoto.setOnClickListener {
-            checkCameraPermission()
-        }
-
-        override fun onRequestPermissionsResult(
-            requestCode: Int,
-            permissions: Array<String>, grantResults: IntArray
-        ) {
-            super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        when (requestCode) {
-            Camera_request_code -> {
-                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                    //El permiso está aceptado, entonces Abrimos la camara:
-                    val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-                    startActivityForResult(intent, codigoTomarFoto)
-                } else {
-                    //El usuario ha rechazado el permiso, podemos desactivar la funcionalidad o mostrar una alerta/Toast.
-                    Toast.makeText(this, "Permiso de cámara denegado", Toast.LENGTH_SHORT).show()
-                }
-                return
-            }
-            Storage_request_code -> {
-                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                    //El permiso está aceptado, entonces Abrimos la galeria
-                    val intent = Intent(Intent.ACTION_PICK)
-                    intent.type = "image/*"
-                    startActivityForResult(intent, codigoGaleria)
-                } else {
-                    //El usuario ha rechazado el permiso, podemos desactivar la funcionalidad o mostrar una alerta/Toast.
-                    Toast.makeText(this, "Permiso de almacenamiento denegado", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            else -> {
-                // Este else lo dejamos por si sale un permiso que no teníamos controlado.
-            }
-        }
 
 
-
-
-        return inflater.inflate(R.layout.fragment_fotoperfil, container, false)
+     return root
     }
 
 

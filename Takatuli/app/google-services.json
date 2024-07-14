@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "339297282206",
+    "project_id": "takatuli-50c81",
+    "storage_bucket": "takatuli-50c81.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:339297282206:android:578cfceaafa52334a7338f",
+        "android_client_info": {
+          "package_name": "expo.turismo.takatuli"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmy4Tl15lcqeejGdJAQjN2QiZ2OxkYkJo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

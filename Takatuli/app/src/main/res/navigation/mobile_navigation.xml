@@ -9,7 +9,11 @@
         android:id="@+id/fragment_perfil"
         android:name="expo.turismo.takatuli.fragment_perfil"
         android:label="fragment_perfil"
-        tools:layout="@layout/fragment_perfil" />
+        tools:layout="@layout/fragment_perfil" >
+        <action android:id="@+id/idAccion"
+            app:destination="@id/fragment_fotoperfil"/>
+    </fragment>
+
     <fragment
         android:id="@+id/fragment_ajustes"
         android:name="expo.turismo.takatuli.fragment_ajustes"
