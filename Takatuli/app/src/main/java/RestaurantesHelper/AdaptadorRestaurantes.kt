@@ -116,7 +116,7 @@ class AdaptadorRestaurantes (private var Datos: List<SubirRestaurante>) : Recycl
 
             //Creo la alerta
             val builder = AlertDialog.Builder(context)
-            builder.setTitle("Editar Nombre")
+            builder.setTitle("Editar Menú")
 
             //Agregamos un cuadro de texto
             //pueda escribir el nuevo nombre

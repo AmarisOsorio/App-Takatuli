@@ -8,7 +8,7 @@
     tools:context=".subidosdestinosdueno">
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/imgtodossubidos1"
         android:layout_width="543dp"
         android:layout_height="293dp"
         android:layout_marginBottom="584dp"
