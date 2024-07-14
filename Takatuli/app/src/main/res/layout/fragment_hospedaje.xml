@@ -21,7 +21,7 @@
         tools:layout_editor_absoluteY="282dp" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imgagr7"
         android:layout_width="421dp"
         android:layout_height="221dp"
         android:layout_marginTop="-100dp"

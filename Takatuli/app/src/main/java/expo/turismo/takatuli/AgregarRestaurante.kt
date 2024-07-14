@@ -5,6 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import expo.turismo.takatuli.Modelo.ClaseConexion
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.util.UUID
+
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
@@ -31,7 +39,33 @@ class AgregarRestaurante : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_agregar_restaurante, container, false)
+        val root = inflater.inflate(R.layout.fragment_agregar_restaurante, container, false)
+        val txtNombreRestaurante = root.findViewById<EditText>(R.id.txtNombreRestaurante)
+        val txtMenuEscrito= root.findViewById<EditText>(R.id.txtMenuEscrito)
+        val btnAgregarRestaurante = root.findViewById<Button>(R.id.btnAgregarRestaurante)
+        val btnCancelarRestaurante = root.findViewById<Button>(R.id.btnCancelarRestaurante)
+
+        btnAgregarRestaurante.setOnClickListener{
+        CoroutineScope(Dispatchers.IO).launch {
+            val objConexion = ClaseConexion().cadenaConexion()
+
+<<<<<<< HEAD
+             val RestauranteAgregado = objConexion?.prepareStatement("insert into tbRestaurantes (UUID_Restaurante, Nombre_Restaurante, Menu_Restaurante) Values (?, ?, ?)")!!
+=======
+             val RestauranteAgregado = objConexion?.prepareStatement("insert into tbRestaurantes (UUID_Restaurante, Nombre_Restaurante, Menu_Restaurante)Values (?, ?, ?)")!!
+>>>>>>> 822157076153ad1fd13132e4aade4607cff5b63e
+           RestauranteAgregado.setString(1, UUID.randomUUID().toString())
+            RestauranteAgregado.setString(2, txtNombreRestaurante.text.toString())
+            RestauranteAgregado.setString(3,txtMenuEscrito.text.toString())
+            RestauranteAgregado.executeUpdate()
+        }
+
+        }
+        return root
+
+
+
+
     }
 
     companion object {
