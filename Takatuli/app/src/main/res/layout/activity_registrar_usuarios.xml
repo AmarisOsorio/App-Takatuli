@@ -8,12 +8,12 @@
     tools:context=".RegistrarUsuarios">
 
     <EditText
-        android:id="@+id/txtNombre"
+        android:id="@+id/txtNombreR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Nombre"
         android:inputType="text"
-        android:text="Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -22,12 +22,12 @@
         app:layout_constraintVertical_bias="0.091" />
 
     <EditText
-        android:id="@+id/txtContrasena"
+        android:id="@+id/txtContrasenaR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Contraseña"
         android:inputType="text"
-        android:text="Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -36,12 +36,12 @@
         app:layout_constraintVertical_bias="0.198" />
 
     <EditText
-        android:id="@+id/txtEdad"
+        android:id="@+id/txtEdadR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Edad"
         android:inputType="number"
-        android:text="Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -50,7 +50,7 @@
         app:layout_constraintVertical_bias="0.307" />
 
     <EditText
-        android:id="@+id/txtCorreo"
+        android:id="@+id/txtCorreoR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="101dp"
@@ -58,25 +58,25 @@
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="39dp"
         android:ems="10"
+        android:hint="CorreoElectronico"
         android:inputType="text"
-        android:text="Name"
-        app:layout_constraintBottom_toTopOf="@+id/txtDui"
+        app:layout_constraintBottom_toTopOf="@+id/txtDuiR"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEdad"
+        app:layout_constraintTop_toBottomOf="@+id/txtEdadR"
         app:layout_constraintVertical_bias="0.984" />
 
     <EditText
-        android:id="@+id/txtDui"
+        android:id="@+id/txtDuiR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:layout_marginTop="39dp"
         android:layout_marginEnd="100dp"
         android:ems="10"
-        android:inputType="text"
-        android:text="Name"
+        android:hint="DUI"
+        android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -85,7 +85,7 @@
         app:layout_constraintVertical_bias="0.622" />
 
     <Spinner
-        android:id="@+id/spRol"
+        android:id="@+id/spRolR"
         android:layout_width="355dp"
         android:layout_height="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -108,12 +108,12 @@
         app:layout_constraintVertical_bias="0.884" />
 
     <EditText
-        android:id="@+id/txtTelefono"
+        android:id="@+id/txtTelefonoR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Telefono"
         android:inputType="number"
-        android:text="Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
