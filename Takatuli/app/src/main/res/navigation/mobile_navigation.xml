@@ -21,7 +21,7 @@
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" />
     <fragment
-        android:id="@+id/fragment_mapa"
+        android:id="@+id/Agregar_lugares"
         android:name="expo.turismo.takatuli.fragment_mapa"
         android:label="fragment_mapa"
         tools:layout="@layout/fragment_mapa" />
@@ -35,4 +35,11 @@
         android:name="expo.turismo.takatuli.fragment_hospedaje"
         android:label="fragment_hospedaje"
         tools:layout="@layout/fragment_hospedaje" />
+
+    <fragment
+        android:id="@+id/fragment_mapa"
+        android:name="expo.turismo.takatuli.Agregar_Lugares"
+        android:label="fragment_hospedaje"
+        tools:layout="@layout/fragment_agregar__lugares">
+    </fragment>
 </navigation>
