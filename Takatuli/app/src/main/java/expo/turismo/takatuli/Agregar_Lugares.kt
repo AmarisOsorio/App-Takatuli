@@ -58,7 +58,7 @@ class Agregar_Lugares : Fragment() {
 
                     val objConexion = ClaseConexion().cadenaConexion()
                     val addAgregarLugares =
-                        objConexion?.prepareStatement("insert into tbLugarTuristico(uuid_LugarTuristico,Nombre_LugarTuristico, Detalles_Lugar_Turistico)values(?, ?, ?)")!!
+                        objConexion?.prepareStatement("insert into tbLugarTuristico(UUID_LugarTuristico,Nombre_LugarTuristico, Detalles_Lugar_Turistico)values(?, ?, ?)")!!
                     addAgregarLugares.setString(1, UUID.randomUUID().toString())
                     addAgregarLugares.setString(2, txtNombreLugar.text.toString())
                     addAgregarLugares.setString(3, txtDetalleLugar.text.toString())
