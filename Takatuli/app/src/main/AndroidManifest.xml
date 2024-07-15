@@ -41,6 +41,7 @@
         </activity>
         <activity
             android:name=".RecuperacionDePassword"
+<<<<<<< HEAD
             android:exported="false">
 
         </activity>
@@ -58,6 +59,11 @@
         <activity
             android:name=".CardsHospedaje"
             android:exported="false" >
+=======
+            android:exported="false" >
+
+
+>>>>>>> Rafael
         </activity>
 
         <activity
@@ -70,6 +76,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+<<<<<<< HEAD
+=======
+
+>>>>>>> Rafael
         </activity>
 
         <activity
