@@ -49,10 +49,10 @@ class Agregar_Lugares : Fragment() {
             val ListadoLugares = mutableListOf<tbAgregarLugaresTuristicos>()
 
             while (resultSet.next()) {
-                val uuid = resultSet.getString("UUID_TipoLugarTuristico")
+                val uuid = resultSet.getString("UUUID_TipoLugarTuristico")
                 val nombreLugar = resultSet.getString("NombreTipo")
-                val detalleLugar = resultSet.getString("DetalleTipo")
-                val listadoLugaresCompleto = tbAgregarLugaresTuristicos(uuid, nombreLugar, detalleLugar)
+               // val detalleLugar = resultSet.getString("DetalleTipo")
+                val listadoLugaresCompleto = tbAgregarLugaresTuristicos(uuid, nombreLugar, "")
                 ListadoLugares.add(listadoLugaresCompleto)
                 println("asdfasdf $ListadoLugares")
             }
@@ -65,7 +65,7 @@ class Agregar_Lugares : Fragment() {
                 val objConexion = ClaseConexion().cadenaConexion()
                 val tipoLugarTuristico = obtenerLugares()
                 val addAgregarLugares =
-                    objConexion?.prepareStatement("insert into tbLugarTuristico(UUID_LugarTuristico,Nombre_LugarTuristico, Detalles_Lugar_Turistico, UUID_TipoLugarTuristico )values(?, ?, ?, ?)")!!
+                    objConexion?.prepareStatement("insert into tbLugarTuristico(UUID_LugarTuristico,Nombre_LugarTuristico, Detalles_Lugar_Turistico, UUUID_TipoLugarTuristico )values(?, ?, ?, ?)")!!
                 addAgregarLugares.setString(1, UUID.randomUUID().toString())
                 addAgregarLugares.setString(2, txtNombreLugar.text.toString())
                 addAgregarLugares.setString(3, txtDetalleLugar.text.toString())
