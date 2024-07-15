@@ -40,7 +40,6 @@
         tools:layout="@layout/fragment_hospedaje" />
 
     <fragment
-<<<<<<< HEAD
         android:id="@+id/fragment_seleccion"
         android:name="expo.turismo.takatuli.fragment_seleccion"
         android:label="fragment_seleccion"
@@ -49,6 +48,8 @@
             app:destination="@id/fragment_hospedaje"/>
         <action android:id="@+id/idActionR"
             app:destination="@id/fragment_agregarRestaurante"/>
+        <action android:id="@+id/idActionLT"
+            app:destination="@id/fragment_mapa"/>
 
     </fragment>
 
@@ -64,11 +65,10 @@
         android:label="fragment_subidosdestinosdueno"
         tools:layout="@layout/fragment_subidosdestinosdueno" />
 
-=======
+    <fragment
         android:id="@+id/fragment_mapa"
         android:name="expo.turismo.takatuli.Agregar_Lugares"
         android:label="fragment_hospedaje"
         tools:layout="@layout/fragment_agregar__lugares">
     </fragment>
->>>>>>> Rafael
 </navigation>

@@ -40,6 +40,10 @@ class fragment_seleccion : Fragment() {
         btnRestaurantesSL.setOnClickListener(){
             findNavController().navigate(R.id.idActionR)
         }
+        btnLugarTuristicoSL.setOnClickListener(){
+            findNavController().navigate(R.id.idActionLT)
+        }
+
         return root
 
     }
