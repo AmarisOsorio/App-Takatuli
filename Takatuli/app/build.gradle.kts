@@ -41,7 +41,6 @@ android {
 dependencies {
 
 
-    implementation("com.oracle.database.jdbc:ojdbc6:11.2.0.4")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -55,7 +54,7 @@ dependencies {
     implementation(files("libs\\mail.jar"))
     implementation("com.oracle.database.jdbc:ojdbc6:11.2.0.4")
     implementation(libs.androidx.activity)
-    implementation(libs.play.services.ads.lite)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

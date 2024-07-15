@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
-import com.google.android.gms.ads.mediation.Adapter
 import expo.turismo.takatuli.Modelo.ClaseConexion
 import expo.turismo.takatuli.Modelo.tbAgregarLugaresTuristicos
 import kotlinx.coroutines.CoroutineScope
@@ -18,26 +17,13 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.UUID
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [Agregar_Lugares.newInstance] factory method to
- * create an instance of this fragment.
- */
 class Agregar_Lugares : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+
         }
     }
 
@@ -51,7 +37,7 @@ class Agregar_Lugares : Fragment() {
         val txtDetalleLugar = root.findViewById<TextView>(R.id.txtDetalleLugar)
         val btnGuardar = root.findViewById<Button>(R.id.btnGuardar)
         val btnCancelar = root.findViewById<Button>(R.id.btnCancelar)
-
+        val spTipoLugar = root.findViewById<Spinner>(R.id.spTipoLugar)
 
         fun obtenerLugares(): List<tbAgregarLugaresTuristicos> {
             val objConexion = ClaseConexion().cadenaConexion()
@@ -63,16 +49,34 @@ class Agregar_Lugares : Fragment() {
             val ListadoLugares = mutableListOf<tbAgregarLugaresTuristicos>()
 
             while (resultSet.next()) {
-                val uuid = resultSet.getString("UUUID_TipoLugarTuristico")
+                val uuid = resultSet.getString("UUID_TipoLugarTuristico")
                 val nombreLugar = resultSet.getString("NombreTipo")
                 val detalleLugar = resultSet.getString("DetalleTipo")
                 val listadoLugaresCompleto = tbAgregarLugaresTuristicos(uuid, nombreLugar, detalleLugar)
                 ListadoLugares.add(listadoLugaresCompleto)
-               println("asdfasdf $ListadoLugares")
+                println("asdfasdf $ListadoLugares")
             }
             return ListadoLugares
         }
 
+        btnGuardar.setOnClickListener {
+            CoroutineScope(Dispatchers.IO).launch {
+
+                val objConexion = ClaseConexion().cadenaConexion()
+                val tipoLugarTuristico = obtenerLugares()
+                val addAgregarLugares =
+                    objConexion?.prepareStatement("insert into tbLugarTuristico(UUID_LugarTuristico,Nombre_LugarTuristico, Detalles_Lugar_Turistico, UUID_TipoLugarTuristico )values(?, ?, ?, ?)")!!
+                addAgregarLugares.setString(1, UUID.randomUUID().toString())
+                addAgregarLugares.setString(2, txtNombreLugar.text.toString())
+                addAgregarLugares.setString(3, txtDetalleLugar.text.toString())
+                addAgregarLugares.setString(4, tipoLugarTuristico[spTipoLugar.selectedItemPosition].UUID_LugarTuristico)
+                addAgregarLugares.executeUpdate()
+
+
+            }
+            // Inflate the layout for this fragment
+
+        }
 
         CoroutineScope(Dispatchers.IO).launch {
             //1- Obtengo los datos
@@ -87,44 +91,11 @@ class Agregar_Lugares : Fragment() {
                     nombreLugares
 
                 )
-               val spTipoLugar = root.findViewById<Spinner>(R.id.spTipoLugar)
                  spTipoLugar.adapter = miAdaptador
-
-
             }
 
         }
 
-        fun tbLugarTuristico(
-            UUID_LugarTuristico: String?,
-            NombreLugarTuristico: String?
-
-        ) {
-
-
-            btnGuardar.setOnClickListener {
-                CoroutineScope(Dispatchers.IO).launch {
-
-                    val objConexion = ClaseConexion().cadenaConexion()
-                    val addAgregarLugares =
-                        objConexion?.prepareStatement("insert into tbLugarTuristico(UUID_LugarTuristico,Nombre_LugarTuristico, Detalles_Lugar_Turistico)values(?, ?, ?)")!!
-                    addAgregarLugares.setString(1, UUID.randomUUID().toString())
-                    addAgregarLugares.setString(2, txtNombreLugar.text.toString())
-                    addAgregarLugares.setString(3, txtDetalleLugar.text.toString())
-                    addAgregarLugares.executeUpdate()
-
-
-                }
-                // Inflate the layout for this fragment
-
-            }
-
-
-            val listadoLugares = arrayOf("Montaña","Playa","Bañario","Lago","Bosques")
-            val miAdaptadordeLinea = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item,listadoLugares)
-            val spTipoLugar = root.findViewById<Spinner>(R.id.spTipoLugar)
-            spTipoLugar.adapter = miAdaptadordeLinea
-        }
 
         return root
 
