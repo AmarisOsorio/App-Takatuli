@@ -49,17 +49,15 @@ class AdaptadorRestaurantes (private var Datos: List<SubirRestaurante>) : Recycl
         notifyDataSetChanged()
     }
 
-    fun actualizarproductos(Nombre_Restaurante: String, Menu_Restaurante: String, UUID_Restaurante: String
-    ){
+    fun actualizarproductos(Nombre_Restaurante: String, Menu_Restaurante: String, UUID_Restaurante: String){
         //1-Creo un acorrutina
         GlobalScope.launch(Dispatchers.IO){
 
             val objConexion = ClaseConexion().cadenaConexion()
 
-            val updateRestaurante= objConexion?.prepareStatement("update tbRestaurantes set Nombre_Restaurante = ?, Menu_Restaurante = ? where UUID_Restaurante = ?")!!
-            updateRestaurante.setString(1,Nombre_Restaurante)
-            updateRestaurante.setString(2,Menu_Restaurante)
-            updateRestaurante.setString(3,UUID_Restaurante)
+            val updateRestaurante= objConexion?.prepareStatement("update tbRestaurantes set  Menu_Restaurante = ? where UUID_Restaurante = ?")!!
+            updateRestaurante.setString(1,Menu_Restaurante)
+            updateRestaurante.setString(2,UUID_Restaurante)
             updateRestaurante.executeUpdate()
 
 
@@ -116,7 +114,7 @@ class AdaptadorRestaurantes (private var Datos: List<SubirRestaurante>) : Recycl
 
             //Creo la alerta
             val builder = AlertDialog.Builder(context)
-            builder.setTitle("Editar Menú")
+            builder.setTitle("Editar Nombre")
 
             //Agregamos un cuadro de texto
             //pueda escribir el nuevo nombre

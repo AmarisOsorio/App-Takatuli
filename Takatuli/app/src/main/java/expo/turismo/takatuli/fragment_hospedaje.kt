@@ -8,10 +8,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import expo.turismo.takatuli.Modelo.ClaseConexion
+import expo.turismo.takatuli.Modelo.SubirRestaurante
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.UUID
 
 class fragment_hospedaje : Fragment() {
@@ -30,7 +32,7 @@ class fragment_hospedaje : Fragment() {
 
         btnAgregarHospedaje.setOnClickListener{
             CoroutineScope(Dispatchers.IO).launch {
-             val claseConexion = ClaseConexion().cadenaConexion()
+                val claseConexion = ClaseConexion().cadenaConexion()
 
                 val addHospedaje =
                     claseConexion?.prepareStatement("insert into tbHospedaje(UUID_Hospedaje,Nombre_Hospedaje,Precio_Hospedaje,Detalles_Hospedaje) values(?, ?, ?, ?)")!!
@@ -39,9 +41,16 @@ class fragment_hospedaje : Fragment() {
                 addHospedaje.setInt(3, txtPrecioH.text.toString().toInt())
                 addHospedaje.setString(4, txtDetallesH.text.toString())
                 addHospedaje.executeUpdate()
+
             }
 
+
         }
+
+
+
+
+
 
         return root
 

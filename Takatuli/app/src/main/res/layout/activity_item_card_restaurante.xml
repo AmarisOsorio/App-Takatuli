@@ -21,7 +21,7 @@
 
 
         <TextView
-            android:id="@+id/txtRestauranteDato"
+            android:id="@+id/txtNombreHCard"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -29,14 +29,14 @@
             android:textSize="34sp" />
 
         <ImageView
-            android:id="@+id/imgEditarRestaurante"
+            android:id="@+id/btnEditH"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             app:srcCompat="@drawable/ic_edit" />
 
         <ImageView
-            android:id="@+id/imgBorrarRestaurante"
+            android:id="@+id/btnDeleteH"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -45,5 +45,4 @@
     </LinearLayout>
 
 
-</androidx.cardview.widget.CardView
-    >
+</androidx.cardview.widget.CardView>
