@@ -201,6 +201,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.856" />
 
+<<<<<<< HEAD
     <ImageView
         android:id="@+id/imgPerfil"
         android:layout_width="wrap_content"
@@ -234,5 +235,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.417" />
+=======
+    <Button
+        android:id="@+id/btnSubidos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="161dp"
+        android:layout_marginBottom="41dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
+>>>>>>> a86306b049036ba3215683cb52b860ec8d11afd6
 
 </androidx.constraintlayout.widget.ConstraintLayout>

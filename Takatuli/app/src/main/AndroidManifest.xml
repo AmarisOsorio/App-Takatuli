@@ -40,22 +40,72 @@
         android:theme="@style/Theme.Takatuli"
         tools:targetApi="31">
         <activity
-            android:name=".RecuperacionDePassword"
-            android:exported="true" >
 
+            android:name=".RecuperacionDecontrasenia"
+            android:exported="false" />
+        <activity
+            android:name=".RegistrarUsuarios"
+            android:exported="false">
+
+        </activity>
+        <activity
+            android:name=".RecuperacionDePassword"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+
+            android:name=".HospedajesAgregadsos"
+            android:exported="false" />
+        <activity
+            android:name=".item_card"
+            android:exported="false" />
+        <activity
+            android:name=".CardsHospedaje"
+            android:exported="false" />
+        <activity
+            android:name=".RecuperacionDePassword"
+            android:exported="false"/>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            >
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+
         </activity>
 
         <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:label="@string/app_name">
+            android:label="@string/app_name"></activity>
 
+
+
+
+            android:name=".item_CardRestaurante"
+            android:exported="false" />
+        <activity
+            android:name=".RecuperacionDePassword"
+            android:exported="false"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

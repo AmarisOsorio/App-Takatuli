@@ -1,8 +1,12 @@
 package expo.turismo.takatuli
 
+<<<<<<< HEAD
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+=======
+import android.content.Intent
+>>>>>>> a86306b049036ba3215683cb52b860ec8d11afd6
 import android.os.Bundle
 import android.provider.MediaStore
 import androidx.fragment.app.Fragment
@@ -10,24 +14,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+<<<<<<< HEAD
 import android.widget.ImageView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import expo.turismo.takatuli.databinding.FragmentPerfilBinding
 import java.nio.file.Path
 import java.util.UUID
+=======
+import androidx.navigation.fragment.findNavController
+>>>>>>> a86306b049036ba3215683cb52b860ec8d11afd6
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [fragment_perfil.newInstance] factory method to
- * create an instance of this fragment.
- */
 class fragment_perfil : Fragment() {
+<<<<<<< HEAD
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -53,12 +52,15 @@ class fragment_perfil : Fragment() {
     }
     private var _binding:FragmentPerfilBinding? = null
     private val binding get() = _binding!!
+=======
+>>>>>>> a86306b049036ba3215683cb52b860ec8d11afd6
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+<<<<<<< HEAD
         return inflater.inflate(R.layout.fragment_perfil, container, false)
         val root : View = binding.root
 
@@ -123,4 +125,18 @@ class fragment_perfil : Fragment() {
                 }
             }
     }
+=======
+        val root = inflater.inflate(R.layout.fragment_perfil, container, false)
+        val btnSubidos = root.findViewById<Button>(R.id.btnSubidos)
+
+        btnSubidos.setOnClickListener {
+            findNavController().navigate(R.id.idAction)
+        }
+
+        return root
+
+    }
+
+
+>>>>>>> a86306b049036ba3215683cb52b860ec8d11afd6
 }
