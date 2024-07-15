@@ -49,11 +49,11 @@ class AgregarRestaurante : Fragment() {
         CoroutineScope(Dispatchers.IO).launch {
             val objConexion = ClaseConexion().cadenaConexion()
 
-<<<<<<< HEAD
+
              val RestauranteAgregado = objConexion?.prepareStatement("insert into tbRestaurantes (UUID_Restaurante, Nombre_Restaurante, Menu_Restaurante) Values (?, ?, ?)")!!
-=======
-             val RestauranteAgregado = objConexion?.prepareStatement("insert into tbRestaurantes (UUID_Restaurante, Nombre_Restaurante, Menu_Restaurante)Values (?, ?, ?)")!!
->>>>>>> 822157076153ad1fd13132e4aade4607cff5b63e
+
+
+
            RestauranteAgregado.setString(1, UUID.randomUUID().toString())
             RestauranteAgregado.setString(2, txtNombreRestaurante.text.toString())
             RestauranteAgregado.setString(3,txtMenuEscrito.text.toString())
