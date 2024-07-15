@@ -25,9 +25,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Takatuli"
         tools:targetApi="31">
-        <activity
-            android:name=".listaHospedaje"
-            android:exported="false" />
+
         <activity
 
             android:name=".RecuperacionDecontrasenia"
@@ -39,59 +37,40 @@
         </activity>
         <activity
             android:name=".RecuperacionDePassword"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        </activity>
 
-
+        <activity
             android:name=".HospedajesAgregadsos"
-            android:exported="false" />
+            android:exported="false" >
+        </activity>
+
         <activity
             android:name=".item_card"
-            android:exported="false" />
+            android:exported="false" >
+        </activity>
+
         <activity
             android:name=".CardsHospedaje"
-            android:exported="false" />
-        <activity
-            android:name=".RecuperacionDePassword"
-            android:exported="false" />
+            android:exported="false" >
+        </activity>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        </activity>
-
         <activity
-            android:name=".MainActivity"
-            android:exported="false"
-            android:label="@string/app_name"></activity>
-
-
-
-
             android:name=".item_CardRestaurante"
-            android:exported="false" />
-        <activity
-            android:name=".RecuperacionDePassword"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false" >
         </activity>
 
 
