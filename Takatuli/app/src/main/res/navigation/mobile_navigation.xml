@@ -10,8 +10,7 @@
         android:name="expo.turismo.takatuli.fragment_perfil"
         android:label="fragment_perfil"
         tools:layout="@layout/fragment_perfil">
-        <action android:id="@+id/idAction"
-        app:destination="@id/fragment_hospedaje"/>
+
     </fragment>
 
     <fragment
@@ -44,7 +43,14 @@
         android:id="@+id/fragment_seleccion"
         android:name="expo.turismo.takatuli.fragment_seleccion"
         android:label="fragment_seleccion"
-        tools:layout="@layout/fragment_seleccion" />
+        tools:layout="@layout/fragment_seleccion">
+        <action android:id="@+id/idActionH"
+            app:destination="@id/fragment_hospedaje"/>
+        <action android:id="@+id/idActionR"
+            app:destination="@id/fragment_agregarRestaurante"/>
+
+    </fragment>
+
 
     <fragment
         android:id="@+id/fragment_agregarRestaurante"

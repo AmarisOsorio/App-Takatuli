@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.navigation.fragment.findNavController
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,11 +33,13 @@ class fragment_seleccion : Fragment() {
         val btnHospedajeSL = root.findViewById<Button>(R.id.btnHospedajeSL)
         val btnRestaurantesSL = root.findViewById<Button>(R.id.btnRestaurantesSL)
 
-        btnHospedajeSL.setOnClickListener {
-            val pantallaHospedaje = Intent(requireContext(), fragment_hospedaje::class.java)
-            startActivity(pantallaHospedaje)
-        }
 
+        btnHospedajeSL.setOnClickListener(){
+            findNavController().navigate(R.id.idActionH)
+        }
+        btnRestaurantesSL.setOnClickListener(){
+            findNavController().navigate(R.id.idActionR)
+        }
         return root
 
     }

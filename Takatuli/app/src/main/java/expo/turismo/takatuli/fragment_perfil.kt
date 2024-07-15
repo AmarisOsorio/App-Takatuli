@@ -55,9 +55,9 @@ class fragment_perfil : Fragment() {
         val root = inflater.inflate(R.layout.fragment_perfil, container, false)
         val btnSubidos = root.findViewById<Button>(R.id.btnSubidos)
 
-        btnSubidos.setOnClickListener {
-            findNavController().navigate(R.id.idAction)
-        }
+        //btnSubidos.setOnClickListener {
+           // findNavController().navigate(R.id.idAction)
+        //}
 
         return root
 
