@@ -42,7 +42,8 @@ class fragment_perfil : Fragment() {
 
 
     }
-    private var _binding:FragmentPerfilBinding? = null
+
+    private var _binding: FragmentPerfilBinding? = null
     private val binding get() = _binding!!
 
 
@@ -51,72 +52,6 @@ class fragment_perfil : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-<<<<<<< HEAD
-        return inflater.inflate(R.layout.fragment_perfil, container, false)
-        val root : View = binding.root
-
-        imageView = root.findViewById(R.id.imgPerfil)
-        val btnGaleria = root.findViewById<Button>(R.id.btnGaleria)
-        val btnFoto = root.findViewById<Button>(R.id.btnTomarFoto)
-
-
-        btnGaleria.setOnClickListener {
-            checkStoragePermission()
-            val intent = Intent(MediaStore.ACTION_PICK_IMAGES)
-            intent.type = "image/*"
-            startActivityForResult(intent,codigoGaleria)
-        }
-
-
-
-        return root
-    }
-
-
-    private fun checkStoragePermission(){
-        if (ContextCompat.checkSelfPermission(requireContext(),android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-            pedirPermisoStorage()
-        } else{
-
-        }
-    }
-
-    private fun pedirPermisoStorage(){
-        if (ActivityCompat.shouldShowRequestPermissionRationale(this@fragment_perfil , android.Manifest.permission.READ_EXTERNAL_STORAGE)){
-
-        }else {
-            ActivityCompat.requestPermissions(requireContext(), arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),Storage_request_code)
-        }
-    }
-
-
-
-
-
-
-
-
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment fragment_perfil.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            fragment_perfil().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
-=======
         val root = inflater.inflate(R.layout.fragment_perfil, container, false)
         val btnSubidos = root.findViewById<Button>(R.id.btnSubidos)
 
@@ -127,7 +62,5 @@ class fragment_perfil : Fragment() {
         return root
 
     }
-
-
->>>>>>> a86306b049036ba3215683cb52b860ec8d11afd6
 }
+
