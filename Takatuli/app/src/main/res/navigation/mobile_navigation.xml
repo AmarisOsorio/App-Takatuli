@@ -21,6 +21,8 @@
         android:name="expo.turismo.takatuli.fragment_fotoperfil"
         android:label="Foto de Perfil"
         tools:layout="@layout/fragment_fotoperfil">
+        <action android:id="@+id/idActionAFP"
+            app:destination="@id/fragment_perfil"/>
     </fragment>
 
     <fragment
@@ -28,21 +30,25 @@
         android:name="expo.turismo.takatuli.fragment_ajustes"
         android:label="fragment_ajustes"
         tools:layout="@layout/fragment_ajustes" />
+
     <fragment
         android:id="@+id/fragment_chat"
         android:name="expo.turismo.takatuli.fragment_chat"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" />
+
     <fragment
         android:id="@+id/Agregar_lugares"
         android:name="expo.turismo.takatuli.fragment_mapa"
         android:label="fragment_mapa"
         tools:layout="@layout/fragment_mapa" />
+
     <fragment
         android:id="@+id/fragment_inicio"
         android:name="expo.turismo.takatuli.fragment_inicio"
         android:label="fragment_inicio"
         tools:layout="@layout/fragment_inicio" />
+
     <fragment
         android:id="@+id/fragment_hospedaje"
         android:name="expo.turismo.takatuli.fragment_hospedaje"
@@ -80,7 +86,10 @@
         android:id="@+id/subidosdestinosdueno"
         android:name="expo.turismo.takatuli.subidosdestinosdueno"
         android:label="fragment_subidosdestinosdueno"
-        tools:layout="@layout/fragment_subidosdestinosdueno" />
+        tools:layout="@layout/fragment_subidosdestinosdueno" >
+        <action android:id="@+id/idActionAG"
+            app:destination="@id/fragment_perfil"/>
+    </fragment>
 
     <fragment
         android:id="@+id/fragment_mapa"

@@ -9,6 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import expo.turismo.takatuli.Modelo.ClaseConexion
@@ -51,6 +53,7 @@ class subidosdestinosdueno : Fragment() {
 
         val rcvRestaurantes = root.findViewById<RecyclerView>(R.id.rcvRestaurantes)
         val btnGuardadosH = root.findViewById<Button>(R.id.btnGuardadosH)
+        val imgAtrasGuardados = root.findViewById<ImageView>(R.id.imgAtrasGuardados)
 
 
         //Asignar un layout al ReciclerView
@@ -86,6 +89,10 @@ class subidosdestinosdueno : Fragment() {
         btnGuardadosH.setOnClickListener{
          val pantallaHospedajesSubidos = Intent(requireContext(), HospedajesAgregadsos::class.java)
             startActivity(pantallaHospedajesSubidos)
+        }
+
+        imgAtrasGuardados.setOnClickListener(){
+            findNavController().navigate(R.id.idActionAG)
         }
 
 

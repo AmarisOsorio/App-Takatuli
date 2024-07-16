@@ -11,7 +11,7 @@
         android:id="@+id/imgtodossubidos1"
         android:layout_width="543dp"
         android:layout_height="293dp"
-        android:layout_marginBottom="584dp"
+        android:layout_marginBottom="580dp"
         android:src="@drawable/circulito_perfil"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,7 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.082" />
+        app:layout_constraintVertical_bias="0.066" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvRestaurantes"
@@ -37,7 +37,7 @@
         android:layout_height="498dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
@@ -46,6 +46,8 @@
         android:id="@+id/btnGuardadosH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/naranja"
+        android:fontFamily="@font/baloo"
         android:text="Hospedajes"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -54,4 +56,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.251" />
+
+    <ImageView
+        android:id="@+id/imgAtrasGuardados"
+        android:layout_width="42dp"
+        android:layout_height="43dp"
+        android:src="@drawable/baseline_arrow_back_ios_new_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
 </androidx.constraintlayout.widget.ConstraintLayout>

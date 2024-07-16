@@ -1,7 +1,9 @@
 package expo.turismo.takatuli
 
 import RecyclerViewHelper.AdaptadorHospedaje
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -26,6 +28,7 @@ class HospedajesAgregadsos : AppCompatActivity() {
             insets
         }
 
+        val imgAtrasHospedaje = findViewById<ImageView>(R.id.imgAtrasHospedaje)
         val rcvHospedaje = findViewById<RecyclerView>(R.id.rcvHospedaje)
         rcvHospedaje.layoutManager = LinearLayoutManager(this)
 

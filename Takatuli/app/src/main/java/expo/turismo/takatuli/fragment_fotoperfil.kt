@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.util.UUID
@@ -47,7 +48,12 @@ class fragment_fotoperfil : Fragment() {
         imageView = root.findViewById(R.id.imgFotoPerfil)
         galeria = root.findViewById<Button>(R.id.btnGaleria)
         subirImagen = root.findViewById<Button>(R.id.btnSubirImg)
+        val imgAtrasFoto = root.findViewById<ImageView>(R.id.imgAtrasFotoPerfil)
 
+
+        imgAtrasFoto.setOnClickListener(){
+            findNavController().navigate(R.id.idActionAFP)
+        }
 
         galeria.setOnClickListener(){
             val intent = Intent()

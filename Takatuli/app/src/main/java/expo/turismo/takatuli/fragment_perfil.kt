@@ -53,9 +53,14 @@ class fragment_perfil : Fragment() {
 
         //Boton para navegar entre fragments
         val imgCamara = root.findViewById<ImageView>(R.id.imgCamera)
+        val btnSubidos = root.findViewById<Button>(R.id.btnSubidos)
 
         imgCamara.setOnClickListener(){
             findNavController().navigate(R.id.idAccion)
+        }
+
+        btnSubidos.setOnClickListener(){
+            findNavController().navigate(R.id.idAccionMG)
         }
 
             // Inflate the layout for this fragment
