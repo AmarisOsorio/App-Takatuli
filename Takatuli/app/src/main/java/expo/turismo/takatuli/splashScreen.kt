@@ -23,7 +23,7 @@ class splashScreen : AppCompatActivity() {
             insets
         }
 
-        GlobalScope.launch(Dispatchers.Main){
+        GlobalScope.launch(Dispatchers.IO){
             delay(3000)
             startActivity(Intent(this@splashScreen,Login::class.java))
             finish()
