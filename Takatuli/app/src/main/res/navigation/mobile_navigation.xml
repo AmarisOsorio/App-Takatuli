@@ -3,15 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/fragment_seleccion">
+    app:startDestination="@id/fragment_chat">
 
     <fragment
         android:id="@+id/fragment_perfil"
         android:name="expo.turismo.takatuli.fragment_perfil"
         android:label="fragment_perfil"
-        tools:layout="@layout/fragment_perfil">
-
+        tools:layout="@layout/fragment_perfil" >
+        <action android:id="@+id/idAccion"
+            app:destination="@id/fragmente_fotoperfil"/>
     </fragment>
+
+
 
     <fragment
         android:id="@+id/fragment_ajustes"
@@ -38,7 +41,6 @@
         android:name="expo.turismo.takatuli.fragment_hospedaje"
         android:label="fragment_hospedaje"
         tools:layout="@layout/fragment_hospedaje" />
-
     <fragment
         android:id="@+id/fragment_seleccion"
         android:name="expo.turismo.takatuli.fragment_seleccion"

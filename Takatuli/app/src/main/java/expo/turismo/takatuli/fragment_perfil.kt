@@ -17,21 +17,21 @@ import expo.turismo.takatuli.databinding.FragmentPerfilBinding
 import java.nio.file.Path
 import java.util.UUID
 
+
 import androidx.navigation.fragment.findNavController
 
-class fragment_perfil : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    lateinit var imageView: ImageView
+class fragment_perfil : Fragment() {
+
+
+    /*lateinit var imageView: ImageView
     lateinit var miPath: Path
 
     val codigoGaleria = 102
     val codigoTomarFoto = 103
     val Camera_request_code = 0
     val Storage_request_code = 1
-    val uuid = UUID.randomUUID().toString()
+    val uuid = UUID.randomUUID().toString()*/
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,28 +39,60 @@ class fragment_perfil : Fragment() {
         arguments?.let {
 
         }
-
-
     }
-
-    private var _binding: FragmentPerfilBinding? = null
-    private val binding get() = _binding!!
-
+    /*private var _binding:FragmentPerfilBinding? = null
+    private val binding get() = _binding!!*/
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val root = inflater.inflate(R.layout.fragment_perfil, container, false)
-        val btnSubidos = root.findViewById<Button>(R.id.btnSubidos)
 
-        //btnSubidos.setOnClickListener {
-           // findNavController().navigate(R.id.idAction)
-        //}
+        //variable root
+        val root = inflater.inflate(R.layout.fragment_perfil, container, false)
+
+        //Boton para navegar entre fragments
+        val imgCamara = root.findViewById<ImageView>(R.id.imgCamera)
+
+        imgCamara.setOnClickListener(){
+            findNavController().navigate(R.id.idAccion)
+        }
+
+            // Inflate the layout for this fragment
+            /* return inflater.inflate(R.layout.fragment_perfil, container, false)
+        val root : View = binding.root*/
+
+            /*imageView = root.findViewById(R.id.imgPerfil)
+        val btnGaleria = root.findViewById<Button>(R.id.btnGaleria)
+        val btnFoto = root.findViewById<Button>(R.id.btnTomarFoto)*/
+
+
+            // btnGaleria.setOnClickListener {
+            //checkStoragePermission()
+            //val intent = Intent(MediaStore.ACTION_PICK_IMAGES)
+            //intent.type = "image/*"
+            //startActivityForResult(intent,codigoGaleria)
+            //}
+
+
+        /*private fun checkStoragePermission(){
+        if (ContextCompat.checkSelfPermission(requireContext(),android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+            pedirPermisoStorage()
+        } else{
+
+        }
+    }*/
+
+        /*private fun pedirPermisoStorage(){
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this@fragment_perfil , android.Manifest.permission.READ_EXTERNAL_STORAGE)){
+
+        }else {
+            ActivityCompat.requestPermissions(requireContext(), arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),Storage_request_code)
+        }
+    }*/
+
 
         return root
 
     }
 }
-
