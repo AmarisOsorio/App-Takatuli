@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
+import androidx.navigation.fragment.findNavController
 import expo.turismo.takatuli.Modelo.ClaseConexion
 import expo.turismo.takatuli.Modelo.tbAgregarLugaresTuristicos
 import kotlinx.coroutines.CoroutineScope
@@ -38,6 +40,7 @@ class Agregar_Lugares : Fragment() {
         val btnGuardar = root.findViewById<Button>(R.id.btnGuardar)
         val btnCancelar = root.findViewById<Button>(R.id.btnCancelar)
         val spTipoLugar = root.findViewById<Spinner>(R.id.spTipoLugar)
+        val imgAtrasLugarTuristico = root.findViewById<ImageView>(R.id.idActionATL)
 
         fun obtenerLugares(): List<tbAgregarLugaresTuristicos> {
             val objConexion = ClaseConexion().cadenaConexion()
@@ -96,6 +99,9 @@ class Agregar_Lugares : Fragment() {
 
         }
 
+        imgAtrasLugarTuristico.setOnClickListener(){
+            findNavController().navigate(R.id.idActionATL)
+        }
 
         return root
 

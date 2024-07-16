@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
+import androidx.navigation.fragment.findNavController
 import expo.turismo.takatuli.Modelo.ClaseConexion
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -36,31 +38,36 @@ class AgregarRestaurante : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
         val root = inflater.inflate(R.layout.fragment_agregar_restaurante, container, false)
         val txtNombreRestaurante = root.findViewById<EditText>(R.id.txtNombreRestaurante)
-        val txtMenuEscrito= root.findViewById<EditText>(R.id.txtMenuEscrito)
+        val txtMenuEscrito = root.findViewById<EditText>(R.id.txtMenuEscrito)
         val btnAgregarRestaurante = root.findViewById<Button>(R.id.btnAgregarRestaurante)
         val btnCancelarRestaurante = root.findViewById<Button>(R.id.btnCancelarRestaurante)
+        val imgAtrasRestauranteAGR = root.findViewById<ImageView>(R.id.imgAtrasAgrRestaurante)
 
-        btnAgregarRestaurante.setOnClickListener{
-        CoroutineScope(Dispatchers.IO).launch {
-            val objConexion = ClaseConexion().cadenaConexion()
+        btnAgregarRestaurante.setOnClickListener {
+            CoroutineScope(Dispatchers.IO).launch {
+                val objConexion = ClaseConexion().cadenaConexion()
 
 
-             val RestauranteAgregado = objConexion?.prepareStatement("insert into tbRestaurantes (UUID_Restaurante, Nombre_Restaurante, Menu_Restaurante) Values (?, ?, ?)")!!
-           RestauranteAgregado.setString(1, UUID.randomUUID().toString())
-            RestauranteAgregado.setString(2, txtNombreRestaurante.text.toString())
-            RestauranteAgregado.setString(3,txtMenuEscrito.text.toString())
-            RestauranteAgregado.executeUpdate()
+                val RestauranteAgregado =
+                    objConexion?.prepareStatement("insert into tbRestaurantes (UUID_Restaurante, Nombre_Restaurante, Menu_Restaurante) Values (?, ?, ?)")!!
+                RestauranteAgregado.setString(1, UUID.randomUUID().toString())
+                RestauranteAgregado.setString(2, txtNombreRestaurante.text.toString())
+                RestauranteAgregado.setString(3, txtMenuEscrito.text.toString())
+                RestauranteAgregado.executeUpdate()
+            }
         }
 
+        imgAtrasRestauranteAGR.setOnClickListener(){
+            findNavController().navigate(R.id.idActionAR)
         }
         return root
-
-
 
 
     }
@@ -75,12 +82,13 @@ class AgregarRestaurante : Fragment() {
          * @return A new instance of fragment AgregarRestaurante.
          */
         // TODO: Rename and change types and number of parameters
-        @JvmStatic fun newInstance(param1: String, param2: String) =
-                AgregarRestaurante().apply {
-                    arguments = Bundle().apply {
-                        putString(ARG_PARAM1, param1)
-                        putString(ARG_PARAM2, param2)
-                    }
+        @JvmStatic
+        fun newInstance(param1: String, param2: String) =
+            AgregarRestaurante().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, param1)
+                    putString(ARG_PARAM2, param2)
                 }
+            }
     }
 }

@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
+import androidx.navigation.fragment.findNavController
 import expo.turismo.takatuli.Modelo.ClaseConexion
 import expo.turismo.takatuli.Modelo.SubirRestaurante
 import kotlinx.coroutines.CoroutineScope
@@ -28,6 +30,7 @@ class fragment_hospedaje : Fragment() {
         val txtNombreH = root.findViewById<EditText>(R.id.txtNombreH)
         val txtPrecioH = root.findViewById<EditText>(R.id.txtPrecioH)
         val txtDetallesH = root.findViewById<EditText>(R.id.txtDetallesH)
+        val imgAtrasHospedaje = root.findViewById<ImageView>(R.id.imgAtrasHospedaje)
 
 
         btnAgregarHospedaje.setOnClickListener{
@@ -46,6 +49,11 @@ class fragment_hospedaje : Fragment() {
 
 
         }
+
+        imgAtrasHospedaje.setOnClickListener(){
+            findNavController().navigate(R.id.idActionAH)
+        }
+
 
 
 
