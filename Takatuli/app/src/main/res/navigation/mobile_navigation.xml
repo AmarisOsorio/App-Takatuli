@@ -29,7 +29,9 @@
         android:id="@+id/fragment_ajustes"
         android:name="expo.turismo.takatuli.fragment_ajustes"
         android:label="fragment_ajustes"
-        tools:layout="@layout/fragment_ajustes" />
+        tools:layout="@layout/fragment_ajustes" >
+    </fragment>
+
 
     <fragment
         android:id="@+id/fragment_chat"

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -31,6 +32,7 @@ class RecuperacionDePassword : AppCompatActivity() {
         val btnEnviar = findViewById<Button>(R.id.btnEnviar)
         val txtCodigo = findViewById<EditText>(R.id.txtVerificarCodigo)
         val btnValidar = findViewById<Button>(R.id.btnVerificar)
+        val imgAtrasRC = findViewById<ImageView>(R.id.imgAtrasRC)
 
 
         val codigoAleatorio = (100000..999999).random()
@@ -63,6 +65,11 @@ class RecuperacionDePassword : AppCompatActivity() {
                 }
             }
 
+        }
+
+        imgAtrasRC.setOnClickListener(){
+            val login = Intent(this@RecuperacionDePassword, Login::class.java)
+            startActivity(login)
         }
 
 

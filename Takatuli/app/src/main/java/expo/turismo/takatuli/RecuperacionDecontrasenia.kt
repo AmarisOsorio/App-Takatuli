@@ -1,5 +1,6 @@
 package expo.turismo.takatuli
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -75,8 +76,10 @@ class RecuperacionDecontrasenia : AppCompatActivity() {
 
                 }
 
-
             }
+
+            val intent = Intent(this@RecuperacionDecontrasenia, Login::class.java)
+            startActivity(intent)
 
         }
 

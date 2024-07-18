@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -29,6 +30,7 @@ class Login : AppCompatActivity() {
         val txtContrasena = findViewById<EditText>(R.id.txtContrasenia)
         val btnIniciarSession = findViewById<Button>(R.id.btnIniciarSession)
         val btnRegistrarse = findViewById<Button>(R.id.BtnRegistrarse)
+        val imgRecuContra = findViewById<TextView>(R.id.imgRecuContra)
 
         fun hashSHA256(contraseniaEscrita: String): String{
             val bytes = MessageDigest.getInstance("SHA-256").digest(contraseniaEscrita.toByteArray())
@@ -65,6 +67,11 @@ class Login : AppCompatActivity() {
 
         btnRegistrarse.setOnClickListener {
             val intent = Intent(this@Login, RegistrarUsuarios::class.java)
+            startActivity(intent)
+        }
+
+        imgRecuContra.setOnClickListener(){
+            val intent = Intent(this@Login, RecuperacionDePassword::class.java)
             startActivity(intent)
         }
 

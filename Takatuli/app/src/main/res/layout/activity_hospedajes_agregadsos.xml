@@ -22,6 +22,7 @@
         android:id="@+id/imageView3"
         android:layout_width="419dp"
         android:layout_height="167dp"
+        android:layout_marginTop="-55dp"
         android:layout_marginBottom="204dp"
         app:layout_constraintBottom_toTopOf="@+id/rcvHospedaje"
         app:layout_constraintEnd_toEndOf="parent"

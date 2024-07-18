@@ -13,5 +13,7 @@
     <color name="verdeOscuro">#479120</color>
     <color name="verdeLima">#6CCE3C</color>
     <color name="gris">#969696</color>
+    <color name="amarillo">#F3cD05</color>
+    <color name="negroT">#59000000</color>
 
 </resources>

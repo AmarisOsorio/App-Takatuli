@@ -11,11 +11,15 @@
         android:id="@+id/imgtodossubidos1"
         android:layout_width="543dp"
         android:layout_height="293dp"
-        android:layout_marginBottom="580dp"
+        android:layout_marginStart="-15dp"
+        android:layout_marginTop="-150dp"
         android:src="@drawable/circulito_perfil"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.348"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/txtSDD1"
@@ -52,10 +56,10 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.859"
+        app:layout_constraintHorizontal_bias="0.943"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.251" />
+        app:layout_constraintVertical_bias="0.229" />
 
     <ImageView
         android:id="@+id/imgAtrasGuardados"
