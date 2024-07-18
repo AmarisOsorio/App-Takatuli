@@ -19,6 +19,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.security.MessageDigest
 
 class RecuperacionDecontrasenia : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,26 +34,12 @@ class RecuperacionDecontrasenia : AppCompatActivity() {
 
         val NuevaContra = findViewById<EditText>(R.id.txtNuevaContra)
         val btnActuContra = findViewById<Button>(R.id.btnActuContra)
-        val spUsuarios = findViewById<Spinner>(R.id.spUsuarios)
+        val correoGlobal = RecuperacionDePassword.variablesGlobalesRecuperacion.correoIngresado
 
-
-
-      fun obtenerUsuarios(): List<DataclassUsuarios> {
-
-          val objConexion = ClaseConexion().cadenaConexion()
-
-          val statement = objConexion?.createStatement()
-          val resultSet = statement?.executeQuery("select * from tbUsuario")!!
-          val listadoUsuarios = mutableListOf<DataclassUsuarios>()
-
-          while (resultSet.next()) {
-              val uuidUsua = resultSet.getString("UUID_Usuario")
-              val nombreUsua = resultSet.getString("Nombre_Usuario")
-              val UsuariosCompleto = DataclassUsuarios(uuidUsua, nombreUsua)
-              listadoUsuarios.add(UsuariosCompleto)
-          }
-          return listadoUsuarios
-      }
+        fun hashSHA256(contraseniaEscrita: String): String{
+            val bytes = MessageDigest.getInstance("SHA-256").digest(contraseniaEscrita.toByteArray())
+            return bytes.joinToString("") { "%02x".format(it) }
+        }
 
 
         btnActuContra.setOnClickListener {
@@ -61,11 +48,13 @@ class RecuperacionDecontrasenia : AppCompatActivity() {
             GlobalScope.launch (Dispatchers.IO) {
                 val objConexion = ClaseConexion().cadenaConexion()
 
-                val usuarios = obtenerUsuarios()
+                val contrasenaEncripta = hashSHA256(NuevaContra.text.toString())
 
-                val UpdateContra = objConexion?.prepareStatement("update tbUsuario set Password_Usuario = ? where UUID_Usuario = ?")!!
-                UpdateContra.setString(1, NuevaContra.text.toString())
-                UpdateContra.setString(2, usuarios[spUsuarios.selectedItemPosition].Nombre_Usuario)
+
+
+                val UpdateContra = objConexion?.prepareStatement("update tbUsuario set Password_Usuario = ? where Correo_Usuario = ?")!!
+                UpdateContra.setString(1, contrasenaEncripta)
+                UpdateContra.setString(2, RecuperacionDePassword.correoIngresado)
                 UpdateContra.executeUpdate()
 
                 val commit = objConexion?.prepareStatement("commit")!!
@@ -84,20 +73,5 @@ class RecuperacionDecontrasenia : AppCompatActivity() {
         }
 
 
-        CoroutineScope(Dispatchers.IO).launch {
-            //1. Obtener los datos
-            val verListaUsua = obtenerUsuarios()
-            val nombreRol = verListaUsua.map { it.Nombre_Usuario  }
-
-            withContext(Dispatchers.Main) {
-                //2. Crear y modificar el adaptador
-                val Adaptador = ArrayAdapter(
-                    this@RecuperacionDecontrasenia,
-                    android.R.layout.simple_spinner_dropdown_item,
-                    nombreRol
-                )
-                spUsuarios.adapter = Adaptador
-            }
-        }
     }
 }

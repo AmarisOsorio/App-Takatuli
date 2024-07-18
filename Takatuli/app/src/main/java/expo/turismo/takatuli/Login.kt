@@ -44,9 +44,15 @@ class Login : AppCompatActivity() {
 
                 val objConexion = ClaseConexion().cadenaConexion()
 
+
                 val contrasenaEncripta = hashSHA256(txtContrasena.text.toString())
 
-                val comprobarUsuario = objConexion?.prepareStatement("Select * from tbUsuario Where Correo_Usuario = ? and Password_Usuario = ?")!!
+
+                val Usuario = txtUsuario.text.toString()
+                val contrasena = txtContrasena.text.toString()
+                var hayErrores = false
+
+                val comprobarUsuario = objConexion?.prepareStatement("Select * from tbUsuario Where Nombre_Usuario = ? and Password_Usuario = ?")!!
                 comprobarUsuario.setString(1, txtUsuario.text.toString())
                 comprobarUsuario.setString(2,contrasenaEncripta)
 
@@ -58,6 +64,24 @@ class Login : AppCompatActivity() {
                 }
                 else{
                     println("Usuario no encontrado, verifique las credenciales")
+                }
+
+
+                if(Usuario.isEmpty()){
+                    txtUsuario.error = "El usuario es obligatorio"
+                    hayErrores = true
+                } else {
+                    txtUsuario.error = null
+
+                }
+
+
+                if(contrasena.isEmpty()) {
+                    txtContrasena.error = "La contraseña es obligatoria"
+                    hayErrores = true
+                } else {
+                    txtContrasena.error = null
+
                 }
 
 

@@ -18,6 +18,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class RecuperacionDePassword : AppCompatActivity() {
+
+    companion object variablesGlobalesRecuperacion{
+        lateinit var correoIngresado : String
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -42,6 +48,8 @@ class RecuperacionDePassword : AppCompatActivity() {
             CoroutineScope(Dispatchers.Main).launch {
 
                 val CodigoRandom = codigoAleatorio.toString()
+
+                correoIngresado = txtCorreo.text.toString()
 
 
                 enviarCorreo("${txtCorreo.text}", "Recuperación de contraseña", "Este es tu codigo de recuperacion ${CodigoRandom}")
