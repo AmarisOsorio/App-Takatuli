@@ -101,4 +101,9 @@
         <action android:id="@+id/idActionATL"
             app:destination="@id/fragment_seleccion"/>
     </fragment>
+    <fragment
+        android:id="@+id/fragment_menuP"
+        android:name="expo.turismo.takatuli.fragment_menuP"
+        android:label="fragment_menu_p"
+        tools:layout="@layout/fragment_menu_p" />
 </navigation>
