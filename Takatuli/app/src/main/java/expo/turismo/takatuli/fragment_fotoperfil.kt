@@ -113,5 +113,27 @@ class fragment_fotoperfil : Fragment() {
     }
 
     //Función para guardar la url de foto en oracle
-
+    /* private fun guardarUsuarioConFoto(correo: String, clave: String, imageUri: String) {
+        try {
+            GlobalScope.launch(Dispatchers.IO) {
+                val objConexion = ClaseConexion().cadenaConexion()
+                val statement =
+                    objConexion?.prepareStatement("INSERT INTO tbMisUsuarios (UUID, correo, contrasena, FotoURI) VALUES (?, ?, ?, ?)")!!
+                statement.setString(1, uuid)
+                statement.setString(2, correo)
+                statement.setString(3, clave)
+                statement.setString(4, imageUri)
+                statement.executeUpdate()
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(requireContext(), "Datos guardados", Toast.LENGTH_SHORT).show()
+                    txtCorreo.text.clear()
+                    txtClave.text.clear()
+                    imageView.setImageResource(0)
+                    imageView.tag = null
+                }
+            }
+        } catch (e: SQLException) {
+            println("Error al guardar usuario: $e")
+        }
+    }*/
 }
