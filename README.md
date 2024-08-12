@@ -20,6 +20,7 @@ FOREIGN key (UUID_Rol)
 References tbRol (UUID_Rol)
 )
 //Esta bmodo Int por un error en la app 
+//Fotos_usuario varchar2 (200) not null,
 
 Create table tbTipoTuristico(
 UUID_TipoLugarTuristico varchar2 (50) Primary key,
