@@ -1,3 +1,5 @@
+```SQL
+
 Create table tbRol(
 UUID_Rol varchar2 (50) Primary key,
 Nombre_Rol varchar2(20) UNIQUE not null
@@ -209,8 +211,7 @@ FROM
 INNER JOIN 
     tbTipoTuristico d  ON c.UUUID_TipoLugarTuristico = d.UUUID_TipoLugarTuristico;
     
-
-
+```
 
 
 
