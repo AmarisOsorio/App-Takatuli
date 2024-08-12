@@ -18,6 +18,7 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import expo.turismo.takatuli.Modelo.ClaseConexion
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -71,6 +72,7 @@ class fragment_fotoperfil : Fragment() {
             }else{
                 Toast.makeText(context?.applicationContext,"Seleccione una imagen", Toast.LENGTH_LONG).show()
             }
+
         }
 
 

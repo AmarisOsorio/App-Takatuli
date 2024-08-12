@@ -31,12 +31,12 @@ class fragment_ajustes : Fragment() {
 
 
 
-        val imgCerrarSesion = root.findViewById<ImageView>(R.id.imgCerrarSesion)
+        //val imgCerrarSesion = root.findViewById<ImageView>(R.id.imgCerrarSesion)
 
-        imgCerrarSesion.setOnClickListener{
+        /*imgCerrarSesion.setOnClickListener{
             val cerrarsesion = Intent(requireContext(), Login::class.java)
             startActivity(cerrarsesion)
-        }
+        }*/
 
         return  root
 

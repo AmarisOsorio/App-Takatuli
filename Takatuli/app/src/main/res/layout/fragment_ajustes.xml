@@ -49,15 +49,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.287" />
 
-    <ImageView
-        android:id="@+id/imageView25"
-        android:layout_width="317dp"
-        android:layout_height="0dp"
-        android:src="@drawable/linea_ajustes"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="250dp" />
-
     <TextView
         android:id="@+id/textView24"
         android:layout_width="wrap_content"
@@ -71,15 +62,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.381" />
-
-    <ImageView
-        android:id="@+id/imageView25"
-        android:layout_width="317dp"
-        android:layout_height="0dp"
-        android:src="@drawable/linea_ajustes"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="322dp" />
 
     <TextView
         android:id="@+id/textView25"
@@ -95,15 +77,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.479" />
 
-    <ImageView
-        android:id="@+id/imageView25"
-        android:layout_width="317dp"
-        android:layout_height="0dp"
-        android:src="@drawable/linea_ajustes"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="379dp" />
-
     <TextView
         android:id="@+id/textView26"
         android:layout_width="wrap_content"
@@ -117,15 +90,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.576" />
-
-    <ImageView
-        android:id="@+id/imageView25"
-        android:layout_width="317dp"
-        android:layout_height="0dp"
-        android:src="@drawable/linea_ajustes"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="451dp" />
 
     <TextView
         android:id="@+id/txtCerrarSesion"
