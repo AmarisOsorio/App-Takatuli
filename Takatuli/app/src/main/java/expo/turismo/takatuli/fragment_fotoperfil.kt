@@ -28,7 +28,9 @@ import expo.turismo.takatuli.Modelo.ClaseConexion
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.io.ByteArrayOutputStream
+import java.sql.SQLException
 import java.util.UUID
 
 
@@ -38,6 +40,16 @@ class fragment_fotoperfil : Fragment() {
     lateinit var galeria: Button
     lateinit var subirImagen:Button
     var fileUri: Uri? = null
+
+    val codigo_opcion_galeria = 102
+    val codigo_opcion_tomar_foto = 103
+    val CAMERA_REQUEST_CODE = 0
+    val STORAGE_REQUEST_CODE = 1
+
+    lateinit var miPath: String
+
+    //poner dentro de companion object si se guarda en otra pantalla
+    val uuid = UUID.randomUUID().toString()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,51 +82,62 @@ class fragment_fotoperfil : Fragment() {
             checkStoragePermission()
         }
 
+        fun guardarUsuarioConFoto(imageUri: String, uuid:String) {
+            try {
+                GlobalScope.launch(Dispatchers.IO) {
+                    val objConexion = ClaseConexion().cadenaConexion()
+                    val statement =
+                        objConexion?.prepareStatement("UPDATE tbUsuario set fotoPerfil = ? where UUID_usuario = ?")!!
+                    statement.setString(1, imageUri)
+                    statement.setString(2, uuid)
+                    statement.executeUpdate()
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(requireContext(), "Datos guardados", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } catch (e: SQLException) {
+                println("Error al guardar usuario: $e")
+            }
+        }
+
         btnsubirImagen.setOnClickListener {
-            val imageUri = miPath
-
-            if (imageUri != null) {
-                guardarFotoUsuario(imageUri)
-            } else {
-                Toast.makeText(
-                    requireContext(),
-                    "Completa todos los campos y selecciona una foto",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
+            guardarUsuarioConFoto(miPath, uuid)
         }
 
-        private fun checkStoragePermission() {
-            if (ContextCompat.checkSelfPermission(
-                    requireContext(),
-                    android.Manifest.permission.READ_EXTERNAL_STORAGE
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                //El permiso no está aceptado, entonces se lo pedimos
-                pedirPermisoAlmacenamiento()
-            } else {
-                //El permiso ya está aceptado
-                val intent = Intent(Intent.ACTION_PICK)
-                intent.type = "image/*"
-                startActivityForResult(intent, codigo_opcion_galeria)
-            }
-        }
 
-        private fun pedirPermisoAlmacenamiento() {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(
-                    requireActivity(),
-                    android.Manifest.permission.READ_EXTERNAL_STORAGE
-                )
-            ) {
-                //El usuario ya ha rechazado el permiso anteriormente, debemos informarle que vaya a ajustes.
-            } else {
-                //El usuario nunca ha aceptado ni rechazado, así que le pedimos que acepte el permiso.
-                ActivityCompat.requestPermissions(
-                    requireActivity(),
-                    arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
-                    STORAGE_REQUEST_CODE
-                )
-            }
+    }
+
+
+    private fun checkStoragePermission() {
+        if (ContextCompat.checkSelfPermission(
+                requireContext(),
+                android.Manifest.permission.READ_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            //El permiso no está aceptado, entonces se lo pedimos
+            pedirPermisoAlmacenamiento()
+        } else {
+            //El permiso ya está aceptado
+            val intent = Intent(Intent.ACTION_PICK)
+            intent.type = "image/*"
+            startActivityForResult(intent, codigo_opcion_galeria)
+        }
+    }
+
+    private fun pedirPermisoAlmacenamiento() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(
+                requireActivity(),
+                android.Manifest.permission.READ_EXTERNAL_STORAGE
+            )
+        ) {
+            //El usuario ya ha rechazado el permiso anteriormente, debemos informarle que vaya a ajustes.
+        } else {
+            //El usuario nunca ha aceptado ni rechazado, así que le pedimos que acepte el permiso.
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
+                STORAGE_REQUEST_CODE
+            )
         }
     }
 
@@ -160,47 +183,33 @@ class fragment_fotoperfil : Fragment() {
 
         }
 
-        private fun subirimagenFirebase(bitmap: Bitmap, onSuccess: (String) -> Unit) {
-            val storageRef = Firebase.storage.reference
-            val imageRef = storageRef.child("images/${uuid}.jpg")
-            val baos = ByteArrayOutputStream()
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
-            val data = baos.toByteArray()
-            val uploadTask = imageRef.putBytes(data)
-
-            uploadTask.addOnFailureListener {
-                Toast.makeText(requireContext(), "Error al subir la imagen", Toast.LENGTH_SHORT).show()
-
-            }.addOnSuccessListener { taskSnapshot ->
-                imageRef.downloadUrl.addOnSuccessListener { uri ->
-                    onSuccess(uri.toString())
-                }
-            }
-
-            
 
 
-    /*private fun guardarUsuarioConFoto(imageUri: String) {
-        try {
-            GlobalScope.launch(Dispatchers.IO) {
-                val objConexion = ClaseConexion().cadenaConexion()
-                val statement =
-                    objConexion?.prepareStatement("INSERT INTO tbMisUsuarios (UUID, correo, contrasena, FotoURI) VALUES (?, ?, ?, ?)")!!
-                statement.setString(1, uuid)
-                statement.setString(2, correo)
-                statement.setString(3, clave)
-                statement.setString(4, imageUri)
-                statement.executeUpdate()
-                withContext(Dispatchers.Main) {
-                    Toast.makeText(requireContext(), "Datos guardados", Toast.LENGTH_SHORT).show()
-                    txtCorreo.text.clear()
-                    txtClave.text.clear()
-                    imageView.setImageResource(0)
-                    imageView.tag = null
-                }
-            }
-        } catch (e: SQLException) {
-            println("Error al guardar usuario: $e")
-        }*/
-    }
 }
+
+
+    private fun subirimagenFirebase(bitmap: Bitmap, onSuccess: (String) -> Unit) {
+        val storageRef = Firebase.storage.reference
+        val imageRef = storageRef.child("images/${uuid}.jpg")
+        val baos = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        val data = baos.toByteArray()
+        val uploadTask = imageRef.putBytes(data)
+
+        uploadTask.addOnFailureListener {
+            Toast.makeText(requireContext(), "Error al subir la imagen", Toast.LENGTH_SHORT).show()
+
+        }.addOnSuccessListener { taskSnapshot ->
+            imageRef.downloadUrl.addOnSuccessListener { uri ->
+                onSuccess(uri.toString())
+            }
+        }
+
+    }
+
+}
+
+
+
+
+
