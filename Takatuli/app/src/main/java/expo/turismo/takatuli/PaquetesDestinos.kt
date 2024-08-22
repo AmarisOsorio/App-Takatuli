@@ -5,17 +5,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Spinner
+import expo.turismo.takatuli.Modelo.ClaseConexion
+import expo.turismo.takatuli.Modelo.dataclassRoles
+import expo.turismo.takatuli.Modelo.tbAgregarLugaresTuristicos
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [PaquetesDestinos.newInstance] factory method to
- * create an instance of this fragment.
- */
 class PaquetesDestinos : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -24,8 +26,7 @@ class PaquetesDestinos : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+
         }
     }
 
@@ -34,7 +35,58 @@ class PaquetesDestinos : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_paquetes_destinos, container, false)
+        val root = inflater.inflate(R.layout.fragment_paquetes_destinos, container, false)
+        val txtNombrePaquetes= root.findViewById<EditText>(R.id.txtNombrePaquete)
+        val spLugarPaquete= root.findViewById<Spinner>(R.id.spLugarPaquete)
+            val txtDescripcionPaquete = root.findViewById<EditText>(R.id.txtDescripcionPaquete)
+        val  txtPrecioTransporte = root.findViewById<EditText>(R.id.txtPrecioTransporte)
+       val txtPrecioentrada = root.findViewById<EditText>(R.id.txtPreciodeEntrada)
+        val btnAgregarPaquete = root.findViewById<Button>(R.id.btnAgregarPaquete)
+        val btnCancelarPaquete = root.findViewById<Button>(R.id.btnCancelarPaquete)
+
+
+
+        fun obtenerLugares(): List<tbAgregarLugaresTuristicos> {
+
+
+            val objConexion = ClaseConexion().cadenaConexion()
+
+
+            val statement = objConexion?.createStatement()
+            val resultSet = statement?.executeQuery("select * from tbLugarTuristico")!!
+            val ListadoLugaresTuristicos = mutableListOf<tbAgregarLugaresTuristicos>()
+
+            while (resultSet.next()) {
+                val uuid = resultSet.getString("UUID_LugarTuristico")
+                val Nombre_LugarTuris = resultSet.getString("Nombre_LugarTuristico")
+                val NombreLugar = tbAgregarLugaresTuristicos(uuid, Nombre_LugarTuris)
+                ListadoLugaresTuristicos.add(NombreLugar)
+            }
+            return ListadoLugaresTuristicos
+
+        }
+
+
+
+
+        CoroutineScope(Dispatchers.IO).launch {
+            //1. Obtener los datos
+            val verListaLugares = obtenerLugares()
+            val nombreLugarTuristico = verListaLugares.map { it.Nombre_Rol  }
+
+            withContext(Dispatchers.Main) {
+                //2. Crear y modificar el adaptador
+                val Adaptador = ArrayAdapter(
+                    this@PaquetesDestinos,
+                    android.R.layout.simple_spinner_dropdown_item,
+                    nombreLugarTuristico
+                )
+                spLugarPaquete.adapter = Adaptador
+            }
+        }
+
+
+
     }
 
     companion object {
@@ -51,8 +103,7 @@ class PaquetesDestinos : Fragment() {
         fun newInstance(param1: String, param2: String) =
             PaquetesDestinos().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+
                 }
             }
     }
