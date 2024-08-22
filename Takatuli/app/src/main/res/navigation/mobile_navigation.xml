@@ -106,4 +106,9 @@
         android:name="expo.turismo.takatuli.fragment_menuP"
         android:label="fragment_menu_p"
         tools:layout="@layout/fragment_menu_p" />
+    <fragment
+        android:id="@+id/paquetesDestinos"
+        android:name="expo.turismo.takatuli.PaquetesDestinos"
+        android:label="fragment_paquetes_destinos"
+        tools:layout="@layout/fragment_paquetes_destinos" />
 </navigation>
