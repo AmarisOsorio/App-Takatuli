@@ -8,7 +8,7 @@ class ClaseConexion {
 
         try {
 
-            val url = "jdbc:oracle:thin:@172.27.48.1:1521:xe"
+            val url = "jdbc:oracle:thin:@172.19.176.1:xe"
             val usuario = "TakatuliPTC"
             val contrasena = "Takatuli2A"
 
