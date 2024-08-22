@@ -40,6 +40,8 @@ class Login : AppCompatActivity() {
 
         btnIniciarSession.setOnClickListener {
 
+            var hayErrores = false
+
             GlobalScope.launch(Dispatchers.IO){
 
                 val objConexion = ClaseConexion().cadenaConexion()
@@ -50,7 +52,8 @@ class Login : AppCompatActivity() {
 
                 val Usuario = txtUsuario.text.toString()
                 val contrasena = txtContrasena.text.toString()
-                var hayErrores = false
+
+
 
                 val comprobarUsuario = objConexion?.prepareStatement("Select * from tbUsuario Where Nombre_Usuario = ? and Password_Usuario = ?")!!
                 comprobarUsuario.setString(1, txtUsuario.text.toString())

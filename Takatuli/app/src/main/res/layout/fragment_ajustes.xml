@@ -8,7 +8,7 @@
     tools:context=".fragment_ajustes">
 
     <ImageView
-        android:id="@+id/imageView20"
+        android:id="@+id/imgCajustes"
         android:layout_width="417dp"
         android:layout_height="136dp"
         android:layout_marginTop="-45dp"
@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView22"
+        android:id="@+id/lbTajustes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/baloo"
@@ -36,7 +36,7 @@
         app:layout_constraintVertical_bias="0.023" />
 
     <TextView
-        android:id="@+id/textView23"
+        android:id="@+id/lbTemaAjustes"
         android:layout_width="63dp"
         android:layout_height="31dp"
         android:fontFamily="@font/baloo_bhai_2_medium"
@@ -49,17 +49,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.287" />
 
-    <ImageView
-        android:id="@+id/imageView25"
-        android:layout_width="317dp"
-        android:layout_height="0dp"
-        android:src="@drawable/linea_ajustes"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="250dp" />
-
     <TextView
-        android:id="@+id/textView24"
+        android:id="@+id/lbIdiomaAjustes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/baloo_bhai_2_medium"
@@ -71,15 +62,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.381" />
-
-    <ImageView
-        android:id="@+id/imageView25"
-        android:layout_width="317dp"
-        android:layout_height="0dp"
-        android:src="@drawable/linea_ajustes"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="322dp" />
 
     <TextView
         android:id="@+id/textView25"
@@ -95,17 +77,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.479" />
 
-    <ImageView
-        android:id="@+id/imageView25"
-        android:layout_width="317dp"
-        android:layout_height="0dp"
-        android:src="@drawable/linea_ajustes"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="379dp" />
-
     <TextView
-        android:id="@+id/textView26"
+        android:id="@+id/lbNotificaciones"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/baloo_bhai_2_medium"
@@ -117,15 +90,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.576" />
-
-    <ImageView
-        android:id="@+id/imageView25"
-        android:layout_width="317dp"
-        android:layout_height="0dp"
-        android:src="@drawable/linea_ajustes"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="451dp" />
 
     <TextView
         android:id="@+id/txtCerrarSesion"
