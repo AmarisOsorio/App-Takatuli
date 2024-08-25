@@ -41,18 +41,30 @@ class Login : AppCompatActivity() {
         btnIniciarSession.setOnClickListener {
 
             var hayErrores = false
+            val Usuario = txtUsuario.text.toString()
+            val contrasena = txtContrasena.text.toString()
+
+
+            if (Usuario.isEmpty()) {
+                txtUsuario.error = "El nombre es obligatorio"
+                hayErrores = true
+            } else {
+                txtUsuario.error = null
+            }
+            if (contrasena.isEmpty()) {
+                txtContrasena.error = "El correo es obligatorio"
+                hayErrores = true
+            } else {
+                txtContrasena.error = null
+            }
 
             GlobalScope.launch(Dispatchers.IO){
 
                 val objConexion = ClaseConexion().cadenaConexion()
 
 
+
                 val contrasenaEncripta = hashSHA256(txtContrasena.text.toString())
-
-
-                val Usuario = txtUsuario.text.toString()
-                val contrasena = txtContrasena.text.toString()
-
 
 
                 val comprobarUsuario = objConexion?.prepareStatement("Select * from tbUsuario Where Nombre_Usuario = ? and Password_Usuario = ?")!!
@@ -69,26 +81,26 @@ class Login : AppCompatActivity() {
                     println("Usuario no encontrado, verifique las credenciales")
                 }
 
-
-                if(Usuario.isEmpty()){
-                    txtUsuario.error = "El usuario es obligatorio"
-                    hayErrores = true
-                } else {
-                    txtUsuario.error = null
-
-                }
+            }
 
 
-                if(contrasena.isEmpty()) {
-                    txtContrasena.error = "La contraseña es obligatoria"
-                    hayErrores = true
-                } else {
-                    txtContrasena.error = null
+            fun guardarDatos(
+               Usuario: String,
+               contrasena: String
+            ) {
 
-                }
+                Toast.makeText(this, "Si", Toast.LENGTH_SHORT).show()
+            }
 
+            if (hayErrores) {
+                //Hacer algo si hay errores
+            } else {
+                // Si todas las validaciones son correctas, procede a guardar los datos
+                guardarDatos(Usuario, contrasena)
 
             }
+
+
 
         }
 
