@@ -55,20 +55,13 @@
             android:exported="false">
         </activity>
 
-        <activity
-            android:name=".HospedajesAgregadsos"
-            android:exported="false">
-        </activity>
+
 
         <activity
             android:name=".item_card"
             android:exported="false">
         </activity>
 
-        <activity
-            android:name=".CardsHospedaje"
-            android:exported="false">
-        </activity>
 
         <activity
             android:name=".MainActivity"

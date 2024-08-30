@@ -49,7 +49,10 @@ class fragment_fotoperfil : Fragment() {
     lateinit var miPath: String
 
     //poner dentro de companion object si se guarda en otra pantalla
-    val uuid = UUID.randomUUID().toString()
+    companion object variablesGlobales{
+        val uuid = UUID.randomUUID().toString()
+    }
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -87,7 +90,7 @@ class fragment_fotoperfil : Fragment() {
                 GlobalScope.launch(Dispatchers.IO) {
                     val objConexion = ClaseConexion().cadenaConexion()
                     val statement =
-                        objConexion?.prepareStatement("UPDATE tbUsuario set fotoPerfil = ? where UUID_usuario = ?")!!
+                        objConexion?.prepareStatement("UPDATE tbUsuario set foto_Perfil = ? where UUID_usuario = ?")!!
                     statement.setString(1, imageUri)
                     statement.setString(2, uuid)
                     statement.executeUpdate()

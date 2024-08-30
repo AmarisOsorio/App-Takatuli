@@ -10,7 +10,6 @@ import android.widget.EditText
 import android.widget.ImageView
 import androidx.navigation.fragment.findNavController
 import expo.turismo.takatuli.Modelo.ClaseConexion
-import expo.turismo.takatuli.Modelo.SubirRestaurante
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -50,9 +49,7 @@ class fragment_hospedaje : Fragment() {
 
         }
 
-        imgAtrasHospedaje.setOnClickListener(){
-            findNavController().navigate(R.id.idActionAH)
-        }
+
 
 
 
