@@ -61,4 +61,9 @@
         android:name="expo.turismo.takatuli.fragment_menuP"
         android:label="fragment_menu_p"
         tools:layout="@layout/fragment_menu_p" />
+    <fragment
+        android:id="@+id/fragment_mapa2"
+        android:name="expo.turismo.takatuli.Fragment_mapa2"
+        android:label="fragment_mapa2"
+        tools:layout="@layout/fragment_mapa2" />
 </navigation>
