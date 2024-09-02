@@ -66,8 +66,8 @@ class fragment_ajustes : Fragment() {
                 startActivity(intent)
             }
 
-        val cerrars = root.findViewById<Button>(R.id.btnCerrarsesion)
-            cerrars.setOnClickListener {
+            val cerrarssesion = root.findViewById<Button>(R.id.btnCerrarsesion)
+            cerrarssesion.setOnClickListener {
                 val intent=Intent(requireContext(),Login::class.java)
                 startActivity(intent)
             }
