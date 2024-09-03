@@ -60,7 +60,7 @@ class fragment_ajustes : Fragment() {
             val intent=Intent(requireContext(), Acerca_de::class.java)
                 startActivity(intent)
             }
-        val button2 = root.findViewById<Button>(R.id.btnPoliticas)
+        val button2 = root.findViewById<Button>(R.id.btnPoliticas  )
             button2.setOnClickListener {
                 val intent=Intent(requireContext(),Politicas_de_Privacidad::class.java)
                 startActivity(intent)
