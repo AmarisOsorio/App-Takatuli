@@ -8,10 +8,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import expo.turismo.takatuli.Modelo.ClaseConexion
-import expo.turismo.takatuli.Modelo.tbDestinos
+import expo.turismo.takatuli.Modelo.tbLugarTuristico
 import expo.turismo.takatuli.RecyclerViewMostrar.Adaptador
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.coroutineContext
 
@@ -34,55 +36,47 @@ class fragment_menuP : Fragment() {
         val root = inflater.inflate(R.layout.fragment_menu_p, container, false)
 
         val rcvDestinos = root.findViewById<RecyclerView>(R.id.rcvDestinos)
-        rcvDestinos.layoutManager = LinearLayoutManager(context)
+        rcvDestinos.layoutManager = LinearLayoutManager(requireContext())
 
-        fun obtenerPeliculas(): List<tbDestinos> {
+        fun obtenerDestinos(): List<tbLugarTuristico> {
             val objConexion = ClaseConexion().cadenaConexion()
             val statement = objConexion?.createStatement()
-            val resulset = statement?.executeQuery("Select * from tbDestinos")!!
+            val resulset = statement?.executeQuery("Select * from tbLugarTuristico")!!
 
-            val listaDestinos = mutableListOf<tbDestinos>()
+            val listaDestinos = mutableListOf<tbLugarTuristico>()
 
             while (resulset.next()) {
-                val UUID_Destinos = resulset.getString("UUID_Destinos")
                 val UUID_LugarTuristico = resulset.getString("UUID_LugarTuristico")
-                val UUID_Hospedaje = resulset.getString("UUID_Hospedaje")
-                val UUID_Restaurante = resulset.getString("UUID_Restaurante")
-                val UUID_Ubicacion = resulset.getString("UUID_Ubicacion")
+                val Nombre_LugarTuristico = resulset.getString("Nombre_LugarTuristico")
+                val Detalles_Lugar_Turistico = resulset.getString("Detalles_Lugar_Turistico")
+                val Fotos_Lugar_Turistico = resulset.getString("Fotos_Lugar_Turistico")
+                val UUID_TipoLugarTuristico = resulset.getString("UUID_TipoLugarTuristico")
 
-                val valoresJuntos = tbDestinos(
-                    UUID_Destinos,
+                val valoresJuntos = tbLugarTuristico(
                     UUID_LugarTuristico,
-                    UUID_Hospedaje,
-                    UUID_Restaurante,
-                    UUID_Ubicacion
+                    Nombre_LugarTuristico,
+                    Detalles_Lugar_Turistico,
+                    Fotos_Lugar_Turistico,
+                    UUID_TipoLugarTuristico
                 )
 
                 listaDestinos.add(valoresJuntos)
             }
+
             return listaDestinos
         }
-        
-        coroutineScope(Dispatchers.IO).launch {
-            val peliculasBD = obtenerPeliculas()
-            withContext(Dispatchers.Main){
-                val adapter = Adaptador(peliculasBD)
-                rcvDestinos.adapter=adapter
+
+        GlobalScope.launch(Dispatchers.IO) {
+            val TakatuliBD = obtenerDestinos()
+            withContext(Dispatchers.Main) {
+                val adapter = Adaptador(TakatuliBD)
+                rcvDestinos.adapter = adapter
             }
-
         }
-
-
-
-
-
-
 
 
         return root
 
-
     }
-
 
 }

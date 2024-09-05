@@ -6,5 +6,5 @@ import androidx.recyclerview.widget.RecyclerView
 import expo.turismo.takatuli.R
 
 class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    val textView: TextView = view.findViewById(R.id.txtNombreLugarM)
+    val txtNombreLugarTuristico: TextView = view.findViewById(R.id.txtNombreLugarM)
 }

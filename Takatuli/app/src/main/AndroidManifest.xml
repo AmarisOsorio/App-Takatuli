@@ -45,7 +45,9 @@
             android:exported="false" />
         <activity
             android:name=".splashScreen"
-            android:exported="false" />
+            android:exported="false">
+        </activity>
+
         <activity
             android:name=".RecuperacionDecontrasenia"
             android:exported="false" />
