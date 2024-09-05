@@ -52,7 +52,7 @@ class activity_rcvRestaurante : AppCompatActivity() {
                     Fotos_Restaurante
                 )
 
-                listaRestaurante.add(valoresJuntos2)
+                //listaRestaurante.add(valoresJuntos2)
             }
 
             return listaRestaurante

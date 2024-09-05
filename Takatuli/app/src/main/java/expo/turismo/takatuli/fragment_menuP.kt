@@ -12,10 +12,8 @@ import expo.turismo.takatuli.Modelo.tbLugarTuristico
 import expo.turismo.takatuli.RecyclerViewMostrar.Adaptador
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlin.coroutines.coroutineContext
 
 
 class fragment_menuP : Fragment() {
@@ -67,9 +65,9 @@ class fragment_menuP : Fragment() {
         }
 
         GlobalScope.launch(Dispatchers.IO) {
-            val TakatuliBD = obtenerDestinos()
+            val TakatuliBD4 = obtenerDestinos()
             withContext(Dispatchers.Main) {
-                val adapter = Adaptador(TakatuliBD)
+                val adapter = Adaptador(TakatuliBD4)
                 rcvDestinos.adapter = adapter
             }
         }
