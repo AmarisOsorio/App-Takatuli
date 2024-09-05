@@ -1,5 +1,6 @@
 package expo.turismo.takatuli
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import androidx.navigation.Navigation
 
 
 import androidx.navigation.fragment.findNavController
@@ -49,8 +51,9 @@ class fragment_perfil : Fragment() {
         //val imgFotoMostrar = root.findViewById<ImageView>(R.id.imgFotoperfilMostrar)
 
         imgCamara.setOnClickListener(){
-            val navController = findNavController()
-            navController.navigate(R.id.fragmente_fotoperfil)
+            val intent = Intent(requireContext(),Navigation::class.java)
+            intent.putExtra("ir_a_fotoPerfil",true)
+            startActivity(intent)
         }
 
 
