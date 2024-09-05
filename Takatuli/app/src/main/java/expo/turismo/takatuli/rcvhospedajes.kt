@@ -57,12 +57,13 @@ class rcvhospedajes : AppCompatActivity() {
             return listaHost
         }
 
-        CoroutineScope(Dispatchers.IO).launch {
-            val TakatuliBD5 = obtenerHospedaje()
+        /*CoroutineScope(Dispatchers.IO).launch {
+            val Nose = obtenerHospedaje()
             withContext(Dispatchers.Main) {
-                val adapter = Adaptador(TakatuliBD5)
+                val adapter = Adaptador(Nose)
                 rcvhospedajes.adapter = adapter
             }
-        }
+        }*/
     }
 }
+

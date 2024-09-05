@@ -46,13 +46,9 @@
             android:exported="false" />
         <activity
             android:name=".activity_rcvRestaurante"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity> 
+        </activity>
 
         <activity
             android:name=".item_card"
@@ -65,7 +61,13 @@
             android:exported="false" />
         <activity
             android:name=".splashScreen"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".RecuperacionDecontrasenia"
             android:exported="false" />
