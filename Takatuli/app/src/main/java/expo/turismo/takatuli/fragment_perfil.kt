@@ -49,7 +49,8 @@ class fragment_perfil : Fragment() {
         //val imgFotoMostrar = root.findViewById<ImageView>(R.id.imgFotoperfilMostrar)
 
         imgCamara.setOnClickListener(){
-            findNavController().navigate(R.id.idAccion)
+            val navController = findNavController()
+            navController.navigate(R.id.fragmente_fotoperfil)
         }
 
 

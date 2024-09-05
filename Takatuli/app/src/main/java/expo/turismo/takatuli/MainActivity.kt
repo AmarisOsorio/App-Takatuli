@@ -34,5 +34,9 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
+        if (intent.getBooleanExtra("ir_a_fotoPerfil", false)) {
+            navController.navigate(R.id.fragmente_fotoperfil)
+        }
+
     }
 }
