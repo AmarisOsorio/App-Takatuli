@@ -6,5 +6,5 @@ import androidx.recyclerview.widget.RecyclerView
 import expo.turismo.takatuli.R
 
 class ViewHolderHost(view: View) : RecyclerView.ViewHolder(view) {
-    val txtNombreHost: TextView = view.findViewById(R.id.txtNombreHost)
+    var txtNombreHost: TextView = view.findViewById(R.id.txtNombreHost)
 }

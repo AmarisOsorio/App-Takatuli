@@ -10,7 +10,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvDestinos"
         android:layout_width="408dp"
-        android:layout_height="597dp"
+        android:layout_height="542dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -32,7 +32,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/imageView18"
+        android:id="@+id/imgCirHost"
         android:layout_width="66dp"
         android:layout_height="62dp"
         android:src="@drawable/categoria"
@@ -44,7 +44,7 @@
         app:layout_constraintVertical_bias="0.17" />
 
     <ImageView
-        android:id="@+id/imageView35"
+        android:id="@+id/imgCirResta"
         android:layout_width="64dp"
         android:layout_height="65dp"
         android:src="@drawable/categoria"
@@ -56,19 +56,19 @@
         app:layout_constraintVertical_bias="0.169" />
 
     <ImageView
-        android:id="@+id/imageView36"
+        android:id="@+id/imgLugaTuristico"
         android:layout_width="67dp"
         android:layout_height="64dp"
         android:src="@drawable/categoria"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.828"
+        app:layout_constraintHorizontal_bias="0.834"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.167" />
+        app:layout_constraintVertical_bias="0.17" />
 
     <ImageView
-        android:id="@+id/imageView38"
+        android:id="@+id/imgHost"
         android:layout_width="46dp"
         android:layout_height="40dp"
         android:src="@drawable/icon_hos_w"
@@ -80,7 +80,7 @@
         app:layout_constraintVertical_bias="0.179" />
 
     <ImageView
-        android:id="@+id/imageView39"
+        android:id="@+id/imgResta"
         android:layout_width="40dp"
         android:layout_height="36dp"
         android:src="@drawable/icon_resta_w"
@@ -92,7 +92,7 @@
         app:layout_constraintVertical_bias="0.184" />
 
     <ImageView
-        android:id="@+id/imageView40"
+        android:id="@+id/imgLugarTuristico"
         android:layout_width="41dp"
         android:layout_height="41dp"
         android:src="@drawable/icon_vol_w"

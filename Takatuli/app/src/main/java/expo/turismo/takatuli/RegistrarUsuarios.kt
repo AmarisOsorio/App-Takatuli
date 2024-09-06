@@ -76,9 +76,9 @@ class RegistrarUsuarios : AppCompatActivity() {
 
                 val contrasenaEncriptada = hashSHA256(txtContrasena.text.toString())
 
-                //val roles = obtenerRoles()
+                val roles = obtenerRoles()
 
-                val crearUsuario = objConexion?.prepareStatement("Insert into tbUsuario(UUID_Usuario, Nombre_Usuario, Password_Usuario, Edad_Usuario, Telefono_Usuario,Correo_Usuario, DUI_Usuario) values (?,?,?,?,?,?,?)")!!
+                val crearUsuario = objConexion?.prepareStatement("Insert into tbUsuario(UUID_Usuario, Nombre_Usuario, Password_Usuario, Edad_Usuario, Telefono_Usuario,Correo_Usuario, DUI_Usuario, UUID_Rol) values (?,?,?,?,?,?,?)")!!
                 crearUsuario.setString(1, UUID.randomUUID().toString())
                 crearUsuario.setString(2, txtNombre.text.toString())
                 crearUsuario.setString(3, contrasenaEncriptada)
@@ -86,7 +86,7 @@ class RegistrarUsuarios : AppCompatActivity() {
                 crearUsuario.setString(5, txtTelefono.text.toString())
                 crearUsuario.setString(6,txtCorreo.text.toString())
                 crearUsuario.setString(7, txtDui.text.toString())
-                //crearUsuario.setString(8, roles[spRol.selectedItemPosition].UUID_Rol)
+                crearUsuario.setString(8,"2")
 
                 crearUsuario.executeQuery()
 

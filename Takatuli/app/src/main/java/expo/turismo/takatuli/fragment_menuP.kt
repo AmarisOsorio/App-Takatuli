@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import expo.turismo.takatuli.Modelo.ClaseConexion
@@ -32,6 +33,15 @@ class fragment_menuP : Fragment() {
     ): View? {
 
         val root = inflater.inflate(R.layout.fragment_menu_p, container, false)
+
+        val imgHost = root.findViewById<ImageView>(R.id.imgHost)
+        val imgResta = root.findViewById<ImageView>(R.id.imgResta)
+        val imgLugarTuristico = root.findViewById<ImageView>(R.id.imgLugaTuristico)
+        val imgCirHost = root.findViewById<ImageView>(R.id.imgCirHost)
+        val imgCirResta = root.findViewById<ImageView>(R.id.imgCirResta)
+        val imgCirLugarTuristico  = root.findViewById<ImageView>(R.id.imgLugarTuristico)
+
+
 
         val rcvDestinos = root.findViewById<RecyclerView>(R.id.rcvDestinos)
         rcvDestinos.layoutManager = LinearLayoutManager(requireContext())
