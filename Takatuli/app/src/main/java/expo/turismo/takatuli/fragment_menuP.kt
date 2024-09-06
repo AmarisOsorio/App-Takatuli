@@ -5,27 +5,25 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import expo.turismo.takatuli.Modelo.ClaseConexion
+import expo.turismo.takatuli.Modelo.tbLugarTuristico
+import expo.turismo.takatuli.RecyclerViewMostrar.Adaptador
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [fragment_menuP.newInstance] factory method to
- * create an instance of this fragment.
- */
 class fragment_menuP : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+
         }
     }
 
@@ -33,27 +31,60 @@ class fragment_menuP : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_menu_p, container, false)
+
+        val root = inflater.inflate(R.layout.fragment_menu_p, container, false)
+
+        val imgHost = root.findViewById<ImageView>(R.id.imgHost)
+        val imgResta = root.findViewById<ImageView>(R.id.imgResta)
+        val imgLugarTuristico = root.findViewById<ImageView>(R.id.imgLugaTuristico)
+        val imgCirHost = root.findViewById<ImageView>(R.id.imgCirHost)
+        val imgCirResta = root.findViewById<ImageView>(R.id.imgCirResta)
+        val imgCirLugarTuristico  = root.findViewById<ImageView>(R.id.imgLugarTuristico)
+
+
+
+        val rcvDestinos = root.findViewById<RecyclerView>(R.id.rcvDestinos)
+        rcvDestinos.layoutManager = LinearLayoutManager(requireContext())
+
+        fun obtenerDestinos(): List<tbLugarTuristico> {
+            val objConexion = ClaseConexion().cadenaConexion()
+            val statement = objConexion?.createStatement()
+            val resulset = statement?.executeQuery("Select * from tbLugarTuristico")!!
+
+            val listaDestinos = mutableListOf<tbLugarTuristico>()
+
+            while (resulset.next()) {
+                val UUID_LugarTuristico = resulset.getString("UUID_LugarTuristico")
+                val Nombre_LugarTuristico = resulset.getString("Nombre_LugarTuristico")
+                val Detalles_Lugar_Turistico = resulset.getString("Detalles_Lugar_Turistico")
+                val Fotos_Lugar_Turistico = resulset.getString("Fotos_Lugar_Turistico")
+                val UUID_TipoLugarTuristico = resulset.getString("UUID_TipoLugarTuristico")
+
+                val valoresJuntos = tbLugarTuristico(
+                    UUID_LugarTuristico,
+                    Nombre_LugarTuristico,
+                    Detalles_Lugar_Turistico,
+                    Fotos_Lugar_Turistico,
+                    UUID_TipoLugarTuristico
+                )
+
+                listaDestinos.add(valoresJuntos)
+            }
+
+            return listaDestinos
+        }
+
+        GlobalScope.launch(Dispatchers.IO) {
+            val TakatuliBD4 = obtenerDestinos()
+            withContext(Dispatchers.Main) {
+                val adapter = Adaptador(TakatuliBD4)
+                rcvDestinos.adapter = adapter
+            }
+        }
+
+
+        return root
+
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment fragment_menuP.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            fragment_menuP().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }

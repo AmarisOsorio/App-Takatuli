@@ -34,15 +34,6 @@ class fragment_seleccion : Fragment() {
         val btnRestaurantesSL = root.findViewById<Button>(R.id.btnRestaurantesSL)
 
 
-        btnHospedajeSL.setOnClickListener(){
-            findNavController().navigate(R.id.idActionH)
-        }
-        btnRestaurantesSL.setOnClickListener(){
-            findNavController().navigate(R.id.idActionR)
-        }
-        btnLugarTuristicoSL.setOnClickListener(){
-            findNavController().navigate(R.id.idActionLT)
-        }
 
         return root
 

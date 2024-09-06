@@ -1,8 +1,10 @@
 package expo.turismo.takatuli
 
+import android.app.Activity
 import android.app.Activity.RESULT_OK
 import android.app.ProgressDialog
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
@@ -15,12 +17,20 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.storage
+import expo.turismo.takatuli.Modelo.ClaseConexion
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.io.ByteArrayOutputStream
+import java.sql.SQLException
 import java.util.UUID
 
 
@@ -30,6 +40,19 @@ class fragment_fotoperfil : Fragment() {
     lateinit var galeria: Button
     lateinit var subirImagen:Button
     var fileUri: Uri? = null
+
+    val codigo_opcion_galeria = 102
+    val codigo_opcion_tomar_foto = 103
+    val CAMERA_REQUEST_CODE = 0
+    val STORAGE_REQUEST_CODE = 1
+
+    lateinit var miPath: String
+
+    //poner dentro de companion object si se guarda en otra pantalla
+    companion object variablesGlobales{
+        val uuid = UUID.randomUUID().toString()
+    }
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,73 +66,153 @@ class fragment_fotoperfil : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        //variable root
-        val root = inflater.inflate(R.layout.fragment_fotoperfil, container, false)
-
-        //madar a llamar a todos los elementos
-        imageView = root.findViewById(R.id.imgFotoPerfil)
-        galeria = root.findViewById<Button>(R.id.btnGaleria)
-        subirImagen = root.findViewById<Button>(R.id.btnSubirImg)
-        val imgAtrasFoto = root.findViewById<ImageView>(R.id.imgAtrasFotoPerfil)
-
-
-        imgAtrasFoto.setOnClickListener(){
-            findNavController().navigate(R.id.idActionAFP)
-        }
-
-        galeria.setOnClickListener(){
-            val intent = Intent()
-            intent.type = "image/*"
-            intent.action = Intent.ACTION_PICK
-            startActivityForResult(Intent.createChooser(intent,"Escoge una imagen"),0)
-        }
-
-        subirImagen.setOnClickListener(){
-            if(fileUri!=null){
-                subirImagen()
-            }else{
-                Toast.makeText(context?.applicationContext,"Seleccione una imagen", Toast.LENGTH_LONG).show()
-            }
-        }
-
-
-        return root
+        return null
     }
 
-    //Esta función ayuda a seleccionar una imagen y la muestra en la image view
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 0 && resultCode == RESULT_OK && data != null && data.data != null){
-            fileUri = data.data
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+
+        imageView = view.findViewById(R.id.imgFotoPerfil)
+        val btngaleria = view.findViewById<Button>(R.id.btnGaleria)
+        val btnsubirImagen = view.findViewById<Button>(R.id.btnSubirImg)
+        val imgAtrasFoto = view.findViewById<ImageView>(R.id.imgAtrasFotoPerfil)
+
+
+        btngaleria.setOnClickListener {
+            //Al darle clic al botón de la galeria pedimos los permisos primero
+            checkStoragePermission()
+        }
+
+        fun guardarUsuarioConFoto(imageUri: String, uuid:String) {
             try {
-                val bitmap: Bitmap = MediaStore.Images.Media.getBitmap(context?.contentResolver,fileUri)
-                imageView.setImageBitmap(bitmap)
-            }catch (e: Exception){
-                Log.e("Exception", "Este es el error: " +e)
+                GlobalScope.launch(Dispatchers.IO) {
+                    val objConexion = ClaseConexion().cadenaConexion()
+                    val statement =
+                        objConexion?.prepareStatement("UPDATE tbUsuario set foto_Perfil = ? where UUID_usuario = ?")!!
+                    statement.setString(1, imageUri)
+                    statement.setString(2, uuid)
+                    statement.executeUpdate()
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(requireContext(), "Datos guardados", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } catch (e: SQLException) {
+                println("Error al guardar usuario: $e")
+            }
+        }
+
+        btnsubirImagen.setOnClickListener {
+            guardarUsuarioConFoto(miPath, uuid)
+        }
+
+
+    }
+
+
+    private fun checkStoragePermission() {
+        if (ContextCompat.checkSelfPermission(
+                requireContext(),
+                android.Manifest.permission.READ_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            //El permiso no está aceptado, entonces se lo pedimos
+            pedirPermisoAlmacenamiento()
+        } else {
+            //El permiso ya está aceptado
+            val intent = Intent(Intent.ACTION_PICK)
+            intent.type = "image/*"
+            startActivityForResult(intent, codigo_opcion_galeria)
+        }
+    }
+
+    private fun pedirPermisoAlmacenamiento() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(
+                requireActivity(),
+                android.Manifest.permission.READ_EXTERNAL_STORAGE
+            )
+        ) {
+            //El usuario ya ha rechazado el permiso anteriormente, debemos informarle que vaya a ajustes.
+        } else {
+            //El usuario nunca ha aceptado ni rechazado, así que le pedimos que acepte el permiso.
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
+                STORAGE_REQUEST_CODE
+            )
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>, grantResults: IntArray
+    ) {
+        when (requestCode) {
+
+            STORAGE_REQUEST_CODE -> {
+                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    //El permiso está aceptado, entonces Abrimos la galeria
+                    val intent = Intent(Intent.ACTION_PICK)
+                    intent.type = "image/*"
+                    startActivityForResult(intent, codigo_opcion_galeria)
+                } else {
+                    //El usuario ha rechazado el permiso, podemos desactivar la funcionalidad o mostrar una alerta/Toast.
+                    Toast.makeText(requireContext(), "Permiso de almacenamiento denegado", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }
+
+            else -> {
+                // Este else lo dejamos por si sale un permiso que no teníamos controlado.
             }
         }
     }
 
-    //Funcion para que se pueda subir una imagen desde la galeria
-    fun subirImagen(){
-        if (fileUri!= null){
-            val progressDialog = ProgressDialog(requireContext())
-            progressDialog.setTitle("Upload Image...")
-            progressDialog.setMessage("Procesando...")
-            progressDialog.show()
-
-            val ref: StorageReference = FirebaseStorage.getInstance().getReference().child(UUID.randomUUID().toString())
-            ref.putFile(fileUri!!).addOnSuccessListener {
-                progressDialog.dismiss()
-                Toast.makeText(context?.applicationContext, "El archivo se subio correctamente", Toast.LENGTH_LONG).show()
-            }.addOnFailureListener {
-                progressDialog.dismiss()
-                Toast.makeText(context?.applicationContext, "Ha ocurrido un error en la descarga...",Toast.LENGTH_LONG).show()
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == Activity.RESULT_OK) {
+            when (requestCode) {
+                codigo_opcion_galeria -> {
+                    val imageUri: Uri? = data?.data
+                    imageUri?.let {
+                        val imageBitmap = MediaStore.Images.Media.getBitmap(requireContext().contentResolver, it)
+                        subirimagenFirebase(imageBitmap) { url ->
+                            miPath = url
+                            imageView.setImageURI(it)
+                        }
+                    }
+                }
             }
-        }
-    }
 
-    //Función para guardar la url de foto en oracle
+        }
+
+
 
 }
+
+
+    private fun subirimagenFirebase(bitmap: Bitmap, onSuccess: (String) -> Unit) {
+        val storageRef = Firebase.storage.reference
+        val imageRef = storageRef.child("images/${uuid}.jpg")
+        val baos = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        val data = baos.toByteArray()
+        val uploadTask = imageRef.putBytes(data)
+
+        uploadTask.addOnFailureListener {
+            Toast.makeText(requireContext(), "Error al subir la imagen", Toast.LENGTH_SHORT).show()
+
+        }.addOnSuccessListener { taskSnapshot ->
+            imageRef.downloadUrl.addOnSuccessListener { uri ->
+                onSuccess(uri.toString())
+            }
+        }
+
+    }
+
+}
+
+
+
+
+

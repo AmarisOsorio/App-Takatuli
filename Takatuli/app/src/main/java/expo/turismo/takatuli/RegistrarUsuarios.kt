@@ -37,7 +37,7 @@ class RegistrarUsuarios : AppCompatActivity() {
         val txtTelefono = findViewById<EditText>(R.id.txtTelefonoR)
         val txtCorreo = findViewById<EditText>(R.id.txtCorreoR)
         val txtDui = findViewById<EditText>(R.id.txtDuiR)
-        val spRol = findViewById<Spinner>(R.id.spRolR)
+        //val spRol = findViewById<Spinner>(R.id.spRolR)
         val btnRegistrar = findViewById<Button>(R.id.btnRegistrar)
 
 
@@ -78,7 +78,7 @@ class RegistrarUsuarios : AppCompatActivity() {
 
                 val roles = obtenerRoles()
 
-                val crearUsuario = objConexion?.prepareStatement("Insert into tbUsuario(UUID_Usuario, Nombre_Usuario, Password_Usuario, Edad_Usuario, Telefono_Usuario,Correo_Usuario, DUI_Usuario, UUID_Rol) values (?,?,?,?,?,?,?,?)")!!
+                val crearUsuario = objConexion?.prepareStatement("Insert into tbUsuario(UUID_Usuario, Nombre_Usuario, Password_Usuario, Edad_Usuario, Telefono_Usuario,Correo_Usuario, DUI_Usuario, UUID_Rol) values (?,?,?,?,?,?,?)")!!
                 crearUsuario.setString(1, UUID.randomUUID().toString())
                 crearUsuario.setString(2, txtNombre.text.toString())
                 crearUsuario.setString(3, contrasenaEncriptada)
@@ -86,7 +86,7 @@ class RegistrarUsuarios : AppCompatActivity() {
                 crearUsuario.setString(5, txtTelefono.text.toString())
                 crearUsuario.setString(6,txtCorreo.text.toString())
                 crearUsuario.setString(7, txtDui.text.toString())
-                crearUsuario.setString(8, roles[spRol.selectedItemPosition].UUID_Rol)
+                crearUsuario.setString(8,"2")
 
                 crearUsuario.executeQuery()
 
@@ -111,7 +111,7 @@ class RegistrarUsuarios : AppCompatActivity() {
 
 
 
-        CoroutineScope(Dispatchers.IO).launch {
+        /*CoroutineScope(Dispatchers.IO).launch {
             //1. Obtener los datos
                val verListaRol = obtenerRoles()
             val nombreRol = verListaRol.map { it.Nombre_Rol  }
@@ -125,7 +125,7 @@ class RegistrarUsuarios : AppCompatActivity() {
                 )
                 spRol.adapter = Adaptador
             }
-        }
+        }*/
 
     }
     }
