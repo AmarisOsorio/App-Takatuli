@@ -40,13 +40,19 @@
 
         <activity
             android:name=".rcvhospedajes"
-            android:exported="false" />
+            android:exported="false" >
+        </activity>
         <activity
             android:name=".item_card_resta"
             android:exported="false" />
         <activity
             android:name=".activity_rcvRestaurante"
-            android:exported="false">
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
 
@@ -76,13 +82,9 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"
+            android:exported="false"
             android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity

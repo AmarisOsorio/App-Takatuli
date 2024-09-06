@@ -9,9 +9,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import expo.turismo.takatuli.Modelo.ClaseConexion
 import expo.turismo.takatuli.Modelo.tbHospedaje
+import expo.turismo.takatuli.RecyclerViewHost.AdaptadorHost
 import expo.turismo.takatuli.RecyclerViewMostrar.Adaptador
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -51,19 +53,20 @@ class rcvhospedajes : AppCompatActivity() {
                     Fotos_Hospedaje
                 )
 
+
                 listaHost.add(valoresJuntos)
             }
 
             return listaHost
         }
 
-        /*CoroutineScope(Dispatchers.IO).launch {
-            val Nose = obtenerHospedaje()
+        GlobalScope.launch(Dispatchers.IO) {
+            val TakatuliBD2 = obtenerHospedaje()
             withContext(Dispatchers.Main) {
-                val adapter = Adaptador(Nose)
+                val adapter = AdaptadorHost(TakatuliBD2)
                 rcvhospedajes.adapter = adapter
             }
-        }*/
+        }
     }
 }
 

@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import expo.turismo.takatuli.Modelo.tbHospedaje
 import expo.turismo.takatuli.R
-import expo.turismo.takatuli.RecyclerViewMostrar.ViewHolder
+
 
 class AdaptadorHost(var Datos: List<tbHospedaje>): RecyclerView.Adapter<ViewHolderHost>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderHost {

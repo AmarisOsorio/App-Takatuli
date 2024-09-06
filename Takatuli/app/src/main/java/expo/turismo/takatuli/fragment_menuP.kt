@@ -75,7 +75,7 @@ class fragment_menuP : Fragment() {
         }
 
         GlobalScope.launch(Dispatchers.IO) {
-            val TakatuliBD4 = obtenerDestinos()
+             val TakatuliBD4 = obtenerDestinos()
             withContext(Dispatchers.Main) {
                 val adapter = Adaptador(TakatuliBD4)
                 rcvDestinos.adapter = adapter
