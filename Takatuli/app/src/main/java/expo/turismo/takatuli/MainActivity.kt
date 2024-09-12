@@ -7,6 +7,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.gms.maps.SupportMapFragment
 import expo.turismo.takatuli.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.fragment_perfil, R.id.fragment_ajustes,R.id.fragment_chat,R.id.fragment_inicio,R.id.frameLayout5
             )
         )
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
@@ -33,5 +35,10 @@ class MainActivity : AppCompatActivity() {
             navController.navigate(R.id.fragmente_fotoperfil)
         }
 
+
+
+
     }
+
+
 }

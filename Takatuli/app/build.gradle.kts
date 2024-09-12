@@ -42,6 +42,7 @@ android {
 dependencies {
 
     implementation(platform("com.google.firebase:firebase-bom:33.1.2"))
+    implementation ("com.google.android.gms:play-services-maps:17.0.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
