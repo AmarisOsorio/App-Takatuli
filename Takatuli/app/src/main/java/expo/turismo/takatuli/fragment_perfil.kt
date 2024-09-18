@@ -1,21 +1,14 @@
 package expo.turismo.takatuli
 
-import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Bundle
-import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import expo.turismo.takatuli.databinding.FragmentPerfilBinding
-import java.nio.file.Path
-import java.util.UUID
+import androidx.navigation.Navigation
 
 
 import androidx.navigation.fragment.findNavController
@@ -48,20 +41,39 @@ class fragment_perfil : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        val fotoPerfil = fragment_fotoperfil.variablesGlobales.uuid;
+
         //variable root
         val root = inflater.inflate(R.layout.fragment_perfil, container, false)
 
         //Boton para navegar entre fragments
         val imgCamara = root.findViewById<ImageView>(R.id.imgCamera)
-        val btnSubidos = root.findViewById<Button>(R.id.btnSubidos)
+        //val imgFotoMostrar = root.findViewById<ImageView>(R.id.imgFotoperfilMostrar)
 
         imgCamara.setOnClickListener(){
-            findNavController().navigate(R.id.idAccion)
+            val intent = Intent(requireContext(),Navigation::class.java)
+            intent.putExtra("ir_a_fotoPerfil",true)
+            startActivity(intent)
         }
 
-        btnSubidos.setOnClickListener(){
-            findNavController().navigate(R.id.idAccionMG)
-        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             // Inflate the layout for this fragment
             /* return inflater.inflate(R.layout.fragment_perfil, container, false)
