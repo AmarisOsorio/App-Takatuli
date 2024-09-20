@@ -61,8 +61,8 @@ class activity_rcvRestaurante : AppCompatActivity() {
         GlobalScope.launch(Dispatchers.IO) {
             val TakatuliBD2 = obtenerRestaurante()
             withContext(Dispatchers.Main) {
-                val adapter = expo.turismo.takatuli.RecyclerViewResta.Adaptador(TakatuliBD2)
-                rcvRestaurantes.adapter = adapter
+             //   val adapter = expo.turismo.takatuli.RecyclerViewResta.Adaptador(TakatuliBD2)
+              //  rcvRestaurantes.adapter = adapter
             }
         }
     }
