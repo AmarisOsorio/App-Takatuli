@@ -7,12 +7,12 @@
         android:title="Chat" />
 
     <item
-        android:id="@+id/fragment_mapa"
+        android:id="@+id/Agregar_lugares"
         android:icon="@drawable/ic_map"
         android:title="mapa" />
 
     <item
-        android:id="@+id/fragment_seleccion"
+        android:id="@+id/fragment_menuP"
         android:icon="@drawable/ic_inicio"
         android:title="Inicio" />
 

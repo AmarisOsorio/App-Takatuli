@@ -1,6 +1,10 @@
 package expo.turismo.takatuli
 
+<<<<<<< HEAD
 import RecyclerViewHelper.AdaptadorUsuario
+=======
+import android.content.Intent
+>>>>>>> master
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,7 +12,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+<<<<<<< HEAD
 import android.widget.TextView
+=======
+import androidx.navigation.Navigation
+>>>>>>> master
 
 
 import androidx.navigation.fragment.findNavController
@@ -52,6 +60,8 @@ class fragment_perfil : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        val fotoPerfil = fragment_fotoperfil.variablesGlobales.uuid;
+
         //variable root
         val root = inflater.inflate(R.layout.fragment_perfil, container, false)
 
@@ -91,15 +101,32 @@ class fragment_perfil : Fragment() {
 
 
         val imgCamara = root.findViewById<ImageView>(R.id.imgCamera)
-        val btnSubidos = root.findViewById<Button>(R.id.btnSubidos)
+        //val imgFotoMostrar = root.findViewById<ImageView>(R.id.imgFotoperfilMostrar)
 
         imgCamara.setOnClickListener(){
-            findNavController().navigate(R.id.idAccion)
+            val intent = Intent(requireContext(),Navigation::class.java)
+            intent.putExtra("ir_a_fotoPerfil",true)
+            startActivity(intent)
         }
 
-        btnSubidos.setOnClickListener(){
-            findNavController().navigate(R.id.idAccionMG)
-        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
             // Inflate the layout for this fragment
