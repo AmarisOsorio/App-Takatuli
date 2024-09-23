@@ -1,27 +1,28 @@
 package expo.turismo.takatuli
 
-import android.content.Context
-import android.content.Intent
-import android.content.pm.PackageManager
+import RecyclerViewHelper.AdaptadorUsuario
 import android.os.Bundle
-import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import expo.turismo.takatuli.databinding.FragmentPerfilBinding
-import java.nio.file.Path
-import java.util.UUID
+import android.widget.TextView
 
 
 import androidx.navigation.fragment.findNavController
+import expo.turismo.takatuli.Modelo.ClaseConexion
+import expo.turismo.takatuli.Modelo.tb_Usuario
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.sql.ResultSet
 
 
 class fragment_perfil : Fragment() {
+
 
 
     /*lateinit var imageView: ImageView
@@ -39,6 +40,9 @@ class fragment_perfil : Fragment() {
         arguments?.let {
 
         }
+
+
+
     }
     /*private var _binding:FragmentPerfilBinding? = null
     private val binding get() = _binding!!*/
@@ -52,6 +56,40 @@ class fragment_perfil : Fragment() {
         val root = inflater.inflate(R.layout.fragment_perfil, container, false)
 
         //Boton para navegar entre fragments
+
+        val campoCorreo = root.findViewById<TextView>(R.id.textView5)
+        val campoUsuario = root.findViewById<TextView>(R.id.txvNombre)
+        val campoTelefono = root.findViewById<TextView>(R.id.textView7)
+        val campoEdad = root.findViewById<TextView>(R.id.txvEdad)
+
+
+        fun obtenerDatos(): ArrayList<String> {
+            lateinit var datos : ArrayList<String>
+            val objConexion = ClaseConexion().cadenaConexion()
+            val getData = objConexion?.prepareStatement("select * from tbUsuario where correo_usuario = ?")!!
+            getData.setString(1, RegistrarUsuarios.correo)
+            val rs = getData.executeQuery()
+            while(rs.next()){
+
+                datos.add(rs.getString("nombre_usuario"))
+                datos.add(rs.getString("correo_usuario"))
+                datos.add(rs.getInt("edad_usuario").toString())
+                datos.add(rs.getString("telefono_usuario"))
+            }
+            return datos;
+        }
+        CoroutineScope(Dispatchers.IO).launch {
+         var datos = obtenerDatos()
+            withContext(Dispatchers.Main){
+                campoCorreo.setText(datos.get(1))
+                campoUsuario.setText(datos.get(0))
+                campoTelefono.setText(datos.get(3))
+                campoEdad.setText(datos.get(2))
+            }
+        }
+
+
+
         val imgCamara = root.findViewById<ImageView>(R.id.imgCamera)
         val btnSubidos = root.findViewById<Button>(R.id.btnSubidos)
 
@@ -62,6 +100,7 @@ class fragment_perfil : Fragment() {
         btnSubidos.setOnClickListener(){
             findNavController().navigate(R.id.idAccionMG)
         }
+
 
             // Inflate the layout for this fragment
             /* return inflater.inflate(R.layout.fragment_perfil, container, false)

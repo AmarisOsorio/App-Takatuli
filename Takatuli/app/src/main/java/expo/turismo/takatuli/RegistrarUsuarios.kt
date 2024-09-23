@@ -21,6 +21,14 @@ import java.security.MessageDigest
 import java.util.UUID
 
 class RegistrarUsuarios : AppCompatActivity() {
+companion object {
+    var correo = ""
+    var nombre = ""
+    var telefono = ""
+    var contrasena = ""
+    var edad = 0
+}
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -87,6 +95,11 @@ class RegistrarUsuarios : AppCompatActivity() {
                 crearUsuario.setString(6,txtCorreo.text.toString())
                 crearUsuario.setString(7, txtDui.text.toString())
                 crearUsuario.setString(8, roles[spRol.selectedItemPosition].UUID_Rol)
+                correo = txtCorreo.text.toString()
+                nombre = txtNombre.text.toString()
+                edad = txtEdad.text.toString().toInt()
+                contrasena = txtContrasena.text.toString()
+                telefono = txtTelefono.text.toString()
 
                 crearUsuario.executeQuery()
 
