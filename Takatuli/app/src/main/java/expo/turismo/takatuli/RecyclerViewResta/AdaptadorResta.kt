@@ -3,6 +3,7 @@ package expo.turismo.takatuli.RecyclerViewResta
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import expo.turismo.takatuli.Modelo.tbRestaurante2
 import expo.turismo.takatuli.R
 
@@ -19,5 +20,12 @@ class AdaptadorResta(var Datos: List<tbRestaurante2>): RecyclerView.Adapter<View
     override fun onBindViewHolder(holder: ViewHolderResta, position: Int) {
         val itemResta = Datos[position]
         holder.txtNombreResturante.text = itemResta.Nombre_Restaurante
+
+
+        //Luego de cargar el nombre, cargamos la imagen
+        //Glide: libreria para cargar URL en imageView
+        Glide.with(holder.ImgRestaurante)
+            .load(itemResta.Fotos_Restaurante)
+            .into(holder.ImgRestaurante)
     }
 }
