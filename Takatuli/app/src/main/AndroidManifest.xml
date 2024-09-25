@@ -35,13 +35,20 @@
         android:theme="@style/Theme.Takatuli"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activity_detallesHospedaje"
+            android:exported="false" />
+        <activity
+            android:name=".activity_detallesRestaurante"
+            android:exported="false" />
+        <activity
+            android:name=".activity_detallesTuristicos"
+            android:exported="false" />
+        <activity
             android:name=".item_card_hospedaje"
-            android:exported="false"></activity>
-
+            android:exported="false" />
         <activity
             android:name=".rcvhospedajes"
-            android:exported="false" >
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".item_card_resta"
             android:exported="false" />
@@ -53,9 +60,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
         <activity
             android:name=".item_card"
             android:exported="false" />
@@ -67,10 +72,7 @@
             android:exported="false" />
         <activity
             android:name=".splashScreen"
-            android:exported="false">
-
-        </activity>
-
+            android:exported="false" />
         <activity
             android:name=".RecuperacionDecontrasenia"
             android:exported="false" />
@@ -83,10 +85,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:label="@string/app_name">
-
-
-        </activity>
+            android:label="@string/app_name" />
         <activity
             android:name=".Login"
             android:exported="false"

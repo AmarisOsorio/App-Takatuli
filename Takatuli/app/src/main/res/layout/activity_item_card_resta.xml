@@ -32,7 +32,7 @@
         android:id="@+id/txtNombreRestaM"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-       android:layout_marginHorizontal="85dp"
+
         android:text="TextView"
         android:textSize="24sp" />
     </LinearLayout>

@@ -9,4 +9,6 @@ import expo.turismo.takatuli.R
 class ViewHolderHost(view: View) : RecyclerView.ViewHolder(view) {
     var txtNombreHost: TextView = view.findViewById(R.id.txtNombreHost)
     var ImgHospedaje: ImageView = view.findViewById(R.id.imgHospedaje)
+
+
 }
