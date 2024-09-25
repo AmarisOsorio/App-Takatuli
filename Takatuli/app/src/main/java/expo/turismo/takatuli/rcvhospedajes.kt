@@ -1,6 +1,8 @@
 package expo.turismo.takatuli
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -9,9 +11,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import expo.turismo.takatuli.Modelo.ClaseConexion
 import expo.turismo.takatuli.Modelo.tbHospedaje
+import expo.turismo.takatuli.RecyclerViewHost.AdaptadorHost
 import expo.turismo.takatuli.RecyclerViewMostrar.Adaptador
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -24,6 +28,16 @@ class rcvhospedajes : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+        val btnIrrestaurante = findViewById<ImageView>(R.id.imgCirResta)
+        btnIrrestaurante.setOnClickListener{
+            val actResta = Intent(this, activity_rcvRestaurante::class.java)
+            startActivity(actResta)
+        }
+        val btnIrTuristico = findViewById<ImageView>(R.id.imgLugaTuristico)
+        btnIrTuristico.setOnClickListener {
+            val actTutistico = Intent(this, MainActivity::class.java)
+            startActivity(actTutistico)
         }
 
         val rcvhospedajes = findViewById<RecyclerView>(R.id.rcvHospedaje)
@@ -51,19 +65,20 @@ class rcvhospedajes : AppCompatActivity() {
                     Fotos_Hospedaje
                 )
 
+
                 listaHost.add(valoresJuntos)
             }
 
             return listaHost
         }
 
-        /*CoroutineScope(Dispatchers.IO).launch {
-            val Nose = obtenerHospedaje()
+        GlobalScope.launch(Dispatchers.IO) {
+            val TakatuliBD2 = obtenerHospedaje()
             withContext(Dispatchers.Main) {
-                val adapter = Adaptador(Nose)
+                val adapter = AdaptadorHost(TakatuliBD2)
                 rcvhospedajes.adapter = adapter
             }
-        }*/
+        }
     }
 }
 

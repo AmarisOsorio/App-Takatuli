@@ -1,6 +1,8 @@
 package expo.turismo.takatuli
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -11,6 +13,7 @@ import expo.turismo.takatuli.Modelo.ClaseConexion
 import expo.turismo.takatuli.Modelo.tbLugarTuristico
 import expo.turismo.takatuli.Modelo.tbRestaurante2
 import expo.turismo.takatuli.RecyclerViewMostrar.Adaptador
+import expo.turismo.takatuli.RecyclerViewResta.AdaptadorResta
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -25,6 +28,16 @@ class activity_rcvRestaurante : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+        val btnIrTuristico = findViewById<ImageView>(R.id.imgLugaTuristico)
+        btnIrTuristico.setOnClickListener {
+            val actTutistico = Intent(this, MainActivity::class.java)
+            startActivity(actTutistico)
+        }
+        val btnIrHospedaje = findViewById<ImageView>(R.id.imgCirHost)
+        btnIrHospedaje.setOnClickListener{
+            val actHospe= Intent(this, rcvhospedajes::class.java)
+            startActivity(actHospe)
         }
 
         val rcvRestaurantes = findViewById<RecyclerView>(R.id.rcvRestaurantes)
@@ -44,7 +57,7 @@ class activity_rcvRestaurante : AppCompatActivity() {
                 val Foto_Menu = resulset.getString("Foto_Menu")
                 val Fotos_Restaurante = resulset.getString("Fotos_Restaurante")
 
-                val valoresJuntos2 = tbLugarTuristico(
+                val valoresJuntos2 = tbRestaurante2(
                     UUID_Restaurante,
                     Nombre_Restaurante,
                     Menu_Restaurante,
@@ -52,7 +65,7 @@ class activity_rcvRestaurante : AppCompatActivity() {
                     Fotos_Restaurante
                 )
 
-                //listaRestaurante.add(valoresJuntos2)
+                listaRestaurante.add(valoresJuntos2)
             }
 
             return listaRestaurante
@@ -61,8 +74,8 @@ class activity_rcvRestaurante : AppCompatActivity() {
         GlobalScope.launch(Dispatchers.IO) {
             val TakatuliBD2 = obtenerRestaurante()
             withContext(Dispatchers.Main) {
-             //   val adapter = expo.turismo.takatuli.RecyclerViewResta.Adaptador(TakatuliBD2)
-              //  rcvRestaurantes.adapter = adapter
+                val adapter = AdaptadorResta(TakatuliBD2)
+                rcvRestaurantes.adapter = adapter
             }
         }
     }
