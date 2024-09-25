@@ -78,7 +78,7 @@ class RegistrarUsuarios : AppCompatActivity() {
 
                 val roles = obtenerRoles()
 
-                val crearUsuario = objConexion?.prepareStatement("Insert into tbUsuario(UUID_Usuario, Nombre_Usuario, Password_Usuario, Edad_Usuario, Telefono_Usuario,Correo_Usuario, DUI_Usuario, UUID_Rol) values (?,?,?,?,?,?,?)")!!
+                val crearUsuario = objConexion?.prepareStatement("Insert into tbUsuario(UUID_Usuario, Nombre_Usuario, Password_Usuario, Edad_Usuario, Telefono_Usuario,Correo_Usuario, DUI_Usuario, UUID_Rol) values (?,?,?,?,?,?,?,?)")!!
                 crearUsuario.setString(1, UUID.randomUUID().toString())
                 crearUsuario.setString(2, txtNombre.text.toString())
                 crearUsuario.setString(3, contrasenaEncriptada)
