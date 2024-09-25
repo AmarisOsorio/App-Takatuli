@@ -14,6 +14,7 @@ import expo.turismo.takatuli.Modelo.ClaseConexion
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.security.MessageDigest
 
 class Login : AppCompatActivity() {
@@ -32,8 +33,9 @@ class Login : AppCompatActivity() {
         val btnRegistrarse = findViewById<Button>(R.id.BtnRegistrarse)
         val imgRecuContra = findViewById<TextView>(R.id.imgRecuContra)
 
-        fun hashSHA256(contraseniaEscrita: String): String{
-            val bytes = MessageDigest.getInstance("SHA-256").digest(contraseniaEscrita.toByteArray())
+        fun hashSHA256(contraseniaEscrita: String): String {
+            val bytes =
+                MessageDigest.getInstance("SHA-256").digest(contraseniaEscrita.toByteArray())
             return bytes.joinToString("") { "%02x".format(it) }
         }
 
@@ -41,8 +43,10 @@ class Login : AppCompatActivity() {
         btnIniciarSession.setOnClickListener {
 
             var hayErrores = false
+            val Usuario = txtUsuario.text.toString()
+            val contrasena = txtContrasena.text.toString()
 
-            GlobalScope.launch(Dispatchers.IO){
+            GlobalScope.launch(Dispatchers.IO) {
 
                 val objConexion = ClaseConexion().cadenaConexion()
 
@@ -53,24 +57,7 @@ class Login : AppCompatActivity() {
                 val Usuario = txtUsuario.text.toString()
                 val contrasena = txtContrasena.text.toString()
 
-
-
-                val comprobarUsuario = objConexion?.prepareStatement("Select * from tbUsuario Where Nombre_Usuario = ? and Password_Usuario = ?")!!
-                comprobarUsuario.setString(1, txtUsuario.text.toString())
-                comprobarUsuario.setString(2,contrasenaEncripta)
-
-                val resultado = comprobarUsuario.executeQuery()
-
-                if(resultado.next()){
-                    val intent = Intent(this@Login, MainActivity::class.java)
-                    startActivity(intent)
-                }
-                else{
-                    println("Usuario no encontrado, verifique las credenciales")
-                }
-
-
-                if(Usuario.isEmpty()){
+                if (Usuario.isEmpty()) {
                     txtUsuario.error = "El usuario es obligatorio"
                     hayErrores = true
                 } else {
@@ -79,7 +66,7 @@ class Login : AppCompatActivity() {
                 }
 
 
-                if(contrasena.isEmpty()) {
+                if (contrasena.isEmpty()) {
                     txtContrasena.error = "La contraseña es obligatoria"
                     hayErrores = true
                 } else {
@@ -88,19 +75,56 @@ class Login : AppCompatActivity() {
                 }
 
 
+
+                val comprobarUsuario =
+                    objConexion?.prepareStatement("Select * from tbUsuario Where Nombre_Usuario = ? and Password_Usuario = ?")!!
+                comprobarUsuario.setString(1, txtUsuario.text.toString())
+                comprobarUsuario.setString(2, contrasenaEncripta)
+
+                val resultado = comprobarUsuario.executeQuery()
+
+                if (resultado.next()) {
+                    withContext(Dispatchers.Main){
+                        val intent = Intent(this@Login, MainActivity::class.java)
+                        startActivity(intent)
+                    }
+
+                } else {
+                    println("Usuario no encontrado, verifique las credenciales")
+                }
+
+
+
+
+                }
+
+            fun guardarDatos(
+                Usuario: String,
+                contrasena: String
+            ) {
+
+                Toast.makeText(this, "Si", Toast.LENGTH_SHORT).show()
+            }
+
+            if (hayErrores) {
+                //Hacer algo si hay errores
+            } else {
+                // Si todas las validaciones son correctas, procede a guardar los datos
+                guardarDatos(Usuario, contrasena)
+
+            }
+
+            }
+
+            btnRegistrarse.setOnClickListener {
+                val intent = Intent(this@Login, RegistrarUsuarios::class.java)
+                startActivity(intent)
+            }
+
+            imgRecuContra.setOnClickListener() {
+                val intent = Intent(this@Login, RecuperacionDePassword::class.java)
+                startActivity(intent)
             }
 
         }
-
-        btnRegistrarse.setOnClickListener {
-            val intent = Intent(this@Login, RegistrarUsuarios::class.java)
-            startActivity(intent)
-        }
-
-        imgRecuContra.setOnClickListener(){
-            val intent = Intent(this@Login, RecuperacionDePassword::class.java)
-            startActivity(intent)
-        }
-
     }
-}
