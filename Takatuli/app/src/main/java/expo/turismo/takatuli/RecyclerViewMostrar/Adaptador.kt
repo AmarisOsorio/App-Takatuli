@@ -24,8 +24,6 @@ class Adaptador(var Datos: List<tbLugarTuristico>): RecyclerView.Adapter<ViewHol
         //Glide: libreria para cargar URL en imageView
         Glide.with(holder.ImgLugarTuristico)
             .load(item.Fotos_Lugar_Turistico)
-
-
             .into(holder.ImgLugarTuristico)
     }
 }
