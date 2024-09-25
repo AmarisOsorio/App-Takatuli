@@ -72,7 +72,7 @@
         app:layout_constraintVertical_bias="0.023" />
 
     <ImageView
-        android:id="@+id/imageView24"
+        android:id="@+id/imageView26"
         android:layout_width="292dp"
         android:layout_height="36dp"
         android:src="@drawable/cuadrito_ajustes"
@@ -82,6 +82,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.23" />
+
+    <ImageView
+        android:id="@+id/imageView24"
+        android:layout_width="194dp"
+        android:layout_height="29dp"
+        android:src="@drawable/cuadrito_ajustes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.566" />
 
     <Button
         android:id="@+id/btnAcercade"
@@ -151,10 +163,10 @@
         android:text="Notificaciones"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.378"
+        app:layout_constraintHorizontal_bias="0.556"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.602" />
+        app:layout_constraintVertical_bias="0.568" />
 
     <Button
         android:id="@+id/btnCerrarsesion"
@@ -177,10 +189,10 @@
         android:src="@drawable/baseline_notifications_active_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.206"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.603" />
+        app:layout_constraintVertical_bias="0.57" />
 
     <TextView
         android:id="@+id/txt40"
