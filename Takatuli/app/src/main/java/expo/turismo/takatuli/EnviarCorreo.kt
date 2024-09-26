@@ -25,14 +25,14 @@ suspend fun enviarCorreo(correo: String, asunto: String, mensaje: String) = with
 
     val session = javax.mail.Session.getInstance(props, object : javax.mail.Authenticator() {
         override fun getPasswordAuthentication(): javax.mail.PasswordAuthentication {
-            return javax.mail.PasswordAuthentication("noseenose64@gmail.com", "csqh ilpe ivyj mrbi")
+            return javax.mail.PasswordAuthentication("takatuliptc@gmail.com", "hqve vwac jtdv miud\n")
         }
     })
 
     try {
         val message = MimeMessage(session).apply {
             //Con que correo enviaré el mensaje
-            setFrom(InternetAddress("noseenose64@gmail.com"))
+            setFrom(InternetAddress(" takatuliptc@gmail.com"))
             addRecipient(Message.RecipientType.TO, InternetAddress(correo))
             subject = asunto
             setText(mensaje)
