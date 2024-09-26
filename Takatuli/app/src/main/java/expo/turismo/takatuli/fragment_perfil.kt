@@ -87,8 +87,9 @@ class fragment_perfil : Fragment() {
             }
             return datos;
         }
+
         CoroutineScope(Dispatchers.IO).launch {
-         var datos = obtenerDatos()
+            var datos = obtenerDatos()
             withContext(Dispatchers.Main){
                 campoCorreo.setText(datos.get(1))
                 campoUsuario.setText(datos.get(0))
@@ -96,6 +97,7 @@ class fragment_perfil : Fragment() {
                 campoEdad.setText(datos.get(2))
             }
         }
+
 
 
 
