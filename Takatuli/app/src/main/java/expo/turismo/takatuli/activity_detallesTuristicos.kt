@@ -22,9 +22,9 @@ class activity_detallesTuristicos : AppCompatActivity() {
         }
 
        // val UUIDRecibido = intent.getStringExtra("UUID_LugarTuristico ")
-        val nombreRecibido = intent.getStringExtra("Nombre_LugarTuristico ")
-        val detallesRecibido = intent.getStringExtra("Detalles_Lugar_Turistico ")
-        val fotoRecibida = intent.getStringExtra("Fotos_Lugar_Turistico ")
+        val nombreRecibido = intent.getStringExtra("Nombre_LugarTuristico")
+        val detallesRecibido = intent.getStringExtra("Detalles_Lugar_Turistico")
+        val fotoRecibida = intent.getStringExtra("Fotos_Lugar_Turistico")
 
 
         //Mando a llamar a todos los elementos de la pantalla
@@ -43,7 +43,7 @@ class activity_detallesTuristicos : AppCompatActivity() {
         //txtUUIDDetalle.text = UUIDRecibido
         txtNombreDetalle.text = nombreRecibido
         txtdetallesTurisitcos.text = detallesRecibido
-        ImgTuristicaRecivida.setImageResource(fotoRecibida!!.toInt())
+        Glide.with(this).load(fotoRecibida).into(ImgTuristicaRecivida)
     }
 
 

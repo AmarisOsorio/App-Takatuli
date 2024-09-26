@@ -46,7 +46,7 @@ class activity_rcvRestaurante : AppCompatActivity() {
         fun obtenerRestaurante(): List<tbRestaurante2> {
             val objConexion = ClaseConexion().cadenaConexion()
             val statement = objConexion?.createStatement()
-            val resulset = statement?.executeQuery("Select * from tbRestaurante2")!!
+            val resulset = statement?.executeQuery("Select * from tbRestaurante")!!
 
             val listaRestaurante = mutableListOf<tbRestaurante2>()
 

@@ -33,9 +33,6 @@ class fragment_ajustes : Fragment() {
         val root = inflater.inflate(R.layout.fragment_ajustes, container, false)
 
 
-
-
-
         val cambioTema = root.findViewById<RadioButton>(R.id.rbmodoclaro)
         val cambioTema2 = root.findViewById<RadioButton>(R.id.rbmodoOscuro)
         val cambioTema3 = root.findViewById<RadioButton>(R.id.rbpredeterminadosistema)
@@ -47,32 +44,34 @@ class fragment_ajustes : Fragment() {
                 R.id.rbmodoclaro -> {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 }
+
                 R.id.rbmodoOscuro -> {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 }
+
                 R.id.rbpredeterminadosistema -> {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
                 }
             }
+        }
 
-            val button = root.findViewById<Button>(R.id.btnAcercade)
-            button.setOnClickListener {
-            val intent=Intent(requireContext(), Acerca_de::class.java)
-                startActivity(intent)
-            }
+        val button = root.findViewById<Button>(R.id.btnAcercade)
+        button.setOnClickListener {
+            val intent = Intent(requireContext(), Acerca_de::class.java)
+            startActivity(intent)
+        }
 
-        val button2 = root.findViewById<Button>(R.id.btnPoliticas  )
-            
-            button2.setOnClickListener {
-                val intent=Intent(requireContext(),Politicas_de_Privacidad::class.java)
-                startActivity(intent)
-            }
+        val button2 = root.findViewById<Button>(R.id.btnPoliticas)
 
-            val cerrarssesion = root.findViewById<Button>(R.id.btnCerrarsesion)
-            cerrarssesion.setOnClickListener {
-                val intent=Intent(requireContext(),Login::class.java)
-                startActivity(intent)
-            }
+        button2.setOnClickListener {
+            val intent = Intent(requireContext(), Politicas_de_Privacidad::class.java)
+            startActivity(intent)
+        }
+
+        val cerrarssesion = root.findViewById<Button>(R.id.btnCerrarsesion)
+        cerrarssesion.setOnClickListener {
+            val intent = Intent(requireContext(), Login::class.java)
+            startActivity(intent)
         }
 
 

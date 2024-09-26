@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.bumptech.glide.Glide
 import expo.turismo.takatuli.MainActivity
 import expo.turismo.takatuli.R
 
@@ -23,9 +24,9 @@ class activity_detallesHospedaje : AppCompatActivity() {
         }
 
        val Precio_HospedajeRecibido = intent.getStringExtra("Precio_Hospedaje")
-        val nombreRecibidoHospedaje = intent.getStringExtra("Nombre_Hospedaje ")
-        val detallesRecibidoHospedaje = intent.getStringExtra("Detalles_Hospedaje ")
-        val fotoRecibidaHospedaje = intent.getStringExtra("Fotos_Hospedaje ")
+        val nombreRecibidoHospedaje = intent.getStringExtra("Nombre_Hospedaje")
+        val detallesRecibidoHospedaje = intent.getStringExtra("Detalles_Hospedaje")
+        val fotoRecibidaHospedaje = intent.getStringExtra("Fotos_Hospedaje")
 
 
         //Mando a llamar a todos los elementos de la pantalla
@@ -45,6 +46,6 @@ class activity_detallesHospedaje : AppCompatActivity() {
         txtPrecioHospedajeDeta.text = Precio_HospedajeRecibido
         txtNombreDetalleHospedaje.text = nombreRecibidoHospedaje
         txtdetallesHospedaje.text = detallesRecibidoHospedaje
-        ImgHospedajeRecivida.setImageResource(fotoRecibidaHospedaje!!.toInt())
+        Glide.with(this).load(fotoRecibidaHospedaje).into(ImgHospedajeRecivida)
     }
 }

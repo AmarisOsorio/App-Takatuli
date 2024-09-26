@@ -18,6 +18,17 @@ import kotlinx.coroutines.withContext
 import java.security.MessageDigest
 
 class Login : AppCompatActivity() {
+
+    /*
+    *
+    *
+    * */
+
+    companion object loginGlobal {
+        lateinit var nombreusuario: String
+
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -34,7 +45,7 @@ class Login : AppCompatActivity() {
         val imgRecuContra = findViewById<TextView>(R.id.imgRecuContra)
 
 
-
+//
         fun hashSHA256(contraseniaEscrita: String): String{
             val bytes = MessageDigest.getInstance("SHA-256").digest(contraseniaEscrita.toByteArray())
             return bytes.joinToString("") { "%02x".format(it) }
@@ -42,6 +53,7 @@ class Login : AppCompatActivity() {
 
 
         btnIniciarSession.setOnClickListener {
+            nombreusuario = txtUsuario.text.toString()
 
             var hayErrores = false
             val Usuario = txtUsuario.text.toString()

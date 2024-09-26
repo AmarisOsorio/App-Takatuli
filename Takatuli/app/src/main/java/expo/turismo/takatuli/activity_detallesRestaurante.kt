@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.bumptech.glide.Glide
 
 class activity_detallesRestaurante : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,9 +23,10 @@ class activity_detallesRestaurante : AppCompatActivity() {
 
         //Recibir los valores
         val fotoMenuRecibida = intent.getStringExtra("Foto_Menu")
-        val nombreRecibidoRestaurante = intent.getStringExtra("Nombre_Restaurante ")
-        val detallesRecibidoRestaurante = intent.getStringExtra("Menu_Restaurante ")
-        val fotoRecibidaRestaurantee = intent.getStringExtra("Foto_Resturantes ")
+        val nombreRecibidoRestaurante = intent.getStringExtra("Nombre_Restaurante")
+        val detallesRecibidoRestaurante = intent.getStringExtra("Menu_Restaurante")
+        val fotoRecibidaRestaurantee = intent.getStringExtra("Foto_Resturantes")
+
         val btnatrasR = findViewById<ImageView>(R.id.imgatrasdetallesR)
 
         btnatrasR.setOnClickListener {
@@ -41,8 +43,8 @@ class activity_detallesRestaurante : AppCompatActivity() {
         //Asigarle los datos recibidos a mis TextView
         txtnombreRestaurante.text = nombreRecibidoRestaurante
         txtdetallesRestaurante.text = detallesRecibidoRestaurante
-        //ImgfotoRestaurante.setImageResource(fotoRecibidaRestaurantee!!.toInt())
-        //ImgfotoMenuRecibida.setImageResource(fotoMenuRecibida!!.toInt())
+        Glide.with(this).load(fotoRecibidaRestaurantee).into(ImgfotoRestaurante)
+        Glide.with(this).load(fotoMenuRecibida).into(ImgfotoMenuRecibida)
 
 
     }

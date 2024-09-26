@@ -1,5 +1,6 @@
 package expo.turismo.takatuli
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -37,9 +38,21 @@ class fragment_menuP : Fragment() {
         val imgHost = root.findViewById<ImageView>(R.id.imgHost)
         val imgResta = root.findViewById<ImageView>(R.id.imgResta)
         val imgLugarTuristico = root.findViewById<ImageView>(R.id.imgLugaTuristico)
-        val imgCirHost = root.findViewById<ImageView>(R.id.imgCirHost)
-        val imgCirResta = root.findViewById<ImageView>(R.id.imgCirResta)
+        //val imgCirHost = root.findViewById<ImageView>(R.id.imgCirHost)
+      //  val imgCirResta = root.findViewById<ImageView>(R.id.imgCirResta)
         val imgCirLugarTuristico  = root.findViewById<ImageView>(R.id.imgLugarTuristico)
+
+
+        val btnIrrestaurante = root.findViewById<ImageView>(R.id.imgCirResta)
+        btnIrrestaurante.setOnClickListener{
+            val actTuristico = Intent(requireContext(), activity_rcvRestaurante::class.java)
+            startActivity(actTuristico)
+        }
+        val btnIrHospedaje = root.findViewById<ImageView>(R.id.imgCirHost)
+        btnIrHospedaje.setOnClickListener{
+            val actHospe= Intent(requireContext(), rcvhospedajes::class.java)
+            startActivity(actHospe)
+        }
 
 
 

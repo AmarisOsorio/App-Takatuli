@@ -100,7 +100,7 @@ class RegistrarUsuarios : AppCompatActivity() {
                 crearUsuario.setString(5, txtTelefono.text.toString())
                 crearUsuario.setString(6, txtCorreo.text.toString())
                 crearUsuario.setString(7, txtDui.text.toString())
-                crearUsuario.setString(8, "2")
+                crearUsuario.setInt(8, 2)
 
 
                 correo = txtCorreo.text.toString()
