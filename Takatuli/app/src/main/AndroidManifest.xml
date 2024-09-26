@@ -24,6 +24,10 @@
         android:maxSdkVersion="32" />
     <uses-permission android:name="android.permission.CAMERA" />
 
+    <meta-data
+        android:name="preloaded_fonts"
+        android:resource="@array/preloaded_fonts" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -34,6 +38,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Takatuli"
         tools:targetApi="31">
+        <activity
+            android:name=".item_card_resena"
+            android:exported="false" />
+        <activity
+            android:name=".Resenas"
+            android:exported="false" />
+        <activity
+            android:name=".foto_perfil"
+            android:exported="false" />
+        <activity
+            android:name=".Politicas_de_Privacidad"
+            android:exported="false" />
         <activity
             android:name=".ui.activity_detallesHospedaje"
             android:exported="false" />
@@ -54,12 +70,10 @@
             android:exported="false" />
         <activity
             android:name=".activity_rcvRestaurante"
-            android:exported="false"></activity>
+            android:exported="false">
+        </activity>
         <activity
             android:name=".item_card"
-            android:exported="false" />
-        <activity
-            android:name=".Politicas_de_Privacidad"
             android:exported="false" />
         <activity
             android:name=".Acerca_de"

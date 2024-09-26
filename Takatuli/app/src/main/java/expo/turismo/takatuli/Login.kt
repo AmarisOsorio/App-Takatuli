@@ -14,6 +14,7 @@ import expo.turismo.takatuli.Modelo.ClaseConexion
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.security.MessageDigest
 
 class Login : AppCompatActivity() {
@@ -58,7 +59,7 @@ class Login : AppCompatActivity() {
                 txtContrasena.error = null
             }
 
-            GlobalScope.launch(Dispatchers.IO){
+            GlobalScope.launch(Dispatchers.IO) {
 
                 val objConexion = ClaseConexion().cadenaConexion()
 

@@ -30,6 +30,12 @@
     &quot;accountId&quot;: &quot;d04fca0a-7988-446f-b0db-a4cd81905c37&quot;
   }
 }</component>
+<<<<<<< HEAD
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+=======
+>>>>>>> master
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 3
@@ -41,14 +47,21 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
+<<<<<<< HEAD
+    "git-widget-placeholder": "Rafael",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Alejandro Menendez/OneDrive/Desktop/App-Takatuli"
+=======
     "git-widget-placeholder": "Bryan",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/pbrya/OneDrive/Escritorio/App-Takatuli/Takatuli"
+>>>>>>> master
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
