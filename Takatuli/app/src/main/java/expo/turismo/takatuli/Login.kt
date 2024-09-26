@@ -33,6 +33,8 @@ class Login : AppCompatActivity() {
         val btnRegistrarse = findViewById<Button>(R.id.BtnRegistrarse)
         val imgRecuContra = findViewById<TextView>(R.id.imgRecuContra)
 
+
+
         fun hashSHA256(contraseniaEscrita: String): String{
             val bytes = MessageDigest.getInstance("SHA-256").digest(contraseniaEscrita.toByteArray())
             return bytes.joinToString("") { "%02x".format(it) }

@@ -31,7 +31,6 @@ import java.sql.ResultSet
 class fragment_perfil : Fragment() {
 
 
-
     /*lateinit var imageView: ImageView
     lateinit var miPath: Path
 
@@ -64,9 +63,37 @@ class fragment_perfil : Fragment() {
         //variable root
         val root = inflater.inflate(R.layout.fragment_perfil, container, false)
 
+        //mandó a traer el valor que es global
+        val nombreGlobal = RegistrarUsuarios.variablesGlobales.nombreUser
+        val correoGlobal = RegistrarUsuarios.variablesGlobales.correo
+        val telefonoGlobal = RegistrarUsuarios.variablesGlobales.telefono
+        val edadGlobal = RegistrarUsuarios.variablesGlobales.edad
+
+
+        //Mando a traer el textview que está en la pantalla
+        val nombreUser = root.findViewById<TextView>(R.id.txvNombre)
+        //asignamos el valor global al textview
+        nombreUser.text = nombreGlobal
+
+        val correoUser = root.findViewById<TextView>(R.id.txvCorreo)
+        correoUser.text = correoGlobal
+
+        val telefonoUser = root.findViewById<TextView>(R.id.txvTelefono)
+        telefonoUser.text = telefonoGlobal
+
+        val edadUser = root.findViewById<TextView>(R.id.txvEdad)
+        edadUser.text = edadGlobal.toString()
+
+
+
+
+
+
+
+
         //Boton para navegar entre fragments
 
-        val campoCorreo = root.findViewById<TextView>(R.id.textView5)
+        /*val campoCorreo = root.findViewById<TextView>(R.id.textView5)
         val campoUsuario = root.findViewById<TextView>(R.id.txvNombre)
         val campoTelefono = root.findViewById<TextView>(R.id.textView7)
         val campoEdad = root.findViewById<TextView>(R.id.txvEdad)
@@ -96,7 +123,7 @@ class fragment_perfil : Fragment() {
                 campoTelefono.setText(datos.get(3))
                 campoEdad.setText(datos.get(2))
             }
-        }
+        }*/
 
 
 
