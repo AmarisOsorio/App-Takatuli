@@ -9,8 +9,8 @@
 
     <Button
         android:id="@+id/btnActuContra"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="272dp"
+        android:layout_height="51dp"
         android:backgroundTint="@color/naranja"
         android:fontFamily="@font/baloo"
         android:text="ActualizarContraseña"

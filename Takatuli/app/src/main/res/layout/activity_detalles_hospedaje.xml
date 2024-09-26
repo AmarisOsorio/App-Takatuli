@@ -9,14 +9,15 @@
 
     <ImageView
         android:id="@+id/imageView44"
-        android:layout_width="417dp"
-        android:layout_height="260dp"
-        android:layout_marginBottom="596dp"
+        android:layout_width="409dp"
+        android:layout_height="238dp"
+        android:layout_marginBottom="608dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/cuadrito_ajustes" />
+        app:srcCompat="@drawable/cuadrito_agrestaurante" />
+
     <ImageView
         android:id="@+id/imgatrasdetallesH"
         android:layout_width="55dp"
@@ -39,9 +40,10 @@
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.654"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.081" />
+        app:layout_constraintVertical_bias="0.057" />
 
     <ImageView
         android:id="@+id/imgdetaHospedaje"
@@ -67,20 +69,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/txtdetallesHospedaje"
-        android:layout_width="276dp"
-        android:layout_height="128dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.533"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.669" />
 
     <TextView
         android:id="@+id/txtdetaPrecio"
@@ -110,6 +98,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.797" />
+
+    <TextView
+        android:id="@+id/txtdetallesHospedaje"
+        android:layout_width="268dp"
+        android:layout_height="134dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.666" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,7 +9,7 @@
 
     <Button
         android:id="@+id/btnIniciarSession"
-        android:layout_width="140dp"
+        android:layout_width="227dp"
         android:layout_height="50dp"
         android:backgroundTint="@color/naranja"
         android:fontFamily="@font/baloo"
@@ -26,8 +26,8 @@
 
     <Button
         android:id="@+id/BtnRegistrarse"
-        android:layout_width="140dp"
-        android:layout_height="50dp"
+        android:layout_width="227dp"
+        android:layout_height="52dp"
         android:backgroundTint="@color/naranja"
         android:fontFamily="@font/baloo"
         android:text="Registrar"
