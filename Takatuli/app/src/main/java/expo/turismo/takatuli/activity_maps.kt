@@ -34,6 +34,8 @@ class activity_maps : AppCompatActivity(), OnMapReadyCallback {
     private fun createMarker() {
         val favoritePlace = LatLng(13.3436,-89.0064)
         val SecondPlace = LatLng(13.494986143744834, -88.87773157562293)
+        val thirdPlace = LatLng(13.494986143744834, -88.87773157562293)
+
         map.addMarker(MarkerOptions().position(favoritePlace).title("Costa de sol"))
         map.animateCamera(
             CameraUpdateFactory.newLatLngZoom(favoritePlace, 18f),

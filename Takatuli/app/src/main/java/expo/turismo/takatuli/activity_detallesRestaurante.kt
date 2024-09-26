@@ -20,10 +20,11 @@ class activity_detallesRestaurante : AppCompatActivity() {
             insets
         }
 
+        //Recibir los valores
         val fotoMenuRecibida = intent.getStringExtra("Foto_Menu")
         val nombreRecibidoRestaurante = intent.getStringExtra("Nombre_Restaurante ")
         val detallesRecibidoRestaurante = intent.getStringExtra("Menu_Restaurante ")
-        val fotoRecibidaRestaurantee = intent.getStringExtra("Fotos_Restaurante ")
+        val fotoRecibidaRestaurantee = intent.getStringExtra("Foto_Resturantes ")
         val btnatrasR = findViewById<ImageView>(R.id.imgatrasdetallesR)
 
         btnatrasR.setOnClickListener {
@@ -40,8 +41,8 @@ class activity_detallesRestaurante : AppCompatActivity() {
         //Asigarle los datos recibidos a mis TextView
         txtnombreRestaurante.text = nombreRecibidoRestaurante
         txtdetallesRestaurante.text = detallesRecibidoRestaurante
-        ImgfotoRestaurante.setImageResource(fotoRecibidaRestaurantee!!.toInt())
-        ImgfotoMenuRecibida.setImageResource(fotoMenuRecibida!!.toInt())
+        //ImgfotoRestaurante.setImageResource(fotoRecibidaRestaurantee!!.toInt())
+        //ImgfotoMenuRecibida.setImageResource(fotoMenuRecibida!!.toInt())
 
 
     }

@@ -47,5 +47,9 @@ class MainActivity : AppCompatActivity() {
             navController.navigate(R.id.fragmente_fotoperfil)
         }
 
+        if (intent.getBooleanExtra("ir_a_mapa", false)) {
+            navController.navigate(R.id.fragmentMap)
+        }
+
     }
 }

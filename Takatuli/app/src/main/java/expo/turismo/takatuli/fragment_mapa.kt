@@ -24,7 +24,7 @@ class fragment_mapa : Fragment() {
     ): View? {
         var root = inflater.inflate(R.layout.fragment_mapa, container, false)
 
-        var btn1A = root.findViewById<Button>(R.id.btn1A)
+        /*var btn1A = root.findViewById<Button>(R.id.btn1A)
         var btn2A = root.findViewById<Button>(R.id.btn2A)
         var btn3A = root.findViewById<Button>(R.id.btn3A)
 
@@ -71,7 +71,7 @@ class fragment_mapa : Fragment() {
             }
             builder.show()
 
-        }
+        }*/
         return root
     }
 }
