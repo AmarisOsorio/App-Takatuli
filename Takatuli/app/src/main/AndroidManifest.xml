@@ -43,7 +43,10 @@
             android:exported="false" />
         <activity
             android:name=".Resenas"
-            android:exported="false" />
+            android:exported="false">
+
+        </activity>
+
         <activity
             android:name=".foto_perfil"
             android:exported="false" />
@@ -51,10 +54,22 @@
             android:name=".Politicas_de_Privacidad"
             android:exported="false" />
         <activity
+            android:name=".ui.activity_detallesHospedaje"
+            android:exported="false" />
+        <activity
+            android:name=".activity_detallesRestaurante"
+            android:exported="false" />
+        <activity
+            android:name=".activity_detallesTuristicos"
+            android:exported="false" />
+        <activity
             android:name=".item_card_hospedaje"
             android:exported="false" />
         <activity
             android:name=".rcvhospedajes"
+            android:exported="false" />
+        <activity
+            android:name=".item_card_resta"
             android:exported="false" />
         <activity
             android:name=".activity_rcvRestaurante"
@@ -68,14 +83,8 @@
             android:exported="false" />
         <activity
             android:name=".splashScreen"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity>
-
         <activity
             android:name=".RecuperacionDecontrasenia"
             android:exported="false" />
@@ -87,12 +96,31 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activity_maps"
             android:exported="false"
-            android:label="@string/app_name" />
+            android:label="@string/app_name"></activity>
         <activity
             android:name=".Login"
             android:exported="false"
-            android:label="@string/app_name" />
+            android:label="@string/app_name">
+
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
     </application>
 
 </manifest>

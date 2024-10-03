@@ -35,25 +35,25 @@ class Resenas : AppCompatActivity() {
 
         rcvResenas.layoutManager = LinearLayoutManager(this)
 
-        fun obtenerResenas():List<tbResena>{
+        fun obtenerResenas(): List<tbResena> {
             val objConexion = ClaseConexion().cadenaConexion()
             val statement = objConexion?.createStatement()
             val resulset = statement?.executeQuery("SELECT * FROM tbReseñas")!!
 
             val listaResenas = mutableListOf<tbResena>()
-            while (resulset.next()){
+            while (resulset.next()) {
                 val UUID_Reseña = resulset.getString("UUID_Reseña")
                 val Reseña_Viaje = resulset.getString("Reseña_Viaje")
 
-              val valoresJuntos = tbResena(UUID_Reseña,Reseña_Viaje)
+                val valoresJuntos = tbResena(UUID_Reseña, Reseña_Viaje)
                 listaResenas.add(valoresJuntos)
             }
-        return listaResenas
+            return listaResenas
         }
 
         CoroutineScope(Dispatchers.IO).launch {
             val ResenasBd = obtenerResenas()
-            withContext(Dispatchers.Main){
+            withContext(Dispatchers.Main) {
                 val adaptador = AdaptadorResena(ResenasBd)
                 rcvResenas.adapter = adaptador
             }
@@ -62,8 +62,9 @@ class Resenas : AppCompatActivity() {
         btnGuardarR.setOnClickListener {
             CoroutineScope(Dispatchers.IO).launch {
                 val objConexion = ClaseConexion().cadenaConexion()
-                val addResena = objConexion?.prepareStatement("insert into tbReseñas (UUID_Reseña, Reseña_Viaje) values(?,?)")!!
-                addResena.setString(1, UUID.randomUUID().toString() )
+                val addResena =
+                    objConexion?.prepareStatement("insert into tbReseñas (UUID_Reseña, Reseña_Viaje) values(?,?)")!!
+                addResena.setString(1, UUID.randomUUID().toString())
                 addResena.setString(2, txtResena.text.toString())
                 addResena.executeUpdate()
             }

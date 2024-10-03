@@ -1,6 +1,8 @@
 package expo.turismo.takatuli
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -26,6 +28,16 @@ class rcvhospedajes : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+        val btnIrrestaurante = findViewById<ImageView>(R.id.imgCirResta)
+        btnIrrestaurante.setOnClickListener{
+            val actResta = Intent(this, activity_rcvRestaurante::class.java)
+            startActivity(actResta)
+        }
+        val btnIrTuristico = findViewById<ImageView>(R.id.imgLugaTuristico)
+        btnIrTuristico.setOnClickListener {
+            val actTutistico = Intent(this, MainActivity::class.java)
+            startActivity(actTutistico)
         }
 
         val rcvhospedajes = findViewById<RecyclerView>(R.id.rcvHospedaje)

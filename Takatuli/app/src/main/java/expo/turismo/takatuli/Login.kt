@@ -2,6 +2,7 @@ package expo.turismo.takatuli
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.InputType
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -18,6 +19,17 @@ import kotlinx.coroutines.withContext
 import java.security.MessageDigest
 
 class Login : AppCompatActivity() {
+
+    /*
+    *
+    *
+    * */
+
+    companion object loginGlobal {
+        lateinit var nombreusuario: String
+
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -32,75 +44,66 @@ class Login : AppCompatActivity() {
         val btnIniciarSession = findViewById<Button>(R.id.btnIniciarSession)
         val btnRegistrarse = findViewById<Button>(R.id.BtnRegistrarse)
         val imgRecuContra = findViewById<TextView>(R.id.imgRecuContra)
+        //val imgVerContra =
 
-        fun hashSHA256(contraseniaEscrita: String): String {
-            val bytes =
-                MessageDigest.getInstance("SHA-256").digest(contraseniaEscrita.toByteArray())
+
+//
+        fun hashSHA256(contraseniaEscrita: String): String{
+            val bytes = MessageDigest.getInstance("SHA-256").digest(contraseniaEscrita.toByteArray())
             return bytes.joinToString("") { "%02x".format(it) }
         }
 
 
         btnIniciarSession.setOnClickListener {
+            nombreusuario = txtUsuario.text.toString()
 
             var hayErrores = false
             val Usuario = txtUsuario.text.toString()
             val contrasena = txtContrasena.text.toString()
+
+
+            if (Usuario.isEmpty()) {
+                txtUsuario.error = "El nombre es obligatorio"
+                hayErrores = true
+            } else {
+                txtUsuario.error = null
+            }
+            if (contrasena.isEmpty()) {
+                txtContrasena.error = "El correo es obligatorio"
+                hayErrores = true
+            } else {
+                txtContrasena.error = null
+            }
 
             GlobalScope.launch(Dispatchers.IO) {
 
                 val objConexion = ClaseConexion().cadenaConexion()
 
 
+
                 val contrasenaEncripta = hashSHA256(txtContrasena.text.toString())
 
 
-                val Usuario = txtUsuario.text.toString()
-                val contrasena = txtContrasena.text.toString()
-
-                if (Usuario.isEmpty()) {
-                    txtUsuario.error = "El usuario es obligatorio"
-                    hayErrores = true
-                } else {
-                    txtUsuario.error = null
-
-                }
-
-
-                if (contrasena.isEmpty()) {
-                    txtContrasena.error = "La contraseña es obligatoria"
-                    hayErrores = true
-                } else {
-                    txtContrasena.error = null
-
-                }
-
-
-
-                val comprobarUsuario =
-                    objConexion?.prepareStatement("Select * from tbUsuario Where Nombre_Usuario = ? and Password_Usuario = ?")!!
+                val comprobarUsuario = objConexion?.prepareStatement("Select * from tbUsuario Where Nombre_Usuario = ? and Password_Usuario = ?")!!
                 comprobarUsuario.setString(1, txtUsuario.text.toString())
-                comprobarUsuario.setString(2, contrasenaEncripta)
+                comprobarUsuario.setString(2,contrasenaEncripta)
 
                 val resultado = comprobarUsuario.executeQuery()
 
-                if (resultado.next()) {
-                    withContext(Dispatchers.Main){
-                        val intent = Intent(this@Login, MainActivity::class.java)
-                        startActivity(intent)
-                    }
-
-                } else {
+                if(resultado.next()){
+                    val intent = Intent(this@Login, MainActivity::class.java)
+                    startActivity(intent)
+                }
+                else{
                     println("Usuario no encontrado, verifique las credenciales")
                 }
 
+            }
 
-
-
-                }
 
             fun guardarDatos(
-                Usuario: String,
-                contrasena: String
+               Usuario: String,
+               contrasena: String
             ) {
 
                 Toast.makeText(this, "Si", Toast.LENGTH_SHORT).show()
@@ -114,17 +117,41 @@ class Login : AppCompatActivity() {
 
             }
 
-            }
 
-            btnRegistrarse.setOnClickListener {
-                val intent = Intent(this@Login, RegistrarUsuarios::class.java)
-                startActivity(intent)
-            }
-
-            imgRecuContra.setOnClickListener() {
-                val intent = Intent(this@Login, RecuperacionDePassword::class.java)
-                startActivity(intent)
-            }
 
         }
+
+        btnRegistrarse.setOnClickListener {
+            val intent = Intent(this@Login, RegistrarUsuarios::class.java)
+            startActivity(intent)
+        }
+
+        imgRecuContra.setOnClickListener(){
+            val intent = Intent(this@Login, RecuperacionDePassword::class.java)
+            startActivity(intent)
+        }
+
+
+        ////////////////////// Botones para ver contraseña /////////////////////////////////
+        /*imgVerContra.setOnClickListener {
+            if (txtContrasena.inputType == InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD) {
+                txtContrasena.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+            } else {
+                txtContrasena.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            }
+        }*/
+
+        /*imgVerConfirmacionPassword.setOnClickListener {
+            if (txtConfirmarPassword.inputType == InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD) {
+                txtConfirmarPassword.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+            } else {
+                txtConfirmarPassword.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            }
+        }*/
+
     }
+}
