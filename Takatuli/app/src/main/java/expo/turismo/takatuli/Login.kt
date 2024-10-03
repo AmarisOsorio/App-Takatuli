@@ -70,7 +70,7 @@ class Login : AppCompatActivity() {
                 txtUsuario.error = null
             }
             if (contrasena.isEmpty()) {
-                txtContrasena.error = "El correo es obligatorio"
+                txtContrasena.error = "La contraseña es obligatoria"
                 hayErrores = true
             } else {
                 txtContrasena.error = null
@@ -99,28 +99,22 @@ class Login : AppCompatActivity() {
                     println("Usuario no encontrado, verifique las credenciales")
                 }
 
-            }
-
-
-            fun guardarDatos(
-               Usuario: String,
-               contrasena: String
-            ) {
-
-                Toast.makeText(this, "Si", Toast.LENGTH_SHORT).show()
-            }
-
-            if (hayErrores) {
-                //Hacer algo si hay errores
-            } else {
-                // Si todas las validaciones son correctas, procede a guardar los datos
-                guardarDatos(Usuario, contrasena)
 
             }
-
 
 
         }
+
+        fun guardarDatos(
+            Usuario: String,
+            contrasena: String
+        ) {
+
+            Toast.makeText(this, "¡Bienvenido!", Toast.LENGTH_SHORT).show()
+        }
+
+
+
 
         btnRegistrarse.setOnClickListener {
             val intent = Intent(this@Login, RegistrarUsuarios::class.java)
