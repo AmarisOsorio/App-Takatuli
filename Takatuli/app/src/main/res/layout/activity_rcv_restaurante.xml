@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="409dp"
-        android:layout_height="353dp"
+        android:layout_width="423dp"
+        android:layout_height="355dp"
         android:layout_marginTop="-275dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,6 +19,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/cuadrito_agrestaurante" />
+
+    <ImageView
+        android:id="@+id/imageView47"
+        android:layout_width="74dp"
+        android:layout_height="71dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.145"
+        app:srcCompat="@drawable/cuadritoturistico" />
 
     <ImageView
         android:id="@+id/imgCirHost"
@@ -163,4 +174,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.231" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
