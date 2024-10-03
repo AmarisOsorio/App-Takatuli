@@ -83,13 +83,13 @@
 
     <EditText
         android:id="@+id/txtContrasenia"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/naranja"
         android:ems="10"
         android:fontFamily="@font/baloo"
         android:hint="Contraseña"
-        android:inputType="text"
+        android:inputType="textPassword"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -101,7 +101,7 @@
 
     <EditText
         android:id="@+id/txtUsuario"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/naranja"
         android:ems="10"
@@ -144,5 +144,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.641" />
+
+    <ImageView
+        android:id="@+id/imgVerContra"
+        android:layout_width="23dp"
+        android:layout_height="22dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.855"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.538"
+        app:srcCompat="@drawable/ojito_ver" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

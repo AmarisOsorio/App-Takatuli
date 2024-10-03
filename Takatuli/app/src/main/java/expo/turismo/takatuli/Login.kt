@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.InputType
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -43,11 +44,11 @@ class Login : AppCompatActivity() {
         val txtContrasena = findViewById<EditText>(R.id.txtContrasenia)
         val btnIniciarSession = findViewById<Button>(R.id.btnIniciarSession)
         val btnRegistrarse = findViewById<Button>(R.id.BtnRegistrarse)
-        val imgRecuContra = findViewById<TextView>(R.id.imgRecuContra)
-        //val imgVerContra =
+        val txtRecuContra = findViewById<TextView>(R.id.imgRecuContra)
+        val imgVerContra = findViewById<ImageView>(R.id.imgVerContra)
 
 
-//
+        // Encriptacion //
         fun hashSHA256(contraseniaEscrita: String): String{
             val bytes = MessageDigest.getInstance("SHA-256").digest(contraseniaEscrita.toByteArray())
             return bytes.joinToString("") { "%02x".format(it) }
@@ -126,32 +127,19 @@ class Login : AppCompatActivity() {
             startActivity(intent)
         }
 
-        imgRecuContra.setOnClickListener(){
+        txtRecuContra.setOnClickListener(){
             val intent = Intent(this@Login, RecuperacionDePassword::class.java)
             startActivity(intent)
         }
 
-
         ////////////////////// Botones para ver contraseña /////////////////////////////////
-        /*imgVerContra.setOnClickListener {
+
+        imgVerContra.setOnClickListener {
             if (txtContrasena.inputType == InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD) {
-                txtContrasena.inputType =
-                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                txtContrasena.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
             } else {
-                txtContrasena.inputType =
-                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                txtContrasena.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
             }
-        }*/
-
-        /*imgVerConfirmacionPassword.setOnClickListener {
-            if (txtConfirmarPassword.inputType == InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD) {
-                txtConfirmarPassword.inputType =
-                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-            } else {
-                txtConfirmarPassword.inputType =
-                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-            }
-        }*/
-
+        }
     }
 }

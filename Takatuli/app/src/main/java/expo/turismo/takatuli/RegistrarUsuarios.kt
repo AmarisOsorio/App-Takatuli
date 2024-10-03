@@ -1,9 +1,11 @@
 package expo.turismo.takatuli
 
 import android.os.Bundle
+import android.text.InputType
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -51,6 +53,7 @@ class RegistrarUsuarios : AppCompatActivity() {
         val txtDui = findViewById<EditText>(R.id.txtDuiR)
         //val spRol = findViewById<Spinner>(R.id.spRolR)
         val btnRegistrar = findViewById<Button>(R.id.btnRegistrar)
+        val imgVerContraR = findViewById<ImageView>(R.id.imgVerContraR)
 
 
         fun obtenerRoles(): List<dataclassRoles> {
@@ -125,6 +128,16 @@ class RegistrarUsuarios : AppCompatActivity() {
             }
 
 
+        }
+
+
+        /////////////////// TODO: boton ver contraseña /////////////////////////////////////////////
+        imgVerContraR.setOnClickListener {
+            if (txtContrasena.inputType == InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD) {
+                txtContrasena.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+            } else {
+                txtContrasena.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            }
         }
 
 

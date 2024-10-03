@@ -84,13 +84,6 @@ class fragment_perfil : Fragment() {
         val edadUser = root.findViewById<TextView>(R.id.txvEdad)
         edadUser.text = edadGlobal.toString()
 
-
-
-
-
-
-
-
         //Boton para navegar entre fragments
         /*
                 val campoCorreo = root.findViewById<TextView>(R.id.textView5)
@@ -130,7 +123,7 @@ class fragment_perfil : Fragment() {
 
 
         val imgCamara = root.findViewById<ImageView>(R.id.imgCamera)
-        //val imgFotoMostrar = root.findViewById<ImageView>(R.id.imgFotoperfilMostrar)
+        val imgFotoMostrar = root.findViewById<ImageView>(R.id.imgFotoperfilMostrar)
 
         imgCamara.setOnClickListener(){
             val intent = Intent(requireContext(),Navigation::class.java)
