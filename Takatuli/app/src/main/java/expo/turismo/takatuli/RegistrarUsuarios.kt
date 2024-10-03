@@ -94,6 +94,7 @@ companion object {
                 crearUsuario.setString(5, txtTelefono.text.toString())
                 crearUsuario.setString(6,txtCorreo.text.toString())
                 crearUsuario.setString(7, txtDui.text.toString())
+                crearUsuario.setInt(8,2)
 
 
                 correo = txtCorreo.text.toString()
@@ -101,7 +102,7 @@ companion object {
                 edad = txtEdad.text.toString().toInt()
                 contrasena = txtContrasena.text.toString()
                 telefono = txtTelefono.text.toString()
-                crearUsuario.setString(8,"2")
+
 
 
                 crearUsuario.executeQuery()
