@@ -46,7 +46,6 @@ class Login : AppCompatActivity() {
         val imgRecuContra = findViewById<TextView>(R.id.imgRecuContra)
         //val imgVerContra =
 
-
 //
         fun hashSHA256(contraseniaEscrita: String): String{
             val bytes = MessageDigest.getInstance("SHA-256").digest(contraseniaEscrita.toByteArray())
@@ -120,6 +119,11 @@ class Login : AppCompatActivity() {
 
 
         }
+
+
+        //hacer un select que traiga todos los datos del usuario dependiendo del correo con el que esté iniciando sesión
+        //Luego, con todos los datos del usuario, llenen las variables del registro
+
 
         btnRegistrarse.setOnClickListener {
             val intent = Intent(this@Login, RegistrarUsuarios::class.java)

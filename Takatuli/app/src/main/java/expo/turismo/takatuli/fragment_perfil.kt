@@ -133,8 +133,7 @@ class fragment_perfil : Fragment() {
         //val imgFotoMostrar = root.findViewById<ImageView>(R.id.imgFotoperfilMostrar)
 
         imgCamara.setOnClickListener(){
-            val intent = Intent(requireContext(),Navigation::class.java)
-            intent.putExtra("ir_a_fotoPerfil",true)
+            val intent = Intent(requireContext(),foto_perfil::class.java)
             startActivity(intent)
         }
 
