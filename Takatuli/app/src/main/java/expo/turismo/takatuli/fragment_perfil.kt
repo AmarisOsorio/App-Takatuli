@@ -3,6 +3,7 @@ package expo.turismo.takatuli
 
 import RecyclerViewHelper.AdaptadorUsuario
 import android.content.Intent
+import android.net.Uri
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -19,17 +20,30 @@ import androidx.navigation.Navigation
 
 
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import expo.turismo.takatuli.Modelo.ClaseConexion
 import expo.turismo.takatuli.Modelo.tb_Usuario
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.sql.ResultSet
+import java.sql.SQLException
+import java.util.UUID
 
 
 class fragment_perfil : Fragment() {
 
+
+    companion object variablesGlobales{
+        lateinit var correo : String
+        lateinit var nombreUser : String
+        lateinit var telefono : String
+        lateinit var contrasena : String
+        var edad = 0
+        lateinit var fotoPerfil : String
+    }
 
     /*lateinit var imageView: ImageView
     lateinit var miPath: Path
@@ -58,31 +72,32 @@ class fragment_perfil : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         //obtenerDatos()
-        val fotoPerfil = fragment_fotoperfil.variablesGlobales.uuid;
+        val UUID = fragment_fotoperfil.variablesGlobales.uuid;
 
         //variable root
         val root = inflater.inflate(R.layout.fragment_perfil, container, false)
 
         //mandó a traer el valor que es global
-        val nombreGlobal = RegistrarUsuarios.variablesGlobales.nombreUser
-        val correoGlobal = RegistrarUsuarios.variablesGlobales.correo
-        val telefonoGlobal = RegistrarUsuarios.variablesGlobales.telefono
-        val edadGlobal = RegistrarUsuarios.variablesGlobales.edad
+        /*val nombreGlobal = nombreUser
+        val correoGlobal = correo
+        val telefonoGlobal = telefono
+        val edadGlobal = edad
+        val fotoGlobal = fotoPerfil*/
 
 
         //Mando a traer el textview que está en la pantalla
-        val nombreUser = root.findViewById<TextView>(R.id.txvNombre)
+        var nombreUserT = root.findViewById<TextView>(R.id.txvNombre)
         //asignamos el valor global al textview
-        nombreUser.text = nombreGlobal
+        nombreUserT.text = nombreUser.toString()
 
         val correoUser = root.findViewById<TextView>(R.id.txvCorreo)
-        correoUser.text = correoGlobal
+        correoUser.text = correo
 
         val telefonoUser = root.findViewById<TextView>(R.id.txvTelefono)
-        telefonoUser.text = telefonoGlobal
+        telefonoUser.text = telefono
 
         val edadUser = root.findViewById<TextView>(R.id.txvEdad)
-        edadUser.text = edadGlobal.toString()
+        edadUser.text = edad.toString()
 
 
 
@@ -92,14 +107,16 @@ class fragment_perfil : Fragment() {
 
 
         //Boton para navegar entre fragments
-        /*
+
                 val campoCorreo = root.findViewById<TextView>(R.id.textView5)
                 val campoUsuario = root.findViewById<TextView>(R.id.txvNombre)
                 val campoTelefono = root.findViewById<TextView>(R.id.textView7)
                 val campoEdad = root.findViewById<TextView>(R.id.txvEdad)
-        */
+                val campoFotoPerfil = root.findViewById<ImageView>(R.id.imgFotoperfilMostrar)
+                val campoContra = root.findViewById<TextView>(R.id.txtContra)
 
-                fun obtenerDatos(): ArrayList<String> {
+
+               /* fun obtenerDatos(): ArrayList<String> {
                     lateinit var datos : ArrayList<String>
                     val objConexion = ClaseConexion().cadenaConexion()
                     val getData = objConexion?.prepareStatement("select * from tbUsuario where nombre_usuario = ?")!!
@@ -112,10 +129,42 @@ class fragment_perfil : Fragment() {
                         RegistrarUsuarios.edad = rs.getInt("edad_usuario")
                         RegistrarUsuarios.telefono = rs.getString("telefono_usuario")
                         RegistrarUsuarios.contrasena = rs.getString("Password_Usuario")
+                        RegistrarUsuarios.fotoPerfil = rs.getString("Fotos_usuario")
                     }
                     return datos;
+                }*/
+
+
+        fun obtenerDatos():ArrayList<String>  {
+            try {
+                GlobalScope.launch(Dispatchers.IO){
+                    lateinit var datos : ArrayList<String>
+                    val objConexion = ClaseConexion().cadenaConexion()
+                    val getData = objConexion?.prepareStatement("select * from tbUsuario where nombre_usuario = ?")!!
+                    getData.setString(1, Login.nombreusuario)
+                    val rs = getData.executeQuery()
+                    while(rs.next()){
+
+                        nombreUser =  rs.getString("nombre_usuario")
+                        correo = rs.getString("correo_usuario")
+                        edad = rs.getInt("edad_usuario")
+                        telefono = rs.getString("telefono_usuario")
+                        contrasena = rs.getString("Password_Usuario")
+                        fotoPerfil = rs.getString("Fotos_usuario")
+
+                        arrayOf(nombreUser,correo, edad, telefono, contrasena, fotoPerfil)
+
+                    }
+
                 }
-/*
+            }catch (e:SQLException){
+                println("Este es el Error: $e")
+            }
+
+            //Cambiar a datos
+            return obtenerDatos()
+        }
+
                 CoroutineScope(Dispatchers.IO).launch {
                     var datos = obtenerDatos()
                     withContext(Dispatchers.Main){
@@ -123,9 +172,12 @@ class fragment_perfil : Fragment() {
                         campoUsuario.setText(datos.get(0))
                         campoTelefono.setText(datos.get(3))
                         campoEdad.setText(datos.get(2))
+                        campoContra.setText(datos.get(4))
+                        Glide.with(requireContext()).load(fotoPerfil).into(campoFotoPerfil)
+
                     }
                 }
-*/
+
 
 
 
@@ -194,23 +246,8 @@ class fragment_perfil : Fragment() {
         return root
 
     }
-/* Esta funcion, ya sirve, solo ponerla dentro de una corrutina
 
 
-    fun obtenerDatos():ArrayList<String>  {
-        lateinit var datos : ArrayList<String>
-        val objConexion = ClaseConexion().cadenaConexion()
-        val getData = objConexion?.prepareStatement("select * from tbUsuario where nombre_usuario = ?")!!
-        getData.setString(1, Login.nombreusuario)
-        val rs = getData.executeQuery()
-        while(rs.next()){
 
-            RegistrarUsuarios.nombreUser =  rs.getString("nombre_usuario")
-            RegistrarUsuarios.correo = rs.getString("correo_usuario")
-            RegistrarUsuarios.edad = rs.getInt("edad_usuario")
-            RegistrarUsuarios.telefono = rs.getString("telefono_usuario")
-            RegistrarUsuarios.contrasena = rs.getString("Password_Usuario")
-        }
-        return datos;
-    }*/
+
 }

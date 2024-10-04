@@ -21,13 +21,16 @@ import java.security.MessageDigest
 import java.util.UUID
 
 class RegistrarUsuarios : AppCompatActivity() {
-    companion object variablesGlobales{
+
+
+    /*companion object variablesGlobales{
         lateinit var correo : String
         lateinit var nombreUser : String
         lateinit var telefono : String
         lateinit var contrasena : String
         var edad = 0
-    }
+        lateinit var fotoPerfil : String
+    }*/
 
 
 
@@ -91,22 +94,23 @@ class RegistrarUsuarios : AppCompatActivity() {
                 val roles = obtenerRoles()
 
                 val crearUsuario =
-                    objConexion?.prepareStatement("Insert into tbUsuario(UUID_Usuario, Nombre_Usuario, Password_Usuario, Edad_Usuario, Telefono_Usuario,Correo_Usuario, DUI_Usuario, UUID_Rol) values (?,?,?,?,?,?,?,?)")!!
+                    objConexion?.prepareStatement("Insert into tbUsuario(UUID_Usuario, Nombre_Usuario, Password_Usuario, Edad_Usuario, Telefono_Usuario,Fotos_usuario,Correo_Usuario, DUI_Usuario, UUID_Rol) values (?,?,?,?,?,?,?,?,?)")!!
                 crearUsuario.setString(1, UUID.randomUUID().toString())
                 crearUsuario.setString(2, txtNombre.text.toString())
                 crearUsuario.setString(3, contrasenaEncriptada)
                 crearUsuario.setInt(4, txtEdad.text.toString().toInt())
                 crearUsuario.setString(5, txtTelefono.text.toString())
-                crearUsuario.setString(6, txtCorreo.text.toString())
-                crearUsuario.setString(7, txtDui.text.toString())
-                crearUsuario.setInt(8, 2)
+                crearUsuario.setString(6, "https://cdn-icons-png.freepik.com/512/8742/8742495.png")
+                crearUsuario.setString(7, txtCorreo.text.toString())
+                crearUsuario.setString(8, txtDui.text.toString())
+                crearUsuario.setInt(9, 2)
 
 
-                correo = txtCorreo.text.toString()
+                /*correo = txtCorreo.text.toString()
                 nombreUser = txtNombre.text.toString()
                 edad = txtEdad.text.toString().toInt()
                 contrasena = txtContrasena.text.toString()
-                telefono = txtTelefono.text.toString()
+                telefono = txtTelefono.text.toString()*/
 
 
 
