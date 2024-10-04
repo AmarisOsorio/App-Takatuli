@@ -23,5 +23,48 @@ class Acerca_de : AppCompatActivity() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        getSupportActionBar()?.hide()
+
+
+
         }
     }

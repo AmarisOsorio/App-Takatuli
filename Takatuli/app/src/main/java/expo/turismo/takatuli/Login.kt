@@ -40,6 +40,9 @@ class Login : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        getSupportActionBar()?.hide()
+
         val txtUsuario = findViewById<EditText>(R.id.txtUsuario)
         val txtContrasena = findViewById<EditText>(R.id.txtContrasenia)
         val btnIniciarSession = findViewById<Button>(R.id.btnIniciarSession)

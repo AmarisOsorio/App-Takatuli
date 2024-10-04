@@ -19,6 +19,35 @@ class Politicas_de_Privacidad : AppCompatActivity() {
             val intent= Intent(this,fragment_ajustes::class.java)
             startActivity(intent)
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        getSupportActionBar()?.hide()
     }
 
 }
