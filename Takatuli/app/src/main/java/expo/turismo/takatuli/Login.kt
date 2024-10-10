@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.InputType
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -39,15 +40,18 @@ class Login : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        getSupportActionBar()?.hide()
+
         val txtUsuario = findViewById<EditText>(R.id.txtUsuario)
         val txtContrasena = findViewById<EditText>(R.id.txtContrasenia)
         val btnIniciarSession = findViewById<Button>(R.id.btnIniciarSession)
         val btnRegistrarse = findViewById<Button>(R.id.BtnRegistrarse)
-        val imgRecuContra = findViewById<TextView>(R.id.imgRecuContra)
-        //val imgVerContra =
+        val txtRecuContra = findViewById<TextView>(R.id.imgRecuContra)
+        val imgVerContra = findViewById<ImageView>(R.id.imgVerContra)
 
 
-//
+        // Encriptacion //
         fun hashSHA256(contraseniaEscrita: String): String{
             val bytes = MessageDigest.getInstance("SHA-256").digest(contraseniaEscrita.toByteArray())
             return bytes.joinToString("") { "%02x".format(it) }
@@ -69,7 +73,7 @@ class Login : AppCompatActivity() {
                 txtUsuario.error = null
             }
             if (contrasena.isEmpty()) {
-                txtContrasena.error = "El correo es obligatorio"
+                txtContrasena.error = "La contraseña es obligatoria"
                 hayErrores = true
             } else {
                 txtContrasena.error = null
@@ -98,60 +102,41 @@ class Login : AppCompatActivity() {
                     println("Usuario no encontrado, verifique las credenciales")
                 }
 
-            }
-
-
-            fun guardarDatos(
-               Usuario: String,
-               contrasena: String
-            ) {
-
-                Toast.makeText(this, "Si", Toast.LENGTH_SHORT).show()
-            }
-
-            if (hayErrores) {
-                //Hacer algo si hay errores
-            } else {
-                // Si todas las validaciones son correctas, procede a guardar los datos
-                guardarDatos(Usuario, contrasena)
 
             }
-
 
 
         }
+
+        fun guardarDatos(
+            Usuario: String,
+            contrasena: String
+        ) {
+
+            Toast.makeText(this, "¡Bienvenido!", Toast.LENGTH_SHORT).show()
+        }
+
+
+
 
         btnRegistrarse.setOnClickListener {
             val intent = Intent(this@Login, RegistrarUsuarios::class.java)
             startActivity(intent)
         }
 
-        imgRecuContra.setOnClickListener(){
+        txtRecuContra.setOnClickListener(){
             val intent = Intent(this@Login, RecuperacionDePassword::class.java)
             startActivity(intent)
         }
 
-
         ////////////////////// Botones para ver contraseña /////////////////////////////////
-        /*imgVerContra.setOnClickListener {
+
+        imgVerContra.setOnClickListener {
             if (txtContrasena.inputType == InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD) {
-                txtContrasena.inputType =
-                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                txtContrasena.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
             } else {
-                txtContrasena.inputType =
-                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                txtContrasena.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
             }
-        }*/
-
-        /*imgVerConfirmacionPassword.setOnClickListener {
-            if (txtConfirmarPassword.inputType == InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD) {
-                txtConfirmarPassword.inputType =
-                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-            } else {
-                txtConfirmarPassword.inputType =
-                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-            }
-        }*/
-
+        }
     }
 }

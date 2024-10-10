@@ -1,9 +1,11 @@
 package expo.turismo.takatuli
 
 import android.os.Bundle
+import android.text.InputType
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -21,11 +23,14 @@ import java.security.MessageDigest
 import java.util.UUID
 
 class RegistrarUsuarios : AppCompatActivity() {
+
+
     companion object variablesGlobales{
         lateinit var correo : String
         lateinit var nombreUser : String
         lateinit var telefono : String
         lateinit var contrasena : String
+        lateinit var DUI : String
         var edad = 0
     }
 
@@ -51,6 +56,12 @@ class RegistrarUsuarios : AppCompatActivity() {
         val txtDui = findViewById<EditText>(R.id.txtDuiR)
         //val spRol = findViewById<Spinner>(R.id.spRolR)
         val btnRegistrar = findViewById<Button>(R.id.btnRegistrar)
+        val imgVerContraR = findViewById<ImageView>(R.id.imgVerContraR)
+
+
+        // Variable para verificar si hay errores
+        //La inicializamos en false
+        var hayErrores = false
 
 
         fun obtenerRoles(): List<dataclassRoles> {
@@ -83,6 +94,8 @@ class RegistrarUsuarios : AppCompatActivity() {
 
         btnRegistrar.setOnClickListener {
 
+
+
             GlobalScope.launch(Dispatchers.IO) {
 
                 val objConexion = ClaseConexion().cadenaConexion()
@@ -108,6 +121,8 @@ class RegistrarUsuarios : AppCompatActivity() {
                 edad = txtEdad.text.toString().toInt()
                 contrasena = txtContrasena.text.toString()
                 telefono = txtTelefono.text.toString()
+                DUI = txtDui.text.toString()
+
                 crearUsuario.executeQuery()
 
                 withContext(Dispatchers.Main) {
@@ -125,6 +140,77 @@ class RegistrarUsuarios : AppCompatActivity() {
             }
 
 
+           //TODO://///////////////  Validaciones //////////////
+
+            //TODO: 1- Validar que los campos no estén vacíos
+            if (nombreUser.isEmpty()) {
+                txtNombre.error = "El nombre es obligatorio"
+                hayErrores = true
+            } else {
+                txtNombre.error = null
+            }
+            if (correo.isEmpty()) {
+                txtCorreo.error = "El correo es obligatorio"
+                hayErrores = true
+            } else {
+                txtCorreo.error = null
+            }
+
+            /*if (edad.isEmpty()) {
+                txtEdad.error = "La edad es obligatoria"
+                hayErrores = true
+            } else {
+                txtEdad.error = null
+            }*/
+
+            if (telefono.isEmpty()) {
+                txtTelefono.error = "El teléfono es obligatorio"
+                hayErrores = true
+            } else {
+                txtTelefono.error = null
+            }
+
+            /*if (DUI.isEmpty()) {
+                txtDUI.error = "El DUI es obligatorio"
+                hayErrores = true
+            } else {
+                txtDUI.error = null
+            }
+
+            if (contrasenia.isEmpty()) {
+                txtContrasenia.error = "La contraseña es obligatoria"
+                hayErrores = true
+            } else {
+                txtContrasenia.error = null
+            }*/
+
+            ///////////////////Validación DUI ///////////////////
+            if (!DUI.matches(Regex("[0-9]{8}-[0-9]"))) {
+                txtDui.error = "El DUI no tiene un formato válido. Ej: 12345678-9"
+                hayErrores = true
+            } else {
+                txtDui.error = null
+            }
+
+
+
+
+
+        }
+
+
+
+
+
+
+//TODO:///////////////////////////// boton ver contraseña //////////////////////////////////////////
+
+        imgVerContraR.setOnClickListener {
+            if (txtContrasena.inputType == InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD) {
+                txtContrasena.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+            } else {
+                txtContrasena.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            }
         }
 
 
