@@ -18,7 +18,6 @@ import android.widget.TextView
 import androidx.navigation.Navigation
 
 
-
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import expo.turismo.takatuli.Modelo.ClaseConexion
@@ -35,15 +34,14 @@ import java.util.UUID
 
 class fragment_perfil : Fragment() {
 
+    var UUID = ""
+    var nombreUser = " "
+    var correo = " "
+    var contrasena = " "
+    var telefono = " "
+    var edad = 0
+    var fotoPerfil = " "
 
-    companion object variablesGlobales{
-        lateinit var correo : String
-        lateinit var nombreUser : String
-        lateinit var telefono : String
-        lateinit var contrasena : String
-        var edad = 0
-        lateinit var fotoPerfil : String
-    }
 
     /*lateinit var imageView: ImageView
     lateinit var miPath: Path
@@ -62,7 +60,6 @@ class fragment_perfil : Fragment() {
         }
 
 
-
     }
     /*private var _binding:FragmentPerfilBinding? = null
     private val binding get() = _binding!!*/
@@ -72,7 +69,7 @@ class fragment_perfil : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         //obtenerDatos()
-        val UUID = fragment_fotoperfil.variablesGlobales.uuid;
+        var UUID = fragment_fotoperfil.variablesGlobales.uuid;
 
         //variable root
         val root = inflater.inflate(R.layout.fragment_perfil, container, false)
@@ -85,108 +82,93 @@ class fragment_perfil : Fragment() {
         val fotoGlobal = fotoPerfil*/
 
 
-        //Mando a traer el textview que está en la pantalla
-        var nombreUserT = root.findViewById<TextView>(R.id.txvNombre)
-        //asignamos el valor global al textview
-        nombreUserT.text = nombreUser.toString()
-
-        val correoUser = root.findViewById<TextView>(R.id.txvCorreo)
-        correoUser.text = correo
-
-        val telefonoUser = root.findViewById<TextView>(R.id.txvTelefono)
-        telefonoUser.text = telefono
-
-        val edadUser = root.findViewById<TextView>(R.id.txvEdad)
-        edadUser.text = edad.toString()
-
-
-
-
-
-
 
 
         //Boton para navegar entre fragments
 
-                val campoCorreo = root.findViewById<TextView>(R.id.textView5)
-                val campoUsuario = root.findViewById<TextView>(R.id.txvNombre)
-                val campoTelefono = root.findViewById<TextView>(R.id.textView7)
-                val campoEdad = root.findViewById<TextView>(R.id.txvEdad)
-                val campoFotoPerfil = root.findViewById<ImageView>(R.id.imgFotoperfilMostrar)
-                val campoContra = root.findViewById<TextView>(R.id.txtContra)
+        val campoCorreo = root.findViewById<TextView>(R.id.textView5)
+        val campoUsuario = root.findViewById<TextView>(R.id.txvNombre)
+        val campoTelefono = root.findViewById<TextView>(R.id.textView7)
+        val campoEdad = root.findViewById<TextView>(R.id.txvEdad)
+        val campoFotoPerfil = root.findViewById<ImageView>(R.id.imgFotoperfilMostrar)
+        val campoContra = root.findViewById<TextView>(R.id.txtContra)
+
+        val urlF = foto_perfil.variableGlobalFoto.fileUri
 
 
-               /* fun obtenerDatos(): ArrayList<String> {
-                    lateinit var datos : ArrayList<String>
-                    val objConexion = ClaseConexion().cadenaConexion()
-                    val getData = objConexion?.prepareStatement("select * from tbUsuario where nombre_usuario = ?")!!
-                    getData.setString(1, Login.nombreusuario)
-                    val rs = getData.executeQuery()
-                    while(rs.next()){
 
-                    RegistrarUsuarios.nombreUser =  rs.getString("nombre_usuario")
-                        RegistrarUsuarios.correo = rs.getString("correo_usuario")
-                        RegistrarUsuarios.edad = rs.getInt("edad_usuario")
-                        RegistrarUsuarios.telefono = rs.getString("telefono_usuario")
-                        RegistrarUsuarios.contrasena = rs.getString("Password_Usuario")
-                        RegistrarUsuarios.fotoPerfil = rs.getString("Fotos_usuario")
-                    }
-                    return datos;
-                }*/
+        suspend fun obtenerDatos(): List<tb_Usuario> {
+            return withContext(Dispatchers.IO) {
+                val objConexion = ClaseConexion().cadenaConexion()
+                val getData =
+                    objConexion?.prepareStatement("SELECT * FROM tbUsuario WHERE nombre_usuario = ?")
+                        ?: return@withContext emptyList()
+                getData.setString(1, Login.nombreusuario)
+                val rs = getData.executeQuery()
+                val listaDatosUsuario = mutableListOf<tb_Usuario>()
 
+                while (rs.next()) {
+                    val UUID = rs.getString("UUID_usuario")
+                    val nombreUser = rs.getString("nombre_usuario")
+                    val correo = rs.getString("correo_usuario")
+                    val edad = rs.getInt("edad_usuario")
+                    val telefono = rs.getString("telefono_usuario")
+                    val contrasena = rs.getString("Password_Usuario")
+                    val fotoPerfil = rs.getString("Fotos_usuario")
 
-        fun obtenerDatos():ArrayList<String>  {
-            try {
-                GlobalScope.launch(Dispatchers.IO){
-                    lateinit var datos : ArrayList<String>
-                    val objConexion = ClaseConexion().cadenaConexion()
-                    val getData = objConexion?.prepareStatement("select * from tbUsuario where nombre_usuario = ?")!!
-                    getData.setString(1, Login.nombreusuario)
-                    val rs = getData.executeQuery()
-                    while(rs.next()){
-
-                        nombreUser =  rs.getString("nombre_usuario")
-                        correo = rs.getString("correo_usuario")
-                        edad = rs.getInt("edad_usuario")
-                        telefono = rs.getString("telefono_usuario")
-                        contrasena = rs.getString("Password_Usuario")
-                        fotoPerfil = rs.getString("Fotos_usuario")
-
-                        arrayOf(nombreUser,correo, edad, telefono, contrasena, fotoPerfil)
-
-                    }
-
+                    val valoresJuntos =
+                        tb_Usuario(UUID, nombreUser, contrasena,edad, telefono, correo,  fotoPerfil)
+                    listaDatosUsuario.add(valoresJuntos)
                 }
-            }catch (e:SQLException){
-                println("Este es el Error: $e")
+                listaDatosUsuario
             }
-
-            //Cambiar a datos
-            return obtenerDatos()
         }
 
-                CoroutineScope(Dispatchers.IO).launch {
-                    var datos = obtenerDatos()
-                    withContext(Dispatchers.Main){
-                        campoCorreo.setText(datos.get(1))
-                        campoUsuario.setText(datos.get(0))
-                        campoTelefono.setText(datos.get(3))
-                        campoEdad.setText(datos.get(2))
-                        campoContra.setText(datos.get(4))
-                        Glide.with(requireContext()).load(fotoPerfil).into(campoFotoPerfil)
-
-                    }
-                }
+        GlobalScope.launch(Dispatchers.Main) {
+            val datosUsuario = obtenerDatos()
+            val usuario = datosUsuario[0]
+            campoUsuario.text = usuario.Nombre_Usuario
+            campoCorreo.setText(usuario.Correo_Usuario)
+            campoEdad.text = usuario.Edad_Usuario.toString()
+            campoTelefono.setText(usuario.Telefono_Usuario)
+            campoContra.setText(usuario.Password_Usuario)
+            Glide.with(requireContext()).load(usuario.foto).into(campoFotoPerfil)
 
 
+
+
+
+        }
 
 
         val imgCamara = root.findViewById<ImageView>(R.id.imgCamera)
         //val imgFotoMostrar = root.findViewById<ImageView>(R.id.imgFotoperfilMostrar)
 
-        imgCamara.setOnClickListener(){
-            val intent = Intent(requireContext(),foto_perfil::class.java)
+        imgCamara.setOnClickListener() {
+            val intent = Intent(requireContext(), foto_perfil::class.java)
             startActivity(intent)
+        }
+
+
+        fun actualizarFoto(){
+
+            val objConexion = ClaseConexion().cadenaConexion()
+
+            val NuevaFoto = urlF
+
+            val  UpdateIMG = objConexion?.prepareStatement("update tbUsuario set Fotos_Usuario = ? where UUID_Usuario = ?")!!
+            UpdateIMG.setString(1, UUID)
+            UpdateIMG.setString(2, NuevaFoto.toString())
+            UpdateIMG.executeUpdate()
+
+            val commit = objConexion?.prepareStatement("commit")!!
+            commit.executeUpdate()
+        }
+
+        GlobalScope.launch(Dispatchers.IO) {
+            val nuevaFoto = actualizarFoto()
+            nuevaFoto.toString()
+
         }
 
 
@@ -202,28 +184,21 @@ class fragment_perfil : Fragment() {
 
 
 
+        // Inflate the layout for this fragment
+        /* return inflater.inflate(R.layout.fragment_perfil, container, false)
+    val root : View = binding.root*/
+
+        /*imageView = root.findViewById(R.id.imgPerfil)
+    val btnGaleria = root.findViewById<Button>(R.id.btnGaleria)
+    val btnFoto = root.findViewById<Button>(R.id.btnTomarFoto)*/
 
 
-
-
-
-
-
-            // Inflate the layout for this fragment
-            /* return inflater.inflate(R.layout.fragment_perfil, container, false)
-        val root : View = binding.root*/
-
-            /*imageView = root.findViewById(R.id.imgPerfil)
-        val btnGaleria = root.findViewById<Button>(R.id.btnGaleria)
-        val btnFoto = root.findViewById<Button>(R.id.btnTomarFoto)*/
-
-
-            // btnGaleria.setOnClickListener {
-            //checkStoragePermission()
-            //val intent = Intent(MediaStore.ACTION_PICK_IMAGES)
-            //intent.type = "image/*"
-            //startActivityForResult(intent,codigoGaleria)
-            //}
+        // btnGaleria.setOnClickListener {
+        //checkStoragePermission()
+        //val intent = Intent(MediaStore.ACTION_PICK_IMAGES)
+        //intent.type = "image/*"
+        //startActivityForResult(intent,codigoGaleria)
+        //}
 
 
         /*private fun checkStoragePermission(){
@@ -246,8 +221,6 @@ class fragment_perfil : Fragment() {
         return root
 
     }
-
-
 
 
 }

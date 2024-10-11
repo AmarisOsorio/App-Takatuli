@@ -25,7 +25,10 @@ class foto_perfil : AppCompatActivity() {
     lateinit var imageView: ImageView
     lateinit var galeria: Button
     lateinit var subirImagen: Button
-    var fileUri: Uri? = null
+    companion object variableGlobalFoto{
+        var fileUri: Uri? = null
+    }
+    //var fileUri: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

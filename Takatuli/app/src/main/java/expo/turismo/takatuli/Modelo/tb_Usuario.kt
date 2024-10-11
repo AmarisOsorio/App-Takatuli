@@ -6,5 +6,6 @@ data class tb_Usuario(
     val Password_Usuario:String,
     val Edad_Usuario: Int,
     val Telefono_Usuario: String,
-    val Correo_Usuario: String
+    val Correo_Usuario: String,
+    val foto: String
 )
