@@ -65,24 +65,23 @@ class Login : AppCompatActivity() {
             val Usuario = txtUsuario.text.toString()
             val contrasena = txtContrasena.text.toString()
 
-
-            if (Usuario.isEmpty()) {
-                txtUsuario.error = "El nombre es obligatorio"
-                hayErrores = true
-            } else {
-                txtUsuario.error = null
-            }
-            if (contrasena.isEmpty()) {
-                txtContrasena.error = "La contraseña es obligatoria"
-                hayErrores = true
-            } else {
-                txtContrasena.error = null
-            }
-
             GlobalScope.launch(Dispatchers.IO) {
+
 
                 val objConexion = ClaseConexion().cadenaConexion()
 
+                /*if (Usuario.isEmpty()) {
+                    txtUsuario.error = "El nombre es obligatorio"
+                    hayErrores = true
+                } else {
+                    txtUsuario.error = null
+                }
+                if (contrasena.isEmpty()) {
+                    txtContrasena.error = "La contraseña es obligatoria"
+                    hayErrores = true
+                } else {
+                    txtContrasena.error = null
+                }*/
 
 
                 val contrasenaEncripta = hashSHA256(txtContrasena.text.toString())
