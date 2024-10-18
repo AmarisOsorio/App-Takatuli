@@ -185,7 +185,7 @@ class RegistrarUsuarios : AppCompatActivity() {
             }*/
 
             ///////////////////Validación DUI ///////////////////
-            if (!DUI.matches(Regex("[0-9]{8}-[0-9]"))) {
+            if (!txtDui.text.toString().matches(Regex("[0-9]{8}-[0-9]"))) {
                 txtDui.error = "El DUI no tiene un formato válido. Ej: 12345678-9"
                 hayErrores = true
             } else {

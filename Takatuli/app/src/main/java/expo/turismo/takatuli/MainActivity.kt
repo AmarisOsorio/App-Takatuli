@@ -27,8 +27,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.fragment_perfil, R.id.fragment_ajustes,R.id.fragment_chat,R.id.fragment_inicio,R.id.frameLayout5
             )
         )
+
         val btnIrrestaurante = findViewById<ImageView>(R.id.imgCirResta)
-        btnIrrestaurante.setOnClickListener{
+
+         btnIrrestaurante.setOnClickListener{
             val actTuristico = Intent(this, activity_rcvRestaurante::class.java)
              startActivity(actTuristico)
         }
