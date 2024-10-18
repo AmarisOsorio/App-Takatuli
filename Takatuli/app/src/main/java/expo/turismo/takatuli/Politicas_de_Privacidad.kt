@@ -17,7 +17,7 @@ class Politicas_de_Privacidad : AppCompatActivity() {
         val Aceptar = findViewById<Button>(R.id.btnAceptar)
         Aceptar.setOnClickListener {
             val intent= Intent(this,fragment_ajustes::class.java)
-            startActivity(intent)
+                startActivity(intent)
         }
     }
 

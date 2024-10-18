@@ -2,11 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/fragment_chat"
-        android:icon="@drawable/ic_chat"
-        android:title="Chat" />
-
-    <item
         android:id="@+id/Agregar_lugares"
         android:icon="@drawable/ic_map"
         android:title="mapa" />
