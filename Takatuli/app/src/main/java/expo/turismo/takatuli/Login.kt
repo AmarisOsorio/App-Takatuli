@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.InputType
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -15,7 +16,6 @@ import expo.turismo.takatuli.Modelo.ClaseConexion
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.security.MessageDigest
 
 class Login : AppCompatActivity() {
@@ -44,6 +44,7 @@ class Login : AppCompatActivity() {
         val btnIniciarSession = findViewById<Button>(R.id.btnIniciarSession)
         val btnRegistrarse = findViewById<Button>(R.id.BtnRegistrarse)
         val imgRecuContra = findViewById<TextView>(R.id.imgRecuContra)
+        val imgVerContraL = findViewById<ImageView>(R.id.imgVerContraR)
         //val imgVerContra =
 
 //
@@ -135,6 +136,16 @@ class Login : AppCompatActivity() {
             startActivity(intent)
         }
 
+        imgVerContraL.setOnClickListener {
+            if (txtContrasena.inputType == InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD) {
+                txtContrasena.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+            } else {
+                txtContrasena.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            }
+
+
+
+
 
         ////////////////////// Botones para ver contraseña /////////////////////////////////
         /*imgVerContra.setOnClickListener {
@@ -156,6 +167,8 @@ class Login : AppCompatActivity() {
                     InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
             }
         }*/
+
+    }
 
     }
 }
