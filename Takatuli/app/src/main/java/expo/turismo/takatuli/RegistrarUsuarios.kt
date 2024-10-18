@@ -24,12 +24,12 @@ class RegistrarUsuarios : AppCompatActivity() {
 
 
     /*companion object variablesGlobales{
-        lateinit var correo : String
-        lateinit var nombreUser : String
-        lateinit var telefono : String
-        lateinit var contrasena : String
+        var correo = " "
+         var nombreUser = " "
+        var telefono = " "
+       var contrasena = " "
         var edad = 0
-        lateinit var fotoPerfil : String
+       var fotoPerfil = " "
     }*/
 
 
@@ -111,8 +111,6 @@ class RegistrarUsuarios : AppCompatActivity() {
                 edad = txtEdad.text.toString().toInt()
                 contrasena = txtContrasena.text.toString()
                 telefono = txtTelefono.text.toString()*/
-
-
 
                 crearUsuario.executeQuery()
 
